@@ -1,0 +1,54 @@
+\documentclass{article}
+% 这里是导言区
+\usepackage{listings}%插入代码
+\usepackage{mcode}
+\usepackage{textcomp}
+\usepackage{graphicx}%插入图像
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{subfigure}
+\usepackage{geometry}%设置页边距
+
+
+\geometry{a4paper,scale=0.75}
+
+
+\lstset{
+tabsize=4, %tab 空格数
+frame=shadowbox, %把代码用带有阴影的框圈起来
+rulesepcolor=\color{red!20!green!20!blue!20}, %代码块边框为淡青色
+keywordstyle=\color{blue!90}\bfseries, %代码关键字的颜色为蓝色, 粗体
+showstringspaces=false, %不显示代码字符串中间的空格标记
+stringstyle=\ttfamily, %代码字符串的特殊格式
+keepspaces=true, %
+breakindent=22pt, %
+numbers=left, %左侧显示行号
+stepnumber=1, %
+numberstyle=\tiny, %行号字体用小号
+basicstyle=\footnotesize, %
+showspaces=false, %
+flexiblecolumns=true, %
+breaklines=true, %对过长的代码自动换行
+breakautoindent=true, %
+breakindent=4em, %
+aboveskip=1em, %代码块边框
+}
+
+\title{Chapter2}
+\author{31202008881        \quad \quad \quad
+          Bao Ze an}
+\date{today}
+
+\begin{document}
+\maketitle
+\section*{2.1}
+What we know is the linear system must obey the superposition property.\\
+The input-output description in Fig2.1(a) is :$y=a*u$.\\
+Here $a$ is a constant .It is eay to find the system(a) is a linear system.\\
+The input-output decription in Fig2.1(b) is:$y=a*u+b$.\\
+Here $a$ and $b$ are all constants.Thstify whether the system has the property of additivity
+Let:
+\[y_1=a*u_1+b.\]
+\[y_2=a*u_2+b.\]
+then:
+\[(y_1+y_2)\]
