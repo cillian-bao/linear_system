@@ -60,16 +60,30 @@ section*{2.2}
 Because $g(t)$ is not zero,when $t \leq 0$,so the ideal lowpass filter is not causual and the ideal filter 
 can't build in the real world.\\
 
-section*{2.3}
+\section*{2.3}
 It is easy to find the system is a linear system.\\
 Testify whether the system is time-invariable:\\
 Definine the initial time of input $t_0$,system input is $u(t)$,$t \geq t_0$,so it decides the output $y(t)$,$t \geq t_0$ \\
-\begin{equation}
-y(t)=\left\{
+%\begin{aligned}
+\[y(t)=\left\{
 \begin{aligned}
 &u(t)  , &for \quad t_0 \leq t \leq \alpha \\
 &0  , &for \quad t \geq \alpha.
 \end{aligned}
-\right.
-\end{equation}
+\right.\]
+%\end{aligned}
+Shift the initial time to $t_0+T$.Let $t_0+T> \alpha$,and shift the input to $u(t-T)$,$t \geq t_0+T$.\\
+The system output is $y'(t)=0$.Suppose that $u(t)$ is not 0,$y'(t)$ is not equal to $y(t-T)$.\\
+So,the system is time-invaring.\\
+For any time t,the system output y(t) is decided by the current input u(t) exclusively.\\
+So,it is a causual time.\\
+
+\section*{2.4}
+Let:$y=Hu$
+Because of causual property:
+\[y_{(- \infty,\alpha)}=Hu_{(-\infty,+\infty)}=Hu_{(-\infty,\alpha)}=HP_\alpha u_{(-\infty,+\infty)}\]\\
+Thus we have:
+\[P_\alpha y=P_\alpha Hu=P_\alpha HP_\alpha u\]
+Because$(P_\alpha Hu)(t)=0$for $t\geq\alpha$,but $(HP_\alpha u)(t)$can be nonzero for $t \geq\alpha$
+Thus $P_\alpha Hu \neq HP_\alpha u$
 \end{document}
