@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.11.1)  21 NOV 2020 22:22
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.11.1)  22 NOV 2020 00:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -283,8 +283,7 @@ File: l3backend-xdvipdfmx.def 2020-03-12 L3 backend support: xdvipdfmx
 \l__pdf_internal_box=\box51
 \g__pdf_backend_object_int=\count293
 \g__pdf_backend_annotation_int=\count294
-)
-No file chapter3.aux.
+) (./chapter3.aux)
 \openout1 = `chapter3.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
@@ -297,7 +296,7 @@ LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
 LaTeX Font Info:    ... okay on input line 51.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 51.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 51.
-(d:/texlive/2020/texmf-dist/tex/latex/base/ts1cmr.fd
+ (d:/texlive/2020/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 51.
@@ -359,25 +358,35 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: a3.1.PNG Graphic file (type bmp)
 <a3.1.PNG>
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--103
+Underfull \hbox (badness 10000) in paragraph at lines 83--86
 
  []
 
 [1
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 106--109
+Underfull \hbox (badness 10000) in paragraph at lines 87--90
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--110
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--116
 
  []
 
 [2] (./chapter3.aux) ) 
 Here is how much of TeX's memory you used:
- 6095 strings out of 479418
- 84791 string characters out of 5888105
- 361573 words of memory out of 5000000
- 23485 multiletter control sequences out of 15000+600000
- 544256 words of font info for 74 fonts, out of 8000000 for 9000
+ 6081 strings out of 479418
+ 84648 string characters out of 5888105
+ 362573 words of memory out of 5000000
+ 23476 multiletter control sequences out of 15000+600000
+ 541487 words of font info for 65 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 39i,13n,64p,999b,217s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 39i,11n,64p,999b,217s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on chapter3.pdf (2 pages).
