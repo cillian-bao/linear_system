@@ -113,5 +113,143 @@ $\boldsymbol{AA}^{'}=\boldsymbol{A}\boldsymbol{A}^{-1}=\boldsymbol{I}_n$
 
 \section*{3.5}
 Accoridng to the principle:\\
-\[Nillity(\boldsymbol{A}=number of columns of \boldsymbol{A}-rank(\boldsymbol(A)))\]
+\[Nillity(\boldsymbol{A})=number of columns of \boldsymbol{A}-rank\boldsymbol(A)\]
+\subsection*{\rmnum{1}:}
+Rank $\boldsymbol(A_1)=2$\\
+Nullity $\boldsymbol(A_1)=3-2=1$
+\subsection*{\rmnum{2}:}
+Rank $\boldsymbol(A_2)=3$\\
+Nullity $\boldsymbol(A_2)=3-3=0$\\
+\subsection*{\rmnum{3}:}
+Rank $\boldsymbol(A_3)=3$\\
+Nullity $\boldsymbol(A_3)=4-3$
+
+\section*{3.6}
+For $A_1$:
+\begin{equation*}
+\boldsymbol{a_1}=
+\left[
+\begin{array}{c}
+1\\
+0\\
+0
+\end{array}
+\right]
+\boldsymbol{a_2}=
+\left[
+\begin{array}{c}
+0\\
+0\\
+1\\
+\end{array}
+\right]
+\end{equation*}
+The set of $\{\boldsymbol{a_1},\boldsymbol{a_2}\}$ can be the basis of the range spaces.\\
+The independent vectors of null space can get by solving the equation:\\
+\[\boldsymbol{A}_1 \boldsymbol{\eta}_i=0\]
+\begin{equation*}
+\boldsymbol{\eta}_1=
+\left[
+\begin{array}{c}
+1\\
+0\\
+0\\
+\end{array}
+\right]
+\end{equation*}
+The set of ${\boldsymbol{\eta}_1}$ is the basis of the null space\\
+in the same way,we can get the basis of the range space and null space of $\boldsymbol{A}_2$
+\begin{equation*}
+\boldsymbol{a_1}=
+\left[
+\begin{array}{c}
+4\\
+3\\
+1
+\end{array}
+\right]
+\boldsymbol{a_2}=
+\left[
+\begin{array}{c}
+1\\
+2\\
+1\\
+\end{array}
+\right]
+\boldsymbol{a_3}=
+\left[
+\begin{array}{c}
+-1\\
+0\\
+0\\
+\end{array}
+\right]
+\end{equation*}
+The set of  $\{\boldsymbol{a_1},\boldsymbol{a_2},\boldsymbol{a_3}\}$ is the basis of the range space.\\
+because the $\boldsymbol{A}_2$ is full rank,so the basis of the null space is $\{\boldsymbol{0}\}$
+
+\section*{3.7}
+\[\rho(\boldsymbol{A})=\rho([\boldsymbol{A}\quad y])=2\]
+so a solution $\boldsymbol{x}$ exist with respect to this equation.\\
+Because coefficient matrix is full column rank,so the solution is unique.\\
+if y=$[1\quad 1\quad 1]^{'}$,$\rho(\boldsymbol{A})=2 \neq \rho([\boldsymbol{A}\quad y])=3$
+so,when $\boldsymbol{y}$=$[1 \quad 1\quad 1]^{'}$,the solution is not exist.
+
+\section*{3.8}
+$\boldsymbol{x}_p=[0\quad -2\quad 1\quad 1]^{'}$ is a solution, a basis of the null space of $A$:
+\[\boldsymbol{A} \boldsymbol{\eta}_i=0\]
+\begin{equation*}
+\boldsymbol{\eta}_1=
+\left[
+\begin{array}{c}
+1\\
+-2\\
+1\\
+0\\
+\end{array}
+\right]
+\end{equation*}
+Thus the gengeral solution can be expressed as:
+\[\boldsymbol{x}=\boldsymbol{x}_p+\alpha_1 \boldsymbol{\eta}_1\]
+
+\section*{3.9}
+From the example 3.3,we can know the gengeral solution is:
+\begin{equation*}
+\boldsymbol{x}=
+\left[
+\begin{array}{c}
+\alpha_1\\
+-4+\alpha_1+2\alpha_2\\
+-\alpha_1\\
+-\alpha_2
+\end{array}
+\right]
+\end{equation*}
+\[\left\|\boldsymbol{x}\right\|_2=\sqrt{\alpha_1^2+(\alpha_1+2*\alpha_2-4)^2+\alpha_1^2+\alpha_2^2}\]
+adjusting polynomials into sum of squares:
+\[\sqrt{3(\alpha_1+\frac{2}{3}(\alpha_2-2))^2+\frac{11}{3}(\alpha_2-\frac{16}{11})^2+\frac{32}{11}-(\frac{16}{11})^2}\]
+When all the square terms are zero, the Euclidean norm of the solution is the smallest
+so,we can get
+\[
+\left\{
+\begin{aligned}
+&\alpha_1=\frac{4}{11}& \\   
+&\alpha_2=\frac{16}{11}&
+\end{aligned}
+\right.
+\]
+so the solution,which can get the smallest Euclidean is :
+\begin{equation*}
+\boldsymbol{x}=
+\left[
+\begin{array}{c}
+\frac{4}{11}\\
+-\frac{8}{11}\\
+-\frac{4}{11}\\
+-\frac{16}{11}
+\end{array}
+\right]
+\end{equation*}
+
+
 \end{document}
