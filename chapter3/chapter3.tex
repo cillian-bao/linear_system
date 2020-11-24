@@ -3,6 +3,8 @@
 %\usepackage{indentfirst}%缩进控制
 \usepackage{listings}%插入代码
 \usepackage{mcode}
+%ctex能够保证能够渲染英文
+\usepackage{ctex}
 \usepackage{textcomp}
 \usepackage{graphicx}%插入图像
 \usepackage{epstopdf}
@@ -402,6 +404,106 @@ The Jordan-form representation of the matrices respectively is:$\hat{A}_{1},\hat
     0 & 0 & 0
     \end{array}\right]
 \end{equation*}
-Because $A_4$ can not be diagonalized,so we caculate the $Q$,\\
-which meets $Q^{-1}A_4Q=\hat{A}_{4}$
+Because $A_4$ can not be diagonalized,so we caculate the $Q$,
+which meets $Q^{-1}A_4Q=\hat{A}_{4}$\\
+from the definition:
+$$
+\left\{\begin{array}{ll}
+\boldsymbol{Av_1}=\lambda\boldsymbol{v_1}\\
+\boldsymbol{Av_2}=\lambda\boldsymbol{v_2}+\boldsymbol{v_1}\\
+\boldsymbol{Av_3}=\lambda\boldsymbol{v_3}+\boldsymbol{v_2}\\
+\end{array}\right.
+$$
+we can calculate :
+\begin{equation*}
+\boldsymbol{v_1}=
+\left[
+\begin{array}{c}
+1\\
+0\\
+0\\
+\end{array}
+\right]
+\boldsymbol{v_2}=
+\left[
+\begin{array}{c}
+1\\
+-4\\
+5\\
+\end{array}
+\right]
+\boldsymbol{v_3}=
+\left[
+\begin{array}{c}
+1\\
+-7\\
+9\\
+\end{array}
+\right]
+\end{equation*}
+\[\boldsymbol{Q}=[\boldsymbol{v_1,v_2,v_3}]\]
+
+\section*{3.14}
+The characteristic polynomial of $\delta(\lambda)=|\lambda E-A|$
+\[|\lambda E-A|=
+\left|
+\begin{array}{cccc}
+\lambda+\alpha_1 & \lambda_2 &\lambda_3 & \lambda_4\\
+-1 & \lambda & 0 & 0\\
+0 & -1 & \lambda & 0\\
+0 & 0 & -1 & \lambda\\
+\end{array}\right|
+=\lambda^4+\alpha_1\lambda^3+\alpha_2\lambda^2+\alpha_3\lambda+\alpha_4
+\]
+for $\alpha=[\lambda_i^3 \quad \lambda_i^2 \quad \lambda_i \quad 1]^{'}$
+we can vertify that $(\lambda_iE-A)\alpha=0$\\
+so $\alpha=[\lambda_i^3 \quad \lambda_i^2 \quad \lambda_i \quad 1]^{'} $ is an eigenvector of A associated with $\lambda_i$.
+
+\section*{3.15}
+\[
+\left|
+\begin{array}{cccc}
+\lambda_1^3 & \lambda_2^3 & \lambda_3^3 & \lambda_4^3\\
+\lambda_1^2 & \lambda_2^2 & \lambda_3^2 & \lambda_4^2\\
+\lambda_1 & \lambda_2 & \lambda_3 & \lambda_4\\
+\end{array}\right|
+=
+\left|
+\begin{array}{cccc}
+0 & \lambda_2^3-\lambda_1\lambda_2^2 & \lambda_3^3-\lambda_1\lambda_3^2 & \lambda_4^3-\lambda_1\lambda_4^2\\
+0 & \lambda_2^2-\lambda_1\lambda_2 & \lambda_3^2-\lambda_1\lambda_3 & \lambda_4^2-\lambda_1\lambda_4\\
+0 & \lambda_2-\lambda_1 & \lambda_3-\lambda_1 & \lambda_4-\lambda_1\\
+\end{array}\right|
+=(\lambda_2-\lambda_1)(\lambda_3-\lambda_1)(\lambda_4-\lambda_1)
+\left|
+\begin{array}{ccc}
+\lambda_2^2 & \lambda_3^2 & \lambda_4^2\\
+\lambda_2 & \lambda_3 & \lambda_4\\
+1 & 1 &1\\
+\end{array}
+\right|
+\]
+\[=\prod \limits_{1 \leq i < j \leq 4}(\lambda_j-\lambda_i)\]
+
+\section*{3.16}
+\[|\boldsymbol{A}|
+=
+\left|
+\begin{array}{cccc}
+-\alpha_1 & -\alpha_2 & -\alpha_3 & -\alpha_4\\
+1 & 0 & 0 &0\\
+0 & 1 & 0 &0\\
+0& 0 &1 &0
+\end{array}
+\right|
+\]
+so,when $\alpha_4 \neq 0$,the companion-form matrix is nonsingular,\\
+when the matrix is nonsingular,so matrix A can inverse.\\
+\[\boldsymbol{AA^{-1}=A^{-1}A=E}\]
+
+\section*{3.17}
+\[
+(\boldsymbol{A}-\lambda\boldsymbol)
+
+\]
 \end{document}
