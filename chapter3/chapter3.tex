@@ -875,15 +875,31 @@ so,for any nonsingular C, there exists a matrix $B$.
 0 & 1 & 0\\
 0 & 0 & 2\\
 \end{array}
-\right]
+\right],
 (SI-A_3)=
 \left[
 \begin{array}{ccc}
-    1 & 0 & -1\\
-    0 & 1 & 0\\
-    0 & 0 & 2\\
-    \end{array}
-    \right]
+s-1 & 0 & 1\\
+0 & s-1 & 0\\
+0 & 0 & s-2\\
+\end{array}
+\right]
 \]
+
+\[
+Adj(SI-A_3)  
+\left[
+\begin{array}{ccc}
+(s-1)(s-2) & 0 & -(s-1)\\
+0 & (s-1)(s-2) & 0\\
+0 & 0 & (s-1)^2\\
+\end{array}
+\right]
+\]
+we can conclude that m(s)=(s-1),the characteristic polynomial is$\Delta(s)=(s-1)^2(s-2)$
+so $\Delta(s)/m(s)=(s-1)(s-2)$,its consequence is correct.
+
+
+\section*{3.26}
 
 \end{document}
