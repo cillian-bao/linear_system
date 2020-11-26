@@ -503,7 +503,74 @@ when the matrix is nonsingular,so matrix A can inverse.\\
 
 \section*{3.17}
 \[
-(\boldsymbol{A}-\lambda\boldsymbol)
-
+(\boldsymbol{A}-\lambda\boldsymbol{I})^3=
+\left[
+\begin{array}{ccc}
+0 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0\\
+\end{array}
+\right]
+\quad
+(\boldsymbol{A}-\lambda\boldsymbol{I})^2=
+\left[
+\begin{array}{ccc}
+0 & 0 & \lambda^2T^2\\
+0 & 0 &0\\
+0 & 0 &0\\
+\end{array}
+\right]
 \]
+For $v=[0 \quad 0 \quad 1]^{\prime}$,we can vertify $(\boldsymbol{A}-\lambda\boldsymbol{I})^3\boldsymbol{v}=\boldsymbol{0}$,$(\boldsymbol{A}-\lambda\boldsymbol{I})^2\boldsymbol{v} \neq \boldsymbol{0}$\\
+so from the definition,we can say $[0 \quad 0 \quad 1]^{\prime}$ is a generalized eigenvector of grade 3.\\
+\[
+\boldsymbol{v_1}=
+\left[
+\begin{array}{c}
+\lambda^2T^2\\
+0\\
+0\\
+\end{array}
+\right]   
+\boldsymbol{v_2}=
+\left[
+\begin{array}{c}
+\lambda T^2\\
+\lambda T\\
+0
+\end{array}
+\right]
+\boldsymbol{v_3}=
+\left[
+\begin{array}{c}
+0\\
+0\\
+1\\
+\end{array}
+\right]
+\]
+we can vertify that 
+\[
+\left\{
+\begin{aligned}
+&\boldsymbol{Av_1}=\lambda\boldsymbol{v_1}&\\
+&\boldsymbol{Av_2}=\lambda\boldsymbol{v_2}+\boldsymbol{v_1}&\\
+&\boldsymbol{Av_3}=\lambda\boldsymbol{v_3}+\boldsymbol{v_2}&\\
+\end{aligned}
+\right.
+\]
+so the three columns of $Q$ constitute a chain of generalized eigenvectors of length 3.\\
+It is also easy to vertify that 
+\[Q^{-1}AQ=
+\left[
+\begin{array}{ccc}
+\lambda & 1 & 0\\
+0 & \lambda & 1\\
+0 & 0 & \lambda\\
+\end{array}
+\right]
+\]
+
+\section*{3.18}
+The characteristic polynomi
 \end{document}
