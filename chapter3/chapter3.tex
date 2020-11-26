@@ -404,7 +404,7 @@ The Jordan-form representation of the matrices respectively is:$\hat{A}_{1},\hat
     0 & 0 & 0
     \end{array}\right]
 \end{equation*}
-Because $A_4$ can not be diagonalized,so we caculate the $Q$,
+Because $A_4$ can not be diagonalized,so we calculate the $Q$,
 which meets $Q^{-1}A_4Q=\hat{A}_{4}$\\
 from the definition:
 $$
@@ -572,5 +572,318 @@ It is also easy to vertify that
 \]
 
 \section*{3.18}
-The characteristic polynomi
+The characteristic polynomials of $A,B,C,D$(from left to right) is 
+$(\lambda-\lambda_1)^3(\lambda-\lambda_2)$,$(\lambda-\lambda_1)^4$,$(\lambda-\lambda_1)^4$,$(\lambda-\lambda_1)^4$
+resepectively.\\
+
+The minimal polynomials of $A,B,C,D$(from left to right)is
+$(\lambda-\lambda_1)^3(\lambda-\lambda_2)$,$(\lambda-\lambda_1)^3$,$(\lambda-\lambda_1)^2$,$(\lambda-\lambda_1)$
+resepectively.
+
+\section*{3.19}
+Because:$\boldsymbol{Ax}=\lambda x$,we have $\boldsymbol{A^kx}=\lambda^k\boldsymbol{x}$\\
+
+without loss of generality,we specify that:$f(\lambda)=a_n\lambda^n+a_{n-1}\lambda^{n-1}+...+a_0$\\
+
+so,for:
+\[f(\boldsymbol{A}) \boldsymbol{x}=
+a_n \boldsymbol{A^nx}+a_{n-1} \boldsymbol{A^{n-1}x}+\cdots+a_0 \boldsymbol{x}
+=\\
+(a_n\lambda^n+a_{n-1}\lambda^{n-1}+\cdots+a_0)x
+=f(\lambda)x\]
+
+so, $f(\lambda)$ is an eigenvector of $f(\boldsymbol{A})$ with the same eigenvector x.
+
+\section*{3.20}
+There exists a nonsingular matrix $Q$ made $Q^{-1}AQ=\hat{J}$,
+where $\hat{J}$ is a Jordan form.If $A$ has any nonzero eigenvalues,then $A^k \neq 0$ for all interger k.\\
+so,when $A^{k}=0$, we can conclude that its all eigenvalues must be zero.Thus to say,A has eigenvalues 0 with multiplicity n.
+Let $\hat{J}=diag\{\hat{J}_1,\hat{J}_2,\cdots\}$,then $\hat{J}^{k}=diag\{\hat{J}^k_1,\hat{J}^k_2,\cdots\}.$
+each $\hat{J}_i$ is a Jordan block associated with eigenvalue 0.then,we can obtain from(3.40) that $\boldsymbol{A}_i^m=\boldmath{0}$
+where the m is the largest order of all Jordan blocks,so for $k \geq m$,we have $\boldsymbol{A}_i^k=\boldsymbol{0}$.
+so $\boldsymbol{A}^k=\boldsymbol{0}$
+
+\section*{3.21}
+First,calculating the eigenvalues of the $A$:
+\[
+|\lambda E-A|=
+\left|
+\begin{array}{ccc}
+\lambda-1 & -1 & 0\\
+0 & \lambda & -1\\
+0 & 0 & \lambda-1\\
+\end{array}
+\right|=
+(\lambda-1)^2\lambda=0
+\]
+in this question,I want to use a complex method .
+so, the eigenvalues are $\lambda_1=0,\lambda_2=\lambda_3=1$\\
+for $\lambda_2=\lambda_3=1$,rank(E-A)=2,so,for eigenvalue 1,it dosen't have two indepedent eigenvectors,so there exists a nonsingular matrix $Q$ made the 
+$Q^{-1}AQ=\hat{J}$,where $\hat{J}$ is a Jordan form .\\
+from $Ax_1=x_1$,we can calculate a $x_1=[1 \quad 0 \quad 0]^{\prime}$\\
+form $Ax_2=x_2+x_1$,we can calculate the $x_2=[1 \quad 1 \quad 1]^{\prime}$\\
+from $Ax=0$,we can calculate a $x=[1 \quad -1 \quad 0]^{\prime}$\\
+so for $Q=[x,x_1,x_2]$,we have 
+\[Q^{-1}AQ=J=
+\left[
+\begin{array}{ccc}
+0 & 0 &0\\
+0 & 1 &1\\
+0 & 0 &1\\
+\end{array}
+\right]
+\]
+we can split matrxi $J$ into $B$ and $C$,where:
+\[
+B=
+\left[
+\begin{array}{ccc}
+0 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1\\
+\end{array}    
+\right]
+C=
+\left[
+\begin{array}{ccc}
+0 & 0 & 0\\
+0 & 0 & 1\\
+0 & 0 & 0\\
+\end{array}    
+\right]
+\]
+\[J=B+C\]
+\[A^{10}=QJ^{10}Q^{-1}=Q(B+C)^{10}Q^{-1}=Q(B^{10}+C^1_{10}B^9C)Q^{-1}=
+\left[
+\begin{array}{ccc}
+1 & 1 &9\\
+0 & 0 &1\\
+0 & 0 &1\\
+\end{array}
+\right]
+\]
+in the same way,we can get:
+\[
+A^{103}=
+\left[
+\begin{array}{ccc}
+1 & 1 & 102\\
+0 & 0 & 1\\
+0 & 0 & 1\\
+\end{array}
+\right]    
+\]
+from $f(\hat{J})=Q^{-1}f(A)Q$ and from (3.48) we can readily know:
+\[e^{\hat{J}t}=
+\left[
+\begin{array}{ccc}
+1 & 0 & 0\\
+0 &e^{t} & te^{t}\\
+0 & 0 & e^{t}\\
+\end{array}
+\right]
+\] 
+so 
+\[e^{At}=Qe^{\hat{J}t}Q^{-1}
+=\left[
+\begin{array}{ccc}
+e^t & e^t-1 & te^t-e^t+1\\
+0 & 1 & e^t-1\\
+0 & 0 & e^t\\   
+\end{array}
+\right]
+\]
+
+\section*{3.22}
+\[
+A_1=
+\left[
+\begin{array}{ccc}
+1 & 4 & 10\\
+0 & 2 & 0\\
+0 & 0 &3\\   
+\end{array}
+\right]
+A_4=
+\left[
+\begin{array}{ccc}
+0 & 4 &3\\
+0 & 20 & 16\\
+0 & -25 &-20\\
+\end{array}
+\right]
+\]
+
+First method:$f(A)=h(A)$\\
+for $A_1$,define $h(\lambda)=\beta+\beta_1\lambda+\beta_2\lambda^2$,$f(\lambda)=e^{\lambda t}$
+from the problem3.13,the eigenvalues of the $A_1$ are 1,2,3\\
+\[
+\left\{
+\begin{aligned}
+&f(1)=h(1)&\\
+&f(2)=h(2)&\\
+&f(3)=h(3)&\\
+\end{aligned}
+\right.
+\]
+we can calculate that:
+\[
+\left\{
+\begin{aligned}
+&\beta_0=3e^t-3e^{2t}+e{3t}&\\
+&\beta_1=-2.5e^t+4e^{2t}-1.5e^{3t}&\\
+&\beta_2=0.5e^t-e^{2t}+0.5e^{3t}&\\
+\end{aligned}
+\right.
+\]
+\[
+e^{A_1t}=h(A)    
+=\left[
+\begin{array}{ccc}
+e^{t} & 4\left(e^{2 t}-e^{t}\right) & 5\left(e^{3 t}-e^{t}\right) \\
+0 & e^{2 t} & 0 \\
+0 & 0 & e^{3t}
+\end{array}
+\right]
+\]
+in the same way,$for A_4$:\\
+\[
+\begin{aligned}
+e^{A, t} &=\beta_{0} I+\beta_{1} A_{4}+\beta_{1} A_{4}^{2} \\
+&=I+t\left[\begin{array}{ccc}
+0 & 4 & 3 t+2 t^{2} \\
+0 & 20 & 16 \\
+0 & -25 & -20
+\end{array}\right]+t^{2} / 2\left[\begin{array}{ccc}
+0 & 5 & 4 \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{array}\right] \downarrow \\
+\text { thus } &=\left[\begin{array}{ccc}
+1 & 4 t+5 t^{2} / 2 & 3 t+2 t^{2} \\
+0 & 20 t+1 & 16 t \\
+0 & -25 t & -20 t+1
+\end{array}\right]
+\end{aligned}
+\]
+
+The second way:$f(\hat{J})=Qf(A)Q^{-1}$
+for $A_1$:we can calculate the eigenvectors of the eigenvalues and use them to
+form the $Q$,$QAQ^{-1}=J$,where
+\[
+Q=
+\left[
+\begin{array}{ccc}
+1 & 4 & 5\\
+0 & 1 & 0\\
+0 & 0 &1\\   
+\end{array}
+\right]
+J=
+\left[
+\begin{array}{ccc}
+1 & 0 &0\\
+0 & 2 & 0\\
+0 & 0 &3\\
+\end{array}
+\right]
+\]
+so the 
+\[e^{A t}=Q e^{J t} Q^{-1}
+=
+\left[\begin{array}{rrr}
+1 & 4 & 5 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}\right]\left[\begin{array}{ccc}
+e^{t} & 0 & 0 \\
+0 & e^{2 t} & 0 \\
+0 & 0 & e^{3 t}
+\end{array}\right]\left[\begin{array}{ccc}
+1 & 4 & 5 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}\right]^{-1}
+=
+\left[\begin{array}{ccc}
+    e^{t} & 4\left(e^{3 t}-e^{t}\right) & 5\left(e^{3 t}-e^{t}\right) \\
+    0 & e^{2 t} & 0 \\
+    0 & 0 & e^{3 t}
+    \end{array}\right]
+\]
+in the same way,we can get 
+\[e^{A_4t}
+=
+\left[\begin{array}{ccc}
+    1 & 4 t+5 t^{2} / 2 & 3 t+2 t^{2} \\
+    0 & 20 t+1 & 16 t \\
+    0 & -25 t & -20 t+1
+    \end{array}\right]
+\]
+
+\section*{3.23}
+if $A$ is nxn,we have:
+\[f(A)=\alpha_0+\alpha_1A+\cdots+\alpha_{n-1}A^{n-1}\]
+\[g(A)=\beta_0+\beta_1A+\cdots+\beta_{n-1}A^{n-1}\]
+Because A is communte with itself,so we can conclude that$f(A)g(A)=g(A)f(A)$
+and in particular $Ae^t=e^tA$
+
+\section*{3.24}
+for
+\[C=
+\left[
+\begin{array}{ccc}
+\lambda_1 & 0 & 0\\
+0 & \lambda & 0\\
+0 & 0 & \lambda_3\\
+\end{array}
+\right]
+\]
+then
+\[B=\ln{C}=
+\left[
+\begin{array}{ccc}
+\ln{\lambda_1} & 0 & 0\\
+0 & \ln{\lambda_2} & 0\\
+0 & 0 & \ln{\lambda_3}\\
+\end{array}
+\right]
+\]
+if $\lambda_i=0$,then the $\ln(\lambda_i)$ is not defined,then $B$ does not exist.\\
+owing to the $C$ is a Jordan from,we can using (3.48)
+so,we have:
+\[
+B=\ln C=\left[\begin{array}{ccc}
+\ln \lambda & \ln ^{\prime} \lambda & 0 \\
+0 & \ln \lambda & 0 \\
+0 & 0 & \ln \lambda
+\end{array}\right]=\left[\begin{array}{ccc}
+\ln \lambda & 1 / \lambda & 0 \\
+0 & \ln \lambda & 0 \\
+0 & 0 & \ln \lambda
+\end{array}\right]   
+\]
+for an nonsingular C,there exists a nonsingular Q,
+made $Q^{-1}CQ=J$,where $J$ is a Jordan from, and its $\lambda_i \neq=0$ 
+so,for any nonsingular C, there exists a matrix $B$.
+
+\section*{3.25}
+\[A_3=
+\left[
+\begin{array}{ccc}
+1 & 0 & -1\\
+0 & 1 & 0\\
+0 & 0 & 2\\
+\end{array}
+\right]
+(SI-A_3)=
+\left[
+\begin{array}{ccc}
+    1 & 0 & -1\\
+    0 & 1 & 0\\
+    0 & 0 & 2\\
+    \end{array}
+    \right]
+\]
+
 \end{document}
