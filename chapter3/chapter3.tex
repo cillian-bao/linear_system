@@ -901,5 +901,71 @@ so $\Delta(s)/m(s)=(s-1)(s-2)$,its consequence is correct.
 
     
 \section*{3.26}
+\[\Delta(s)I=(SI-A)[R_0s^{n-1}+R_1s^{n-2}+\cdots+R_{n-2}s+R_{n-1}]\]
+Expanding the polynomial on the right，we can just get:
+\[s^{n}I+\alpha_1s^{n-1}I+\cdots+\alpha_nI=R_0s^{n}+(R_1-R_0A)s^{n-1}+\cdots-R_{n-1}A\]
+Equating the coefficient matrix of $s^{k}$:
+\[
+\left\{
+\begin{array}{ll}
+\boldsymbol{R_0}=\boldsymbol{I}\\
+\boldsymbol{R_1}=\boldsymbol{AR_0}+\alpha_1\boldsymbol{I}\\
+\boldsymbol{R_2}=\boldsymbol{AR_1}+\alpha_2\boldsymbol{I}\\
+\boldsymbol{\vdots}\\
+\boldsymbol{R_{n-1}}=\boldsymbol{AR_{n-2}}+\alpha_{n-1}\boldsymbol{I}\\
+\boldsymbol{AR_{n-1}}+\alpha_n\boldsymbol{I}=\boldsymbol{0}\\
+\end{array}\right.
+\]
+Let $\lambda_i$ \quad \quad $i=1,2,\cdots,n$ be the eigenvalues of A\\
+Define $\Lambda_1=\sum_{i=1}^{n}\lambda_i$,$\Lambda_k=\sum_{i=1}^{n}\lambda_i^{k}$,$k=1,2,\cdots$\\
+There exists a matrix $Q$,made $A=Q\hat{J}Q^{-1}$,where $\hat{J}$ is a Jordan form.\\
+Because $tr(BC)=tr(CB)$,we have:\\
+\[tr(A)=tr(Q\hat{J}Q^{-1})=tr(Q^{-1}Q\hat{J})=tr(\hat{J})=\sum_i^n\lambda_i=\Lambda_1\]
+similarily:$tr(A^k)=\Lambda_k$\\
+Owing to the following Newton's identity:\\
+\[\Lambda_k+\alpha_1\Lambda_{k-1}+\cdots+\alpha_{k-1}\Lambda_1+k\alpha_k=0\]
+thus:\\
+\[\alpha_k=-\frac{1}{k}[\Lambda_k+\alpha_1\Lambda_{k-1}+\cdots+\alpha_{k-1}\Lambda_1]\]
+\[=-\frac{1}{k}[tr(A^k)+\alpha_1tr(A^{k-1})+\cdots+\alpha_{k-1}tr(A)]\]
+\[=-\frac{1}{k}tr[A^k+\alpha_1A^{k-1}+\cdots+\alpha_{k-1}A]\]
+\[=-\frac{1}{k}tr(AR_{k-1})\]
+This vertify the formula.\\
 
+\section*{3.27}
+From the last two equations,we can get:
+\[
+\left\{    
+\begin{array}{ll}
+&R_{n-1}=A^{n-1}+\alpha_1A^{n-2}+\cdots+\alpha_{n-2}A+\alpha_{n-1}I\\
+&0=AR_{n-1}+\alpha_{n}I\\
+\end{array}
+\right.
+\]
+Multiply the first equation by matrix $A$,we can get:
+\[AR_{n-1}=A^{n}+\alpha_1A^{n-1}+\cdots+\alpha_{n-2}A^2+\alpha_{n-1}A\]
+Because,$AR_{n-1}=-\alpha_nI$,we can readily get:
+\[A^{n}+\alpha_1A^{n-1}+\cdots+\alpha_{n-2}A^2+\alpha_{n-1}A+\alpha_nI=0\]
+The calyley-Hamilton therom is vertified.\\
+
+\section*{3.28}
+Owing to:
+\[
+\left\{
+\begin{array}{ll}
+\boldsymbol{R_0}=\boldsymbol{I}\\
+\boldsymbol{R_1}=\boldsymbol{A}+\alpha_1\boldsymbol{I}\\
+\boldsymbol{R_2}=\boldsymbol{A}^2+\alpha_1\boldsymbol{A}+\alpha_2I\\
+\boldsymbol{\vdots}\\
+\boldsymbol{R_{n-1}}=\boldsymbol{A^{n-1}}+\alpha_{1}\boldsymbol{A^{n-2}}+\cdots+\alpha_{n-2}A+\alpha_{n-1}I\\
+\end{array}\right.
+\]
+Let's substitute these formulas into the equation:\\
+\[(SI-A)^{-1}=\frac{1}{\Delta(s)}[R_0s^{n-1}+R_1s^{n-2}+\cdots+R_{n-2}s+R_{n-1}]\]
+we can get the equation as show in the problem.\\
+
+\section*{3.29}
+Because the eigenvalues of $A$ are all distinct,so matrix $A$ can be diagonalized.
+so,there exists a nonsingular matrix $Q$,which can made $Q^{-1}AQ=diag\{\lambda_1,\lambda_2,\cdots,\lambda_n\}$
+thus:
+\[\]
 \end{document}
