@@ -1,2 +1,3 @@
 # linear_system
-The answer for linear system theory and design
+《线性系统理论与设计》陈启宗版
+课后题答案(用latex完成)
