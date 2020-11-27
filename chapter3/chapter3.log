@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.11.1)  26 NOV 2020 22:31
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.11.1)  27 NOV 2020 09:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -483,8 +483,7 @@ LaTeX Info: Redefining \today on input line 736.
 Package: xeCJK-listings 2020/02/18 v3.8.2 xeCJK patch file for listings
 \l__xeCJK_listings_max_char_int=\count327
 \l__xeCJK_listings_flag_int=\count328
-)
-No file chapter3.aux.
+) (./chapter3.aux)
 \openout1 = `chapter3.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
@@ -504,7 +503,7 @@ LaTeX Font Info:    ... okay on input line 53.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
 LaTeX Font Info:    ... okay on input line 53.
 \c@lstlisting=\count329
-ABD: EverySelectfont initializing macros
+ ABD: EverySelectfont initializing macros
 LaTeX Info: Redefining \selectfont on input line 53.
 
 Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
@@ -695,10 +694,15 @@ Overfull \hbox (11.03937pt too wide) detected at line 813
 \OML/cmm/m/it/10.53937 e[] \OT1/cmr/m/n/10.53937 = \OML/cmm/m/it/10.53937 Qe[]Q[] \OT1/cmr/m/n/10.53937 = [] [] [][] = []
  []
 
-[11] [12] (./chapter3.aux) ) 
+[11]
+Overfull \hbox (11.04231pt too wide) in paragraph at lines 898--901
+\TU/lmr/m/n/10.53937 we can conclude that m(s)=(s-1),the characteristic polynomial is$\OT1/cmr/m/n/10.53937 ^^A(\OML/cmm/m/it/10.53937 s\OT1/cmr/m/n/10.53937 ) = (\OML/cmm/m/it/10.53937 s \OMS/cmsy/m/n/10.53937 ^^@ \OT1/cmr/m/n/10.53937 1)[](\OML/cmm/m/it/10.53937 s \OMS/cmsy/m/n/10.53937 ^^@ \OT1/cmr/m/n/10.53937 2)$ \TU/lmr/m/n/10.53937 so $\OT1/cmr/m/n/10.53937 ^^A(\OML/cmm/m/it/10.53937 s\OT1/cmr/m/n/10.53937 )/\OML/cmm/m/it/10.53937 m\OT1/cmr/m/n/10.53937 (\OML/cmm/m/it/10.53937 s\OT1/cmr/m/n/10.53937 ) =
+ []
+
+[12] (./chapter3.aux) ) 
 Here is how much of TeX's memory you used:
- 11997 strings out of 479418
- 264194 string characters out of 5888105
+ 11999 strings out of 479418
+ 264220 string characters out of 5888105
  586316 words of memory out of 5000000
  29265 multiletter control sequences out of 15000+600000
  542877 words of font info for 88 fonts, out of 8000000 for 9000
