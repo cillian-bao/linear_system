@@ -967,5 +967,255 @@ we can get the equation as show in the problem.\\
 Because the eigenvalues of $A$ are all distinct,so matrix $A$ can be diagonalized.
 so,there exists a nonsingular matrix $Q$,which can made $Q^{-1}AQ=diag\{\lambda_1,\lambda_2,\cdots,\lambda_n\}$
 thus:
-\[\]
+\[Q^{-1}A=diag\{\lambda_1,\lambda_2,\cdots,\lambda_n\}Q^{-1}\]
+\[PA=diag\{\lambda_1,\lambda_2,\cdots,\lambda_n\}P^{-1}\]
+so,we have $p_iA=\lambda_ip_i$
+
+
+\section*{3.30}
+Because all eigenvalues of A are all distinct,so there exists a matrix $Q$,made $Q^{-1}AQ=\hat{J}$ and owing to $Q^{-1}f(A)Q=f(\hat{J})$,
+then $Q^{-1}(SI-A)Q=(SI-\hat{J})$,so,we have:
+\[(SI-A)^{-1}=Q(SI-\hat{J})^{-1}Q^{-1}=[q_1 \quad q_2 \cdots q_n]diag\{\frac{1}{s-\lambda_1},\frac{1}{s-\lambda_2},\cdots,\frac{1}{s-\lambda_n}\}[p_1 \quad p_2 \cdots p_n]^{'}\]
+
+\[=\sum \frac{1}{s-\lambda_i} \boldsymbol{q_ip_i}\]
+
+\section*{3.31}
+from the Lyapunov equation$AM+MB=C$
+in this problem,M is 2x1 dimension,we assume $M=[m_1,m_2]^{'}$
+take into the Lyapunov equation:
+\[
+\left[
+\begin{array}{cc}
+0 & 1\\
+-2 & -2\\
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+m_1\\
+m_2\\
+\end{array}
+\right]+
+\left[
+\begin{array}{c}
+m_1\\
+m_2\\
+\end{array}
+\right]
+3=
+\left[
+\begin{array}{c}
+3\\
+3\\
+\end{array}  
+\right]  
+\]
+solve the equation,we can get:$M=[0 \quad 3]^{'}$
+The eigenvalues of $A$ are $\lambda_1=-1+i$,$\lambda_2=-1-i$,The eigenvalues of $B$
+is $\mu_1=3$
+so the eigenvalues of the Lyapunov equation are :
+\[
+\left\{
+\begin{array}{ll}
+\eta_1=\lambda_1+\mu_1=2+i\\
+\eta_2=\lambda_2+\mu_1=2-i\\    
+\end{array}
+\right.
+\]
+Because the eigenvalues of the Lyapunov equation are not zero,so the Lyapunov equation is nonsingular,and the solution is unique.
+
+\section*{3.32}
+\subsection*{\rmnum{1}}
+if $C=C_1=[3 \quad 3]^{'}$
+\[
+\left[
+\begin{array}{cc}
+0 & 1\\
+-1 & -2\\
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+m_1\\
+m_2\\
+\end{array}
+\right]+
+\left[
+\begin{array}{c}
+m_1\\
+m_2\\
+\end{array}
+\right]
+=
+\left[
+\begin{array}{c}
+3\\
+3\\
+\end{array}  
+\right]  
+\]
+from the matrix equation,we can find the $M$ is not exist.
+\subsection*{\rmnum{2}}
+in the same way:
+\[
+\left[
+\begin{array}{cc}
+0 & 1\\
+-1 & -2\\
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+m_1\\
+m_2\\
+\end{array}
+\right]+
+\left[
+\begin{array}{c}
+m_1\\
+m_2\\
+\end{array}
+\right]
+=
+\left[
+\begin{array}{c}
+3\\
+-3\\
+\end{array}  
+\right]  
+\]
+we can solve from the eqaution:$M=[3-k \quad k]^{'}$,where $k$ is a arbitrary constant.
+The eigenvalues of $A$ are -1,-1,the eigenvalues of $B$ is 1,so the eigenvalues of Lyapunov equation are 0,0.
+Because all the eigenvalues of Lyapunov equation are zero,so the Lyapunov equation is singular, and owing to $k$ is arbitrary,
+so the solution is not unique.
+
+\section*{3.33}
+\[A=
+\left[
+\begin{array}{ccc}
+2 & 3 & 2\\
+3 & 1 & 0\\
+2 & 0 & 2\\
+\end{array}
+\right]
+B=
+\left[
+\begin{array}{ccc}
+0 & 0 & -1\\
+0 & 0 & 0\\
+-1 & 0 & 2\\
+\end{array}
+\right]
+C=
+\left[
+\begin{array}{ccc}
+a_1a_1 & a_1a_2 & a_1a_3\\
+a_2a_1 & a_2a_2 & a_2a_3\\
+a_3a_1 & a_3a_2 & a_3a_3\\
+\end{array}
+\right]
+\]
+For $A$:the leading principle minor
+\[det
+\left[
+\begin{array}{cc}
+2 & 3\\
+3 & 1\\
+\end{array}
+\right]<0
+\]
+so the matrix $A$ is neither positive definite nor semidefinite.\\
+For $B$:
+\[det
+\left[
+\begin{array}{cc}
+0 & -1\\
+-1 & 2\\
+\end{array}
+\right]<0
+\]
+so the matrix $A$ is neither positive definite nor semidefinite.
+\\
+For $C$:all the principle minors of $C$ are greater than or equal to zero,so the matrix is semidefinite.\\
+
+\section*{3.34}
+\[A=
+\left[
+\begin{array}{ccc}
+-1 & 0 & 1\\
+2 & -1 & 0\\
+\end{array}
+\right]
+B=
+\left[
+\begin{array}{cc}
+-1 & 2 \\
+2 & 4\\
+\end{array}
+\right]
+\]
+\[AA^{*}=
+\left[
+\begin{array}{ccc}
+-1 & 0 & 1\\
+2 & -1 & 0\\
+\end{array}
+\right]
+\left[
+\begin{array}{cc}
+-1 &2\\
+0 & -1\\
+1 & 0\\
+\end{array}
+\right]
+=
+\left[
+\begin{array}{cc}
+2 &-2\\
+-2& 5\\
+\end{array}
+\right]
+\]
+The eigenvalues of $AA^{*}$ are $1,6$,so the singular values of $A$ are $1,\sqrt{6}$.\\
+For $B$,B is a Hermite matrix,so the singular values of $B$ are absolute values of $B$'s eigenvalues,the eigenvalues of $B$ are $\frac{3+\sqrt{41}}{2},\frac{3-\sqrt{41}}{2}$,so the singular values of $B$ is 
+$\frac{3+\sqrt{41}}{2},\frac{\sqrt{41}-3}{2}$
+
+\section*{3.35}
+The singular values is just the absoulte values of its eigenvalues.
+
+\section*{3.36}
+from the fromula:
+\[det(I_m+AB)=det(I_n+BA)\]
+then:
+\[
+det(I_n+
+\left[
+\begin{array}{c}
+a_1\\
+a_2\\
+\vdots\\
+a_n\\
+\end{array}
+\right]
+[b_1 \quad b_2 \cdots b_n]
+)
+= 
+det(I_1+
+[b_1 \quad b_2 \cdots b_n]
+\left[
+\begin{array}{c}
+a_1\\
+a_2\\
+\vdots\\
+a_n\\
+\end{array}
+\right]
+)
+=det(1+
+\sum_{m=1}^{n}a_mb_m
+)=
+1+\sum_{m=1}^{n}a_mb_m
+\]
+
+
 \end{document}

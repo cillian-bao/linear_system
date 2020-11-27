@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.11.1)  27 NOV 2020 17:37
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.11.1)  27 NOV 2020 19:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -734,7 +734,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 963--965
 
  []
 
-[14] (./chapter3.aux) ) 
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 1136--1140
+
+ []
+
+[15]
+Overfull \hbox (6.29073pt too wide) detected at line 1218
+\OML/cmm/m/it/10.53937 det\OT1/cmr/m/n/10.53937 (\OML/cmm/m/it/10.53937 I[] \OT1/cmr/m/n/10.53937 + [] [\OML/cmm/m/it/10.53937 b[] b[] [] b[]\OT1/cmr/m/n/10.53937 ]) = \OML/cmm/m/it/10.53937 det\OT1/cmr/m/n/10.53937 (\OML/cmm/m/it/10.53937 I[] \OT1/cmr/m/n/10.53937 + [\OML/cmm/m/it/10.53937 b[] b[] [] b[]\OT1/cmr/m/n/10.53937 ] []) = \OML/cmm/m/it/10.53937 det\OT1/cmr/m/n/10.53937 (1 + [] \OML/cmm/m/it/10.53937 a[]b[]\OT1/cmr/m/n/10.53937 ) = 1 + [] \OML/cmm/m/it/10.53937 a[]b[]
+ []
+
+[16] (./chapter3.aux) ) 
 Here is how much of TeX's memory you used:
  12013 strings out of 479418
  265044 string characters out of 5888105
@@ -744,4 +754,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  56i,13n,68p,999b,251s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on chapter3.pdf (14 pages).
+Output written on chapter3.pdf (16 pages).
