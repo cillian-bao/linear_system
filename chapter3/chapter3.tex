@@ -46,12 +46,12 @@ breakindent=4em, %
 aboveskip=1em, %代码块边框
 }
 
-\title{Chapter2}
+\title{Chapter3}
 \author{31202008881        \quad \quad \quad
           Bao Ze an}
 
 \begin{document}
-\setlength{\parindent}{2em}
+\setlength{\parindent}{0em}
 \maketitle
 
 \section*{3.1}
@@ -1217,5 +1217,47 @@ a_n\\
 1+\sum_{m=1}^{n}a_mb_m
 \]
 
+\section*{3.37}
+\[
+\begin{aligned}
+&N=\left[\begin{array}{cc}
+\sqrt{s} I_{m} & A \\
+0 & \sqrt{s} I_{n}
+\end{array}\right] \quad Q=\left[\begin{array}{cc}
+\sqrt{s} I_{m} & \underline{0} \\
+B & \sqrt{s} I_{n}
+\end{array}\right] \quad P=\left[\begin{array}{cc}
+\sqrt{s} I_{m} & -A \\
+-B & \sqrt{s} I_{n}
+\end{array}\right]\\
+&\text { then we have }\\
+&N P=\left[\begin{array}{cc}
+s I_{m}-A B & \underline{0} \\
+\sqrt{s} B & s I_{n}
+\end{array}\right] \quad Q P=\left[\begin{array}{cc}
+s I_{m} & -\sqrt{s} A \\
+\underline{0} & s I_{n}-B A
+\end{array}\right]
+\end{aligned}
+\]
+\[
+det(N)=s^{\frac{m+n}{2}}=det(Q)    
+\]
+then:
+\[
+det(NP)=det(QP)
+\]
+\[s^ndet(sI_m-AB)=
+s^mdet(sI_n-BA)
+\]
+
+\section*{3.38}
+\subsection*{\rmnum{1}}
+
+if $n>m$,then $A^{'}A$ is singular,thus $(A^{'}A)^{-1}$ is not exist,so the $(A^{'}A)^{-1}A^{'}y$ is not a solution.
+
+\subsection*{\rmnum{2}}
+
+if $n=m$,then matrix $A$ is reversible,so $(A^{'}A)^{-1}A^{'}y$ is just the $A^{-1}y$,it is a solution of $Ax=y$.
 
 \end{document}

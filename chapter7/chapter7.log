@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.11.1)  16 FEB 2021 21:10
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.11.1)  16 FEB 2021 23:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**chapter3
-(./chapter3.tex
+**chapter7
+(./chapter7.tex
 LaTeX2e <2020-02-02> patch level 5
 L3 programming layer <2020-03-06> (d:/texlive/2020/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
@@ -483,9 +483,8 @@ LaTeX Info: Redefining \today on input line 736.
 Package: xeCJK-listings 2020/02/18 v3.8.2 xeCJK patch file for listings
 \l__xeCJK_listings_max_char_int=\count327
 \l__xeCJK_listings_flag_int=\count328
-)
-No file chapter3.aux.
-\openout1 = `chapter3.aux'.
+) (./chapter7.aux)
+\openout1 = `chapter7.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
 LaTeX Font Info:    ... okay on input line 53.
@@ -504,7 +503,7 @@ LaTeX Font Info:    ... okay on input line 53.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
 LaTeX Font Info:    ... okay on input line 53.
 \c@lstlisting=\count329
-ABD: EverySelectfont initializing macros
+ ABD: EverySelectfont initializing macros
 LaTeX Info: Redefining \selectfont on input line 53.
 
 Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
@@ -610,149 +609,30 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 55.
  (d:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-File: a3.1.PNG Graphic file (type bmp)
-<a3.1.PNG>
- [1
+Underfull \hbox (badness 10000) in paragraph at lines 58--60
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
+
+ []
+
+[1
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 85--88
 
- []
+Package amsmath Warning: Cannot use `split' here;
+(amsmath)                trying to recover with `aligned' on input line 179.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 89--92
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
-
- []
-
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 117--118
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 123--125
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 148--151
-
- []
-
-[3] [4] [5] [6]
-Overfull \hbox (39.8573pt too wide) detected at line 485
-[] \OT1/cmr/m/n/10.53937 = [] = (\OML/cmm/m/it/10.53937 ^^U[] \OMS/cmsy/m/n/10.53937 ^^@ \OML/cmm/m/it/10.53937 ^^U[]\OT1/cmr/m/n/10.53937 )(\OML/cmm/m/it/10.53937 ^^U[] \OMS/cmsy/m/n/10.53937 ^^@ \OML/cmm/m/it/10.53937 ^^U[]\OT1/cmr/m/n/10.53937 )(\OML/cmm/m/it/10.53937 ^^U[] \OMS/cmsy/m/n/10.53937 ^^@ \OML/cmm/m/it/10.53937 ^^U[]\OT1/cmr/m/n/10.53937 ) []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 499--502
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 523--526
-
- []
-
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 575--578
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 584--585
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 586--587
-
- []
-
-
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 602.
-
-
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 602.
-
-[8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 717--720
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 748--750
-
- []
-
-[10]
-Overfull \hbox (11.03937pt too wide) detected at line 813
-\OML/cmm/m/it/10.53937 e[] \OT1/cmr/m/n/10.53937 = \OML/cmm/m/it/10.53937 Qe[]Q[] \OT1/cmr/m/n/10.53937 = [] [] [][] = []
- []
-
-[11]
-Overfull \hbox (11.04231pt too wide) in paragraph at lines 898--901
-\TU/lmr/m/n/10.53937 we can conclude that m(s)=(s-1),the characteristic polynomial is$\OT1/cmr/m/n/10.53937 ^^A(\OML/cmm/m/it/10.53937 s\OT1/cmr/m/n/10.53937 ) = (\OML/cmm/m/it/10.53937 s \OMS/cmsy/m/n/10.53937 ^^@ \OT1/cmr/m/n/10.53937 1)[](\OML/cmm/m/it/10.53937 s \OMS/cmsy/m/n/10.53937 ^^@ \OT1/cmr/m/n/10.53937 2)$ \TU/lmr/m/n/10.53937 so $\OT1/cmr/m/n/10.53937 ^^A(\OML/cmm/m/it/10.53937 s\OT1/cmr/m/n/10.53937 )/\OML/cmm/m/it/10.53937 m\OT1/cmr/m/n/10.53937 (\OML/cmm/m/it/10.53937 s\OT1/cmr/m/n/10.53937 ) =
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 918--923
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 923--926
-
- []
-
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 926--928
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 931--933
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 947--949
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 961--963
-
- []
-
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 963--965
-
- []
-
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 1136--1140
-
- []
-
-[15]
-Overfull \hbox (6.29073pt too wide) detected at line 1218
-\OML/cmm/m/it/10.53937 det\OT1/cmr/m/n/10.53937 (\OML/cmm/m/it/10.53937 I[] \OT1/cmr/m/n/10.53937 + [] [\OML/cmm/m/it/10.53937 b[] b[] [] b[]\OT1/cmr/m/n/10.53937 ]) = \OML/cmm/m/it/10.53937 det\OT1/cmr/m/n/10.53937 (\OML/cmm/m/it/10.53937 I[] \OT1/cmr/m/n/10.53937 + [\OML/cmm/m/it/10.53937 b[] b[] [] b[]\OT1/cmr/m/n/10.53937 ] []) = \OML/cmm/m/it/10.53937 det\OT1/cmr/m/n/10.53937 (1 + [] \OML/cmm/m/it/10.53937 a[]b[]\OT1/cmr/m/n/10.53937 ) = 1 + [] \OML/cmm/m/it/10.53937 a[]b[]
- []
-
-[16] [17] (./chapter3.aux) ) 
+[2] [3] (./chapter7.aux) ) 
 Here is how much of TeX's memory you used:
- 12011 strings out of 479418
- 265018 string characters out of 5888105
- 586316 words of memory out of 5000000
- 29278 multiletter control sequences out of 15000+600000
- 542885 words of font info for 89 fonts, out of 8000000 for 9000
+ 11972 strings out of 479418
+ 263905 string characters out of 5888105
+ 583316 words of memory out of 5000000
+ 29250 multiletter control sequences out of 15000+600000
+ 540112 words of font info for 78 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  56i,13n,68p,999b,251s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on chapter3.pdf (17 pages).
+Output written on chapter7.pdf (3 pages).

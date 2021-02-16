@@ -1,0 +1,217 @@
+\documentclass{article}
+% 这里是导言区
+%\usepackage{indentfirst}%缩进控制
+\usepackage{listings}%插入代码
+\usepackage{mcode}
+%ctex能够保证能够渲染英文
+\usepackage{ctex}
+\usepackage{textcomp}
+\usepackage{graphicx}%插入图像
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{geometry}%设置页边距
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage[level]{datetime} 
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+% \renewcommand\thesection{\roman{subsection}}
+%\newdateformat{ukdate}{\ordinaldate{\THEDAY} \monthname[\THEMONTH]
+
+\geometry{a4paper,scale=0.75}
+
+
+\lstset{
+tabsize=4, %tab 空格数
+frame=shadowbox, %把代码用带有阴影的框圈起来
+rulesepcolor=\color{red!20!green!20!blue!20}, %代码块边框为淡青色
+keywordstyle=\color{blue!90}\bfseries, %代码关键字的颜色为蓝色, 粗体
+showstringspaces=false, %不显示代码字符串中间的空格标记
+stringstyle=\ttfamily, %代码字符串的特殊格式
+keepspaces=true, %
+breakindent=22pt, %
+numbers=left, %左侧显示行号
+stepnumber=1, %
+numberstyle=\tiny, %行号字体用小号
+basicstyle=\footnotesize, %
+showspaces=false, %
+flexiblecolumns=true, %
+breaklines=true, %对过长的代码自动换行
+breakautoindent=true, %
+breakindent=4em, %
+aboveskip=1em, %代码块边框
+}
+
+\title{Chapter3}
+\author{31202008881        \quad \quad \quad
+          Bao Ze an}
+
+\begin{document}
+\setlength{\parindent}{0em}
+\maketitle
+
+\section*{7.1}
+\[\hat{g(s)}=\frac{s-1}{(s^2-1)(s+2)}=\frac{s-1}{s^3+2s^2-s-2}\]
+so,from the equation (7.9),we can get the three-dimensional controllable realization:\\
+\[
+\dot{x}=
+\left[
+\begin{array}{ccc}
+-2 & 1 & 2\\
+1 & 0 & 0\\
+0 & 1 & 0\\
+\end{array}    
+\right]x+
+\left[
+    \begin{array}{c}
+    1\\
+    0\\
+    0
+    \end{array}
+\right]u
+\]
+\[
+    y=\left[
+        \begin{array}{ccc}
+            0 & 1 & -1
+        \end{array}
+        \right]x    
+\]
+it is obviously the $\hat{g(s)}$ is not coprime fraction,so the controllable realization is not observable.
+
+\section*{7.2}
+from the quation (7.14), we can easily get the three-dimensional observable realization:\\
+\[
+\dot{x}=
+\left[
+\begin{array}{ccc}
+-2 & 1 & 0\\
+1 & 0 & 1\\
+2 & 0 & 0\\
+\end{array}    
+\right]x+
+\left[
+    \begin{array}{c}
+    0\\
+    1\\
+    -1
+    \end{array}
+\right]u
+\]
+\[
+    y=\left[
+        \begin{array}{ccc}
+            1 & 0 & 0
+        \end{array}
+        \right]x    
+\]
+similarly, it is not controllable.
+
+\section*{7.3}
+from the inverse canonical decomposition,we can add an uncontrollable state to problem 7.1:
+\[
+\dot{x}=
+\left[
+\begin{array}{cccc}
+-2 & 1 & 2 & a_1\\
+1 & 0 & 0 & a_2\\
+0 & 1 & 0 & a_3\\
+0 & 0 & 0 &a_4\\
+\end{array}    
+\right]x+
+\left[
+    \begin{array}{c}
+    1\\
+    0\\
+    0\\
+    0
+    \end{array}
+\right]u
+\]
+\[
+    y=\left[
+        \begin{array}{cccc}
+            0 & 1 & -1 & c_4
+        \end{array}
+        \right]x    
+\]
+where $a_i$ and $c_i$ are arbitrary value,this is an uncontrollable and unobservable realization.
+the transfer function can be reduced to a coprime fraction,which is:
+\[
+\hat{g(s)}=\frac{1}{(s+1)(s+2)}=\frac{1}{s^2+3s+2}    
+\]
+A minimal realization can be realized through controllable realization, this realization is two-dimensional
+\[
+\dot{x}=
+\left[
+\begin{array}{cc}
+-3 & -2\\
+1 & 0\\
+\end{array}    
+\right]x+
+\left[
+    \begin{array}{c}
+    1\\
+    0
+    \end{array}
+\right]u
+\]
+\[
+    y=\left[
+        \begin{array}{cc}
+            0 & 1
+        \end{array}
+        \right]x    
+\]
+
+\section*{7.4}
+from the equation (7.27),we can get:
+\[
+\begin{aligned}
+\begin{split}
+&D(s)=-2-s+2s^2+s^3\\
+&N(s)=-1+s\\
+&\overline{D}(s)=\overline{D}_0+\overline{D}_1s+\overline{D}_2s^2\\
+&\overline{N}(s)=\overline{N}_0+\overline{N}_1s+\overline{N}_2s^2\\
+\end{split}
+\end{aligned}
+\]
+the Sylvester resultant is:
+\[
+\textbf{SM}:=
+\left[
+\begin{array}{cccccc}
+-2 &-1 & 0  & 0 & 0 & 0\\
+-1 &1  & -2 & -1& 0 & 0\\
+2  &0  & -1 & 1 & -2& -1\\
+1  &0  & 2  & 0 & -1& 1\\
+0  &0  & 1  & 0 & 2 & 0\\
+0  &0  & 0  & 0 & 1 & 0\\
+\end{array}
+\right]
+\left[
+    \begin{array}{c}
+    -\overline{N}_0\\
+    \overline{D}_0\\
+    -\overline{N}_1\\
+    \overline{D}_1\\
+    -\overline{N}_2\\
+    \overline{D}_2\\
+    \end{array}
+\right]=0
+\] 
+the rank of \textbf{S} is 5, so  there are 2 linearly indepedent N-columns,the degree of the transfer function is 2 .we can also calculate a monic null vector 
+\[
+z=\left[
+    \begin{array}{cccccc}
+        -1 & 2 & 0 & 3 & 0 & 1
+    \end{array}
+\right]'   
+\]
+\section*{7.5}
+just as the 
+\end{document}
