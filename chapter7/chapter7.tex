@@ -180,7 +180,7 @@ from the equation (7.27),we can get:
 \end{split}
 \end{aligned}
 \]
-the Sylvester resultant is:
+the Sylvester resultant:
 \[
 \textbf{SM}:=
 \left[
@@ -213,5 +213,198 @@ z=\left[
 \right]'   
 \]
 \section*{7.5}
-just as the 
+just as the problem (7.4) show,in the same way:
+\[
+\begin{aligned}
+\begin{split}
+&D(s)=-1+4s^2\\
+&N(s)=-1+2s\\
+&\overline{D}(s)=\overline{D}_0+\overline{D}_1s\\
+&\overline{N}(s)=\overline{N}_0+\overline{N}_1s\\
+\end{split}
+\end{aligned}
+\]
+the Sylvester resultant:
+\[
+\textbf{SM}:=
+\left[
+    \begin{array}{cccc}
+    -1 & -1 & 0 & 0 \\
+    0  & 2  & -1& -1 \\
+    4  & 0  & 0 & 2 \\
+    0  & 0  & 4 & 0
+    \end{array}
+\right]
+\left[
+    \begin{array}{c}
+        -\overline{N}_0\\
+        \overline{D}_0\\
+        -\overline{N}_1\\
+        \overline{D}_1\\
+    \end{array}
+\right]=0
+\]
+the rank of $\textbf{S}$ is 3,we can calculate a monic null vector
+\[z=
+\left[
+    \begin{array}{cccc}
+        -0.5 & 0.5 & 0 & 1
+    \end{array}
+\right]'
+\]
+so the coprime fraction is:
+\[
+   \hat{g(s)}=\frac{1}{2s+1}
+\]
+
+\section*{7.6}
+The Sylvester resultant by arranging the coefficients of $N(s)$ and $D(s)$ in descending powers:
+\[
+    \left[
+        \begin{array}{cccc}
+        1 & 0 & 0 & 0\\
+        2 & 1 & 1 & 0\\
+        0 & 2 & 2 & 1\\
+        0 & 0 & 0 & 2\\
+        \end{array}
+    \right]    
+\]
+the second D-columns is linearly depedent of its LHS columns, so it is not true that all D-columns are linearly indepedent of their LHS columns.
+the degree of $\hat{g(s)}$ is 1,but the linearly indepedent N-columns is 2.
+
+\section*{7.7}
+the realization is a controllable realization,the controllable realization is observable if and only if the transfer function is coprime fraction.$D(s)$ and $N(s)$ are coprime if and only if the Sylvester resultant is nonsingular.
+\[
+\hat{g(s)}=\frac{N(s)}{D(s)}=\frac{\beta_1s+\beta_2}{s^2+\alpha_1s+\alpha_2}    
+\]
+the Sylvester resultant:
+\[
+    \textbf{S}:=
+    \left[
+        \begin{array}{cccc}
+            \alpha_2 & \beta_2 & 0 &0\\
+            \alpha_1 & \beta_1 & \alpha_2 & \beta_2\\
+            1 & 0 &\alpha_1 & \beta_1\\
+            0 & 0 & 1& 0
+        \end{array}
+    \right]
+\]
+The determinant of \textbf{S} is $-\alpha_2\beta_1^2+\alpha_1\beta_1\beta_2-\beta_2^2$
+for the controllable realization, its observability matrix:
+\[
+O=\left[
+    \begin{array}{cc}
+        \beta_1 & \beta_2\\
+        -\alpha_1\beta_1+\beta_2 & -\alpha_2\beta_1
+    \end{array}
+\right]    
+\]
+The realization is observable if and only if the observability matrix is full column rank,the determinant of $O$ is  $-\alpha_2\beta_1^2+\alpha_1\beta_1\beta_2-\beta_2^2$
+Thus the two condition is same.
+\section*{7.8}
+Let us consider a transfer function:
+\[
+\hat{g(s)}=\frac{N(s)}{D(s)}=\frac{\beta_1s^2+\beta_2s+\beta_3}{s^3+\alpha_1s^2+\alpha_2s+\alpha_3}   
+\]
+its Sylvester resultant:
+\[
+    \textbf{S}:=
+    \left[
+        \begin{array}{cccccc}
+            \alpha_3 & \beta_3 & 0        &0        & 0        & 0   \\
+            \alpha_2 & \beta_2 & \alpha_3 & \beta_3 & 0        & 0   \\
+            \alpha_1 & \beta_1 & \alpha_2 & \beta_2 & \alpha_3 & \beta_3 \\
+            1        & 0       & \alpha_1 & \beta_1 & \alpha_2 & \beta_2   \\
+            0        & 0       & 1        & 0       & \alpha_1 & \beta_1 \\
+            0        & 0       & 0        & 0       & 1        & 0
+        \end{array}
+    \right]
+\]
+The observability matrix:
+\[
+O=
+\left[
+    \begin{array}{ccc}
+    \beta_1 & \beta_2 & \beta_3\\
+    -\alpha_1\beta_1+\beta_2 & -\alpha_2\beta_1+\beta_3 & -\alpha_3\beta_1\\
+    (\alpha_1^2-\alpha_2)\beta_1-\alpha_1\beta_2+\beta_3 &(\alpha_1\alpha_2-\alpha_3)\beta_1-\alpha_2\beta_2 & \alpha_1\alpha_3\beta_1-\alpha_3\beta_2
+    \end{array}
+\right]    
+\]
+
+\section*{7.9}
+its controllable realization is:
+\[
+\dot{x}=
+\left[
+\begin{array}{cc}
+-2 & -1\\
+1 & 0\\
+\end{array}    
+\right]x+
+\left[
+    \begin{array}{c}
+    1\\
+    0
+    \end{array}
+\right]u
+\]
+\[
+    y=\left[
+        \begin{array}{cc}
+            0 & 1
+        \end{array}
+        \right]x    
+\]
+its observability matrix is:
+\[
+    O=\left[
+        \begin{array}{cc}
+            0 & 1\\
+            1 & 0
+        \end{array}
+    \right]      
+\]
+its determinant is nonzero, so the realization is observable.
+The Sylvester resultant of D(s) and N(S) is:
+\[
+    \textbf{S}:=
+    \left[
+        \begin{array}{cccc}
+            1 & 1 & 0 &0\\
+            2 & 0 & 1 & 1\\
+            1 & 0 &2 & 0\\
+            0 & 0 & 1& 0
+        \end{array}
+    \right]
+\]
+its determinant is also nonzero,so the Sylvester resultant is nonsingular.
+
+\section*{7.10}
+\[
+\hat{g(s)}=\frac{1}{(s+1)^2}=s^{-2}-2s^{-3}
+\]
+the irreducible companion form:
+\[
+\dot{x}=
+\left[
+\begin{array}{cc}
+0 & 1\\
+-1 & -2\\
+\end{array}    
+\right]x+
+\left[
+    \begin{array}{c}
+    0\\
+    1
+    \end{array}
+\right]u
+\]
+\[
+    y=\left[
+        \begin{array}{cc}
+            1 & 0
+        \end{array}
+        \right]x    
+\]
 \end{document}
