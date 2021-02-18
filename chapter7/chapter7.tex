@@ -46,7 +46,7 @@ breakindent=4em, %
 aboveskip=1em, %代码块边框
 }
 
-\title{Chapter3}
+\title{Chapter7}
 \author{31202008881        \quad \quad \quad
           Bao Ze an}
 
@@ -382,7 +382,7 @@ its determinant is also nonzero,so the Sylvester resultant is nonsingular.
 
 \section*{7.10}
 \[
-\hat{g(s)}=\frac{1}{(s+1)^2}=s^{-2}-2s^{-3}
+\hat{g(s)}=\frac{1}{(s+1)^2}=s^{-2}-2s^{-3}+3s^3
 \]
 the irreducible companion form:
 \[
@@ -407,4 +407,514 @@ the irreducible companion form:
         \end{array}
         \right]x    
 \]
+\section*{7.11}
+from the problem (7.10)
+\[T(2,2)=
+\left[
+    \begin{array}{cc}
+        0 & 1\\
+        1 & -2
+    \end{array}
+\right]
+\]
+\[
+\tilde{T}(2,2)=OAC=
+\left[
+    \begin{array}{cc}
+        1 & -2\\
+        -2 & 3\\        
+    \end{array}
+\right]  
+\]
+using the singular value decomposition to express $T(2,2)$ as
+\[T(2,2)=OC=K\wedge L'\] 
+where $K$ and $L'$ are orthogonal matrix.
+Let $O=K\wedge^{\frac{1}{2}}$ and $C=\wedge^{\frac{1}{2}}L'$
+\[
+\begin{split}
+O=\left[
+    \begin{array}{cc}
+        0.5946 & -0.5946\\
+        -1.4355 & -0.2463\\
+    \end{array}
+\right]
+C=\left[
+    \begin{array}{cc}
+        -0.5946 & -1.4355\\
+        0.5946 & -0.2463\\
+    \end{array}
+\right]
+\end{split} 
+\]
+\[
+\begin{split}
+&A=O^{-1}\tilde{T}(2,2)C^{-1}=
+\left[
+    \begin{array}{cc}
+        1.000 & 3.4142\\
+        -0.5858 & -1.000\\
+    \end{array}
+\right]
+\\
+&b=
+\left[
+    \begin{array}{c}
+        -0.5946\\
+        0.5946\\
+    \end{array}
+\right]
+\\
+&c=\left[
+    \begin{array}{cc}
+        0.5946 & -0.5946
+    \end{array}
+\right]
+\end{split}
+\]
+\[
+\dot{x}=
+\left[
+    \begin{array}{cc}
+        1.000 & 3.4142\\
+        -0.5858 & -1.000\\
+    \end{array}
+\right]x+
+\left[
+    \begin{array}{c}
+        -0.5946\\
+        0.5946\\
+    \end{array}
+\right]u
+\]
+\[
+    y=\left[
+        \begin{array}{cc}
+            0.5946 & -0.5946
+        \end{array}
+    \right]x    
+\]
+
+\section*{7.12}
+
+\[
+\hat{g(s)}=\frac{2s+2}{s^2-s-2}=\frac{2}{s-2}    
+\]
+we can see that the transfer function can be reduced to a coprime fucntion withd degree 1.
+so they are not minimal realizations,and they are not algebraically equivalent,because they have differnert eigenvalues.
+
+\section*{7.13}
+The character polynomials of $\hat{G_1(s)}$ is $s(s+1)(s+3)$ and the degree is 3.\\
+The character polynomials of $\hat{G_2(s)}$ is $(s+1)^3(s+2)^2$ and the degree is 5.\\
+The character polynomials of $\hat{G_2(s)}$ is $s(s+1)^(s+2)(s+3)^2(s+4)(s+5)$ and the degree is 8.\\
+
+\section*{7.14}
+\[\hat{G(s)}=
+\left[
+    \begin{array}{cc}
+        s & 1\\
+        -s & s
+    \end{array}
+\right]^{-1}
+\left[
+    \begin{array}{c}
+        1\\
+        -1
+    \end{array}
+\right]
+\]
+\[
+\overline{D}(s)=
+\left[
+    \begin{array}{cc}
+        s & 1\\
+        -s & s
+    \end{array}
+\right]=
+\left[
+    \begin{array}{cc}
+        0 & 1\\
+        0 & 0\\
+    \end{array}
+\right]+
+\left[
+    \begin{array}{cc}
+        1 & 0\\
+        -1 & 1
+    \end{array}
+\right]s
+\]
+\[
+\overline{N}(s)=\left[
+    \begin{array}{c}
+        1\\
+        -1
+    \end{array}
+\right]
+\]
+The generalized resultant:
+\[
+\textbf{SM}:=
+\left[
+    \begin{array}{cccccc}
+    0 & 1 & 1 & 0 & 0 & 0 \\
+    0  & 0  & -1& 0 & 0 & 0 \\
+    1  & 0  & 0 & 0 & 1 & 1 \\
+    -1  & 1  & 0 & 0 & 0 & -1\\
+    0  & 0 & 0 & 1 & 0 &0 \\
+    0 & 0 &0 & -1 & 1 & 0\\
+    \end{array}
+\right]
+\left[
+    \begin{array}{c}
+        -\overline{N}_0\\
+        \overline{D}_0\\
+        -\overline{N}_1\\
+        \overline{D}_1\\
+    \end{array}
+\right]=0
+\]
+The nullity of $S$ is 
+\[
+\left[
+    \begin{array}{c}
+        -1\\
+        0\\
+        0\\
+        0 \\
+        0\\
+        1\\
+    \end{array}
+\right]    
+\]
+so we can get:
+\[
+N_0=\left[
+    \begin{array}{c}
+        -1\\
+        0
+    \end{array}
+\right]    
+D_0=0
+N_1=\left[
+    \begin{array}{c}
+        0\\
+        0
+    \end{array}
+\right]
+D_1=1   
+\]
+so we have
+\[
+    \hat{G(s)}=
+    \left[
+        \begin{array}{c}
+          1\\
+          0
+        \end{array}
+    \right]s^{-1}   
+\]
+The degree of $G(s)$ is 1,deg det $\overline{D}(s)=2$,so the left fraction is not coprime.
+
+\section*{7.15}
+we form from 
+\[\hat{G(s)}=
+\left[
+    \begin{array}{cc}
+        s & 1\\
+        -s & s
+    \end{array}
+\right]^{-1}
+\left[
+    \begin{array}{c}
+        1\\
+        -1
+    \end{array}
+\right]
+\]
+ get 
+\[
+\left[
+    \begin{array}{cccccc}
+    1 & 0& 0 & 0 & 0 & 0 \\
+    -1  & 1  & 0& 0 & 0 & 0 \\
+    0  & 1  & 1 & 1 & 0 & 0 \\
+    0  & 0  & -1 & -1 & 1 & 0\\
+    0  & 0 & 0 & 0 & 1 &1 \\
+    0 & 0 &0 & 0 & 0 & -1\\
+    \end{array}
+\right]
+\]
+where $D(s)$ and $N(s)$ are arranged in descending powers of s,it is not true that all D-columns are linearly indepedent of their LHS columns, bescuse the second block of $D_1$-columns is linearly depedent of its LHS columns.
+The number of linearly indepedent N-columns is 2,so the degree is not equal the number of linearly indepedent N-columns,so the theorem is not hold either.
+
+\section*{7.16}
+\[
+    \hat{G(s)}=
+    \left[
+        \begin{array}{c}
+          1\\
+          0
+        \end{array}
+    \right]s^{-1}   
+\]
+
+The generalized resultant
+\[
+T:=\left[
+    \begin{array}{ccc}
+        0 & 1 & 0\\
+        1 & 0 & 0\\
+        0 & 0 & 0\\
+        0 & 0 & 1\\
+        0 & 1 & 0\\
+        0 & 0 & 0\\
+    \end{array}
+\right]    
+\]
+N2-row in the first N block-row is linearly depedent of its preceding rows,
+Let 
+\[
+t1:=\left[
+    \begin{array}{ccc}
+        0 & 1 & 0\\
+        1 & 0 & 0\\
+        0 & 0 & 0\\
+        0 & 0 & 0\\
+        0 & 0 & 0\\
+        0 & 0 & 0\\
+    \end{array}
+\right]    
+\]
+\[
+    \left[
+        \begin{array}{cccccc}
+            0 & 0 & 1 & 0 & 0 &0\\
+        \end{array}
+    \right]t1=0    
+\]
+N1-row in the second block-row is linearly depedent of its preceding rows,let(deleting the N2-row in the first block)
+\[
+t2:=\left[
+    \begin{array}{ccc}
+        0 & 1 & 0\\
+        1 & 0 & 0\\
+        0 & 0 & 1\\
+        0 & 1 & 0\\
+        0 & 0 & 0\\
+    \end{array}
+\right]
+\]  
+\[
+    \left[
+        \begin{array}{cccccc}
+            -1 & 0 & 0 & 1 & 0 &0\\
+        \end{array}
+    \right]t2=0    
+\]
+\[
+\left[
+    \begin{array}{cccc}
+        -\overline{N}_0 & \overline{D}_0 & -\overline{N}_1 & \overline{D}_1
+    \end{array}
+\right]=
+\left[
+    \begin{array}{cccccc}
+        0 & 0 & 1 & 0 & 0 &0\\
+        -1 & 0 & 0 & 0 & 1 &0\\
+    \end{array}
+\right]
+\]
+we can get 
+\[
+    \begin{split}
+    &\overline{N}(s)=\overline{N}_0+\overline{N}_1s\\
+    &\overline{D}(s)=\overline{D}_0+\overline{D}_1s
+    \end{split}
+\]
+\[
+\hat{G}(s)=
+\left[
+    \begin{array}{cc}
+        0 & 1\\
+        s & 0
+    \end{array}
+\right]^{-1}
+\left[
+    \begin{array}{c}
+        0\\
+        1
+    \end{array}
+\right]   
+\]
+
+
+\section*{7.17}
+\[
+\begin{array}{l}
+ \hat{G}(s)=\left[\begin{array}{cc}
+    \frac{s^{2}+1}{s^{3}} & \frac{2 s+1}{s^{2}} \\
+    \frac{s+2}{s^{2}} & \frac{2}{s}
+    \end{array}\right]=: \bar{D}^{-1}(S) \bar{N}(S) \\
+    \bar{D}(s)=\left[\begin{array}{cc}
+    s^{3} & 0 \\
+    0 & s^{2}
+    \end{array}\right]=\left[\begin{array}{cc}
+    0 & 0 \\
+    0 & 0
+    \end{array}\right]+\left[\begin{array}{cc}
+    0 & 0 \\
+    0 & 0
+    \end{array}\right] s+\left[\begin{array}{cc}
+    0 & 0 \\
+    0 & 1
+    \end{array}\right] s^{2}+\left[\begin{array}{cc}
+    1 & 0 \\
+    0 & 0
+    \end{array}\right] s^{3} \\
+    \text { where. } \\
+    \bar{N}(s)=\left[\begin{array}{cc}
+    s^{2}+1 & s(2 s+1) \\
+    s+2 & 2 s
+    \end{array}\right]=\left[\begin{array}{cc}
+    1 & 0 \\
+    2 & 0
+    \end{array}\right]+\left[\begin{array}{cc}
+    0 & 1 \\
+    1 & 2
+    \end{array}\right] s+\left[\begin{array}{cc}
+    1 & 2 \\
+    0 & 0
+    \end{array}\right] s^{2}
+    \end{array}
+\]
+
+the generalized resultant-is
+\[
+S=\left[\begin{array}{llllllllllll}
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 1 & & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 2 & 0 & 0 & 2 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 2 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 & 0 & 0 & 1 & 2 & 0 & 0 & 2 & 0 \\
+1 & 0 & 0 & 0 & 0 & 0 & 1 & 2 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 2 \\
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 2 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
+\end{array}\right]
+\]
+$\operatorname{rank} s=9, \quad \mu_{1}=2, \mu_{2}=1$
+the monic null vectors of the submatrices that consist of the primary dependent- $\bar{N}_{2}$ -columns and
+$\bar{N}_{1}$ -columns are , respectively
+$Z 2=\left[\begin{array}{llllllll}-2.5 & -2.5 & 0 & -0.5 & 0 & 0 & 0.5 & 1\end{array}\right]$
+$Z 1=\left[\begin{array}{llllllllll}-0.5 & -2.5 & 0 & -0.5 & -1 & -1 & 0.5 & 0 & 0 & 1\end{array}\right]$
+\[
+\therefore\left[\begin{array}{c}
+-N_{0} \\
+D_{0} \\
+-N_{1} \\
+D_{1} \\
+N_{2} \\
+D_{2}
+\end{array}\right]=\left[\begin{array}{cccccccccccc}
+-0.5 & -2.5 & 0 & -0.5 & -1 & -1 & 0.5 & 0 & 0 & 0 & 1 & 0 \\
+-2.5 & -2.5 & 0 & -0.5 & 0 & 0 & 0.5 & 1 & 0 & 0 & 0 & 0
+\end{array}\right]
+\]
+\[
+\begin{aligned}
+    &D(s)=\left[\begin{array}{cc}
+    0 & 0 \\
+    -0.5 & -0.5
+    \end{array}\right]+\left[\begin{array}{cc}
+    0.5 & 0.5 \\
+    0 & 1
+    \end{array}\right] s+\left[\begin{array}{cc}
+    1 & 0 \\
+    0 & 0
+    \end{array}\right] s^{2}=\left[\begin{array}{cc}
+    s^{2}+0.5 s & 0.5 s \\
+    -0.5 & s-0.5
+    \end{array}\right]\\
+    &N(s)=\left[\begin{array}{ll}
+    0.5 & 2.5 \\
+    2.5 & 2.5
+    \end{array}\right]+\left[\begin{array}{ll}
+    1 & 0 \\
+    1 & 0
+    \end{array}\right] s=\left[\begin{array}{ll}
+    s+0.5 & 2.5 \\
+    s+2.5 & 2.5
+    \end{array}\right]\\
+    &\underline{\text { thus }} \text { - right coprime fraction of } \hat{G}(s) \cdot \text { is } \hat{G}(s)=\left[\begin{array}{ll}
+    s+0.5 & 2.5 \\
+    s+2.5 & 2.5
+    \end{array}\right]\left[\begin{array}{cc}
+    s^{2}+0.5 s & 0.5 s \\
+    -0.5 & s-0.5
+    \end{array}\right]\\
+    &\text { we define } H(s)=\left[\begin{array}{cc}
+    s^{2} & 0 \\
+    0 & s
+    \end{array}\right] \quad L(s)=\left[\begin{array}{cc}
+    s & 0 \\
+    1 & 0 \\
+    0 & 1
+    \end{array}\right]
+    \end{aligned}
+    \]
+
+    then -we have
+    $$
+    \begin{array}{l}
+    D(s)=\left[\begin{array}{cc}
+    1 & 0.5 \\
+    0 & 1
+    \end{array}\right] H(s)+\left[\begin{array}{ccc}
+    0.5 & 0 & 0 \\
+    0 & -0.5 & -0.5
+    \end{array}\right] L(s) \\
+    N(s)=\left[\begin{array}{ccc}
+    1 & 0.5 & 2.5 \\
+    1 & 2.5 & 2.5
+    \end{array}\right] L(s) \\
+    D_{h c}^{-1}=\left[\begin{array}{cc}
+    1 & 0.5 \\
+    0 & 1
+    \end{array}\right]^{-1}=\left[\begin{array}{cc}
+    1 & -0.5 \\
+    0 & 1
+    \end{array}\right]\\
+    D_{hc}^{-1} D_{lc}=\left[\begin{array}{cc}
+    1 & -0.5 \\
+    0 & 1
+    \end{array}\right]\left[\begin{array}{ccc}
+    0.5 & 0 & 0 \\
+    0 & -0.5 & -0.5
+    \end{array}\right]=\left[\begin{array}{ccc}
+    0.5 & 0.25 & 0.25 \\
+    0 & -0.5 & -0.5
+    \end{array}\right]
+    \end{array}
+    $$
+    thus - minimal realization of $\hat{G}(s)$ is
+    $$
+    \dot{x}=\left[\begin{array}{ccc}
+    -0.5 & -0.25 & -0.25 \\
+    1 & 0 & 0 \\
+    0 & 0.5 & 0.5
+    \end{array}\right] x+\left[\begin{array}{cc}
+    1 & -0.5 \\
+    0 & 0 \\
+    0 & 1
+    \end{array}\right] u
+    $$
+    $$
+    y=\left[\begin{array}{lll}
+    1 & 0.5 & 2.5 \\
+    1 & 2.5 & 2.5
+    \end{array}\right]x
+    $$
 \end{document}

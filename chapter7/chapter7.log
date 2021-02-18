@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.11.1)  17 FEB 2021 12:06
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.11.1)  18 FEB 2021 18:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -629,14 +629,24 @@ Package amsmath Warning: Cannot use `split' here;
 Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 224.
 
-[2] [3] [4] [5] (./chapter7.aux) ) 
+[2] [3] [4] [5]
+Underfull \hbox (badness 10000) in paragraph at lines 506--509
+
+ []
+
+[6] [7] [8]
+Overfull \hbox (36.81133pt too wide) in paragraph at lines 807--813
+\TU/lmr/m/n/10.53937 dependent- $[]$ -columns and $[]$ -columns are , respectively $\OML/cmm/m/it/10.53937 Z\OT1/cmr/m/n/10.53937 2 = []$
+ []
+
+[9] [10] (./chapter7.aux) ) 
 Here is how much of TeX's memory you used:
  11972 strings out of 479418
  263905 string characters out of 5888105
- 584316 words of memory out of 5000000
+ 591316 words of memory out of 5000000
  29250 multiletter control sequences out of 15000+600000
  540112 words of font info for 78 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 56i,13n,68p,999b,251s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,21n,68p,999b,251s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on chapter7.pdf (5 pages).
+Output written on chapter7.pdf (10 pages).
