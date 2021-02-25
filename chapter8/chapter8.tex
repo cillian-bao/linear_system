@@ -1,0 +1,510 @@
+\documentclass{article}
+% 这里是导言区
+%\usepackage{indentfirst}%缩进控制
+\usepackage{listings}%插入代码
+\usepackage{mcode}
+%ctex能够保证能够渲染英文
+\usepackage{ctex}
+\usepackage{textcomp}
+\usepackage{graphicx}%插入图像
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{geometry}%设置页边距
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage[level]{datetime} 
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+% \renewcommand\thesection{\roman{subsection}}
+%\newdateformat{ukdate}{\ordinaldate{\THEDAY} \monthname[\THEMONTH]
+
+\geometry{a4paper,scale=0.75}
+
+
+\lstset{
+tabsize=4, %tab 空格数
+frame=shadowbox, %把代码用带有阴影的框圈起来
+rulesepcolor=\color{red!20!green!20!blue!20}, %代码块边框为淡青色
+keywordstyle=\color{blue!90}\bfseries, %代码关键字的颜色为蓝色, 粗体
+showstringspaces=false, %不显示代码字符串中间的空格标记
+stringstyle=\ttfamily, %代码字符串的特殊格式
+keepspaces=true, %
+breakindent=22pt, %
+numbers=left, %左侧显示行号
+stepnumber=1, %
+numberstyle=\tiny, %行号字体用小号
+basicstyle=\footnotesize, %
+showspaces=false, %
+flexiblecolumns=true, %
+breaklines=true, %对过长的代码自动换行
+breakautoindent=true, %
+breakindent=4em, %
+aboveskip=1em, %代码块边框
+}
+
+\title{Chapter8}
+\author{31202008881        \quad \quad \quad
+          Bao Ze an}
+
+\begin{document}
+\setlength{\parindent}{0em}
+\maketitle
+\section*{8.1}
+introducing state feedback. $u=r-\left[k_{1} \quad k_{2}\right]x,$ we can obtain
+$$
+\dot{x}=\left[\begin{array}{cc}
+2 & 1 \\
+-1 & 1
+\end{array}\right] x-\left[\begin{array}{l}
+1 \\
+2
+\end{array}\right]\left[\begin{array}{ll}
+k_{1} & k_{2}
+\end{array}\right] x+\left[\begin{array}{l}
+1 \\
+2
+\end{array}\right] r
+$$
+the new:A-matrix has characteristic polynomial
+$$
+\begin{aligned}
+\Delta_{f}(s) &=\left(s-2+k_{1}\right)\left(s-1+2 k_{2}\right)-\left(-1-2 k_{1}\right)\left(1-k_{2}\right) \\
+&=s^{2}+\left(k_{1}+2 k_{2}-3\right) s+\left(k_{1}-5 k_{2}+3\right)
+\end{aligned}
+$$
+the desired characteristic polynomial is $(s+1)(s+2)=s^{2}+3 s+2 \cdot$, equating
+$k_{1}+2 k_{2}-3=3$ and $k_{1}-5 k_{2}+3=2,$ yields
+$k_{1}=4$ and $k_{2}=1$ so the desired state feedback gain k is $k=\left[\begin{array}{ll}4 & 1\end{array}\right]$
+
+\section*{8.2}
+
+$$
+\begin{array}{l}
+\Delta(s)=(s-2)(s-1)+1=s^{2}-3 s+1 \\
+\Delta_{f}(s)=(s+1)(s+2)=s^{2}+3 s+2 \\
+\bar{k}=[3-(-3) \quad 2-3]=\left[\begin{array}{cc}
+6 & -1
+\end{array}\right] \\
+\bar{C}^{-1}=\left[\begin{array}{cc}
+1 & -3 \\
+0 & 1
+\end{array}\right] \quad \bar{C}=\left[\begin{array}{cc}
+1 & 3 \\
+0 & 1
+\end{array}\right]
+\end{array}
+$$
+$C=\left[\begin{array}{ll}b & A b\end{array}\right]=\left[\begin{array}{ll}1 & 4 \\ 2 & 1\end{array}\right] \quad C^{-1}=\left[\begin{array}{cc}-1 / 7 & 4 / 7 \\ 2 / 7 & -1 / 7\end{array}\right] \quad C$ is nonsingular, so $(A, b)$ is can trollable
+using (8.13)
+$$
+k=\overline{k} \bar{C} C^{-1}=\left[\begin{array}{ll}
+6 & -1
+\end{array}\right]\left[\begin{array}{ll}
+1 & 3 \\
+0 & 1
+\end{array}\right]\left[\begin{array}{cc}
+-1 / 7 & 4 / 7 \\
+2 / 7 & -1 / 7
+\end{array}\right]=\left[\begin{array}{ll}
+4 & 1
+\end{array}\right]
+$$
+
+\section*{8.3}
+
+$$
+\begin{aligned}
+&(A, b) \text { is controllable }\\
+&\text { selecting } F=\left[\begin{array}{cc}
+-1 & 0 \\
+0 & -2
+\end{array}\right] \text { and } \overline{k}=\left[\begin{array}{cc}
+1 & 1
+\end{array}\right] \cdot \text { then }\\
+&A T-T F=b \bar{k} \Rightarrow T=\left[\begin{array}{cc}
+0 & \frac{1}{13} \\
+1 & \frac{9}{13}
+\end{array}\right] \quad T^{-1}=\left[\begin{array}{cc}
+-9 & 1 \\
+13 & 0
+\end{array}\right]\\
+&k=\overline{k} T^{-1}=\left[\begin{array}{ll}
+1 & 1
+\end{array}\right]\left[\begin{array}{cc}
+-9 & 1 \\
+13 & 0
+\end{array}\right]=\left[\begin{array}{ll}
+4 & 1
+\end{array}\right]
+\end{aligned}
+$$
+
+\section*{8.4}
+$$
+\begin{aligned}
+&(A, b) \text { is controllable }\\
+&\Delta(s)=(s-1)^{3}=s^{3}-3 s^{2}+3 s-1\\
+&\Delta_{f}(s)=(s+2)(s+1+j 1)(s+1-j 1)=s^{3}+4 s^{2}+6 s+4\\
+&\bar{k}=\left[\begin{array}{lll}
+4-(-3) & 6-3 & 4-(-1)
+\end{array}\right]=\left[\begin{array}{lll}
+7 & 3 & 5
+\end{array}\right]\\
+&\bar{C}^{-1}=\left[\begin{array}{ccc}
+1 & -3 & 3 \\
+0 & 1 & -3 \\
+0 & 0 & 1
+\end{array}\right] \quad \bar{C}=\left[\begin{array}{ccc}
+1 & 3 & 6 \\
+0 & 1 & 3 \\
+0 & 0 & 1
+\end{array}\right]\\
+&C=\left[\begin{array}{ccc}
+1 & -1 & -2 \\
+0 & 1 & 2 \\
+1 & 1 & 1
+\end{array}\right] \quad C^{-1}=\left[\begin{array}{ccc}
+1 & 1 & 0 \\
+-2 & -3 & 2 \\
+1 & 2 & -1
+\end{array}\right]\\
+&k=\overline{k} \bar{C} C^{-1}\left[\begin{array}{lll}
+7 & 3 & 5
+\end{array}\right]\left[\begin{array}{ccc}
+1 & 3 & 6 \\
+0 & 1 & 3 \\
+0 & 0 & 1
+\end{array}\right]\left[\begin{array}{ccc}
+1 & 1 & 0 \\
+-2 & -3 & 2 \\
+1 & 2 & -1
+\end{array}\right]=\left[\begin{array}{ccc}
+15 & 47 & -8
+\end{array}\right]
+\end{aligned}
+$$
+
+
+\section*{8.5}
+
+\[\hat{g}_{f}(s)=\frac{(s-1)}{(s+2)(s+3)}=\frac{(s-1)(s+2)}{(s+2)^{2}(s+3)}\]
+We can easily see that it is possible to change $\hat{g}(s)$ to $\hat{g}_{f}(s)$ by state feedback and the resulting
+system is asymptotically stable and BIBO stable:
+
+\section*{8.6}
+$$
+\hat{g}_{f}(s)=\frac{1}{s+3}=\frac{(s-1)(s+2)}{(s-1)(s+2)(s+3)}
+$$
+It is possible to change $\hat{g}(s)$ to $\hat{g}_{f}(s)$ by state feedback and the resulting system is BIBO stable,however it is not asymptotically stable,because it has a 1 eigenvalue.
+
+
+\section*{8.7}
+\[
+\hat{g}(s)=c(sI-A)b=\left[\begin{array}{ccccc}
+\frac{1}{s-1} & \frac{1}{(s-1)^{2}} & \frac{1}{(s-1)^{3}}-\frac{1}{(s-1)^{2}} \\
+0 & \frac{1}{s-1} & \frac{1}{(s-1)^{2}} \\
+0 & 0 & \frac{1}{s-1}
+\end{array}\right]\left[\begin{array}{l}
+1 \\
+0 \\
+1
+\end{array}\right]=\frac{2 s^{2}-8 s+8}{s^{3}-3 s^{2}+3 s-1} \\
+\]
+\[
+\begin{split}
+\Delta_{f}(s)=s^{3}+4 s^{2}+6 s+4 \\
+P=\frac{\overline{\alpha}_{3}}{\beta_{3}}=\frac{4}{8}=0.5 \\
+\end{split}
+\]
+from the problem 8.4,we know:
+\[
+k=\left[\begin{array}{ccc}
+15 & 47 & -8
+\end{array}\right]
+\]
+
+
+\section*{8.8}
+
+$(A, b)$ is controllable
+$$
+\begin{array}{l}
+\Delta(z)=z^{3}-3 s+3 z-1 \\
+\Delta_{f}(z)=z^{3}
+\end{array}
+$$
+$\bar{k}=\left[\begin{array}{lll}3 & -3 & 1\end{array}\right]$
+$$
+k=\overline{k}\bar{C} C^{-1} =\left[\begin{array}{lll}
+3 & -3 & 1
+\end{array}\right]\left[\begin{array}{ccc}
+1 & 3 & 6 \\
+0 & 1 & 3 \\
+0 & 0 & 1
+\end{array}\right]\left[\begin{array}{ccc}
+1 & 1 & 0 \\
+-2 & -3 & 2 \\
+1 & 2 & -1
+\end{array}\right]=\left[\begin{array}{lll}
+1 & 5 & 2
+\end{array}\right]
+$$
+The state feedback equation becomes
+$$
+\dot{\bar{x}}[k+1]=\left[\begin{array}{ccc}
+1 & 1 & -2 \\
+0 & 1 & 1 \\
+0 & 0 & 1
+\end{array}\right]-\left[\begin{array}{l}
+1 \\
+0 \\
+1
+\end{array}\right]\left[\begin{array}{lll}
+1 & 5 & 2
+\end{array}\right] \bar{x}[k]+\left[\begin{array}{l}
+1 \\
+0 \\
+1
+\end{array}\right] r[k]=\left[\begin{array}{ccc}
+0 & -4 & -4 \\
+0 & 1 & 1 \\
+-1 & -5 & -1
+\end{array}\right] \bar{x}[k]+\left[\begin{array}{l}
+1 \\
+0 \\
+1
+\end{array}\right] r[k]
+$$
+$$y[k]=\left[\begin{array}{lll}2 & 0 & 0\end{array}\right] x[k]$$
+we can present the zero-mput response of the feedback 'system
+as following $y_{zi}[k]=\overline{C} \bar{A}^{k} x[0]$
+\[
+    \bar{A}=\left[\begin{array}{ccc}
+        0 & -4 & -4 \\
+        0 & 1 & 1 \\
+        -1 & -5 & -1
+        \end{array}\right]    
+\]
+\[
+    \bar{A}^2=\left[\begin{array}{ccc}
+        4 & 16 & 0 \\
+        -1 & -4 & 0 \\
+        1 & 4 & 0
+        \end{array}\right]    
+\]
+\[
+    \bar{A}^3=\left[\begin{array}{ccc}
+        0 & 0 & 0 \\
+        0 & 0 & 0 \\
+        0 & 0 & 0
+        \end{array}\right]    
+\]
+so when $k\geq 3$,the zero-input response of the feedback system becomes identically zero.
+
+\section*{8.9}
+
+$$
+\begin{array}{l}
+\hat{g}(z)=\frac{2 z^{2}-8 s+8}{z^{3}-3 s^{2}+3 z-1} \quad \Delta(z)=z^{3} \quad u[k]=pr[k]-kx[k] \\
+\hat{g}_{f}(z)=p \frac{2z^{2}-8 z+8}{z^{3}}
+\end{array}
+$$
+$(A, b)$ is controllable all poles of $\hat{g}_{f}(z)$ can be assigned to lie inside the section in fig $8.3($ b)
+under this condition; if the reference input is a step function with magnitude $a$, then the output
+$\mathrm{y}[\mathrm{k}]$ will approach the constant $\hat{g}_{f}(1) \cdot a$ when $k \rightarrow+\infty$.
+thus in order for $\mathrm{y}[\mathrm{k}]$ to track any step reference input we need. $\hat{g}_{f}(1)=1$
+$\hat{g}_{f}(1)=2 p=1 \Rightarrow p=0.5$
+
+Let $r[k]=a$,its z-transform is $\hat{r}(z)=\frac{az}{z-1}$
+\[
+\hat{y}(z)=\hat{y_f}(z).\hat{r}(z)= \frac{z^{2}-4 z+4}{z^{3}}\frac{az}{z-1}=\frac{az}{z-1}-a-\frac{4a}{z^2} 
+\]
+
+its inverse z-transform:
+\[y[k]=a-a\delta[k]-4a\delta[k-2]\]\\
+when k=0,$y[0]=a-a\delta[0]=0$\\
+when k=1,$y[1]=a$\\
+when k=2,$y[2]=a-4a=-3a$\\
+when $k \geq 3$,$y[k]=a=r[k]$\\
+
+
+\section*{8.10}
+\text { With the transformation matrix is } 
+$$
+P^{-1}=\left[\begin{array}{cccc}
+0 & 1 & 4 & 0 \\
+1 & 2 & 4 & 0 \\
+1 & -1 & 1 & 0 \\
+1 & -1 & 1 & 1
+\end{array}\right]
+$$
+the uncontrollable state equation can be transformed into 
+$$
+\left[\begin{array}{c}
+\dot{\bar{x}}_{c} \\
+\dot{\bar{x}}_{\bar{c}}
+\end{array}\right]=\left[\begin{array}{cccc}
+0 & 0 & -4 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & 1 & 3 & 0 \\
+0 & 0 & 0 & -1
+\end{array}\right]
+\left[
+    \begin{split}\bar{x}_{c}\\
+        \bar{x}_{\bar{c}}
+    \end{split}\right]+\left[\begin{array}{l}
+1 \\
+0 \\
+0 \\
+0
+\end{array}\right] u
+$$
+$$
+=\left[\begin{array}{cc}
+\overline{A_{c}} & 0 \\
+0 & \overline{A_{\bar{c}}}
+\end{array}\right]\left[
+    \begin{split}\bar{x}_{c}\\
+        \bar{x}_{\bar{c}}
+    \end{split}\right]+\left[
+        \begin{split}\bar{b}_{c}\\
+            0
+        \end{split}\right] u
+$$
+$\left(\overline{A}_{C}, \bar{b}_{c}\right)$ is controllable and the uncontrollable eigenvalues of the system is negative,so the equation is stabilizable,the eigenvalue of
+$\overline{A}_{\bar{C}}$ is 1 is not affected by the state feedback.while the eigenvalues of the controllable
+sub-state equation can be arbitrarily assigned in pairs so by using state feedback , it is possible for the resulting system to have eigenvalues $-2 ;-2 ;-1,-1$, also eigenvalues -2,-2,-2,-1 It is impossible to have $-2,-2,-2,-2,$ as it eigenvalues because state feedback can not affect a eigenvalue -1
+
+\section*{8.11}
+
+the eigenvalues of the full-dimensional state estimator must be selected as $-2 \pm j 2,$ the $A,b$
+and $c$ matxices in problem 8.1 are
+$$
+A=\left[\begin{array}{cc}
+2 & 1 \\
+-1 & 1
+\end{array}\right] \quad b=\left[\begin{array}{l}
+1 \\
+2
+\end{array}\right] \quad c=\left[\begin{array}{ll}
+1 & 1
+\end{array}\right]
+$$
+
+the full-dimensional state estimator can be written as $\dot{\hat{x}}=(A-lc)=\hat{x}+bu+ly$
+
+let $l=\left[\begin{array}{l}l_{1} \\ l_{2}\end{array}\right]$ then the characteristic polynomial of $\dot{\hat{x}}=(A-lc)$ is
+$$
+\begin{aligned}
+\Delta(s) &=\left(s-2+l_{1}\right)\left(s-1+l_{2}\right)+\left(1+l_{2}\right)\left(1-l_{1}\right) \\
+&=s^{2}+\left(l_{1}+l_{2}-3\right) s+3-2 l_{1}-l_{2} \\
+&=(s+2)^{2}+4=s^{2}+4s+8 \\
+\Rightarrow \quad & l_{1}=-12 \quad l_{2}=19
+\end{aligned}
+$$
+
+thus a full-dimensional state estimor with eigenvalues $-2 \pm j 2$has been designed as following
+
+$$
+\dot{\hat{x}}=\left[\begin{array}{cc}
+14 & 13 \\
+-20 & -18
+\end{array}\right] \hat{x}+\left[\begin{array}{l}
+1 \\
+2
+\end{array}\right] u+\left[\begin{array}{c}
+-12 \\
+19
+\end{array}\right] y
+$$
+designing a reduced-dimensional state estimator with eigenvalue -3.
+
+(1)$\rightarrow$ select $|x|$ stable matrix $F=-3$\\
+(2)$\rightarrow$ select $|\mathrm{x}|$ vector $\mathrm{L}=1,(\mathrm{~F}, \mathrm{~L})$. IS controllable\\
+(3)$\rightarrow$ solve $\mathrm{T}=: \mathrm{TA}-\mathrm{FT}=l c$\\
+$$
+\begin{array}{l}
+T=\left[\begin{array}{ll}
+t_{1} & t_{2}
+\end{array}\right] \\
+\left[\begin{array}{ll}
+t_{1} & t_{2}
+\end{array}\right]\left[\begin{array}{cc}
+2 & 1 \\
+-1 & 1
+\end{array}\right]+3\left[\begin{array}{ll}
+t_{1} & t_{2}
+\end{array}\right]=\left[\begin{array}{ll}
+1 & 1
+\end{array}\right] \\
+\Rightarrow T=\left[\begin{array}{cc}
+\frac{3}{21} & \frac{4}{21}
+\end{array}\right]
+\end{array}
+$$
+(4) $\rightarrow$ THE l-dimensional 'state estimutor with eigenvalue -3 is
+$$
+\begin{array}{l}
+\dot{z}=-3 x+\frac{13}{21} u+y \\
+\hat{x}=\left[\begin{array}{cc}
+1 & 1 \\
+\frac{5}{21} & \frac{4}{21}
+\end{array}\right]^{-1}\left[\begin{array}{l}
+y \\
+z
+\end{array}\right]=\left[\begin{array}{cc}
+-4 & 21 \\
+5 & -21
+\end{array}\right]\left[\begin{array}{l}
+y \\
+z
+\end{array}\right]
+\end{array}
+$$
+
+\section*{8.12}
+three overall transfer function are the same
+$$
+\begin{aligned}
+\hat{y}_{r \rightarrow y}=\frac{3 s-4}{(s+1)(s+2)}
+\end{aligned}
+$$
+
+\section*{8.13}
+select a  $4 \times 4$  matrix $F=\left[\begin{array}{cccc}-4 & -3 & 0 & 0 \\ 3 & -4 & 0 & 0 \\ 0 & 0 & -5 & -4 \\ 0 & 0 & 4 & -5\end{array}\right]$
+the eigenvalues of $\mathrm{F}$ are $-4 \pm 3 j$ and $-5 \pm 4 j$
+(1)if $\overline{k_{1}}=\left[\begin{array}{llll}1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0\end{array}\right]$ so $(F, \overline{k_{1}})$ is observable
+$$
+\begin{aligned}
+A T_{1}-T_{1} F=B \overline{K_{1}} \Rightarrow T_{1}=&\left[\begin{array}{cccc}
+-0.0013 & -0.0059 & 0.0005 & -0.0042 \\
+-0.0126 & 0.0273 & -0.0193 & 0.0191 \\
+0.1322 & -0.0714 & 0.1731 & -0.0185 \\
+0.0006 & -0.0043 & 0.2451 & -0.1982
+\end{array}\right] \\
+K_{1} &=\bar{K}_{1} T_{1}^{-1}=\left[\begin{array}{cccc}
+-606.2000 & -168.0000 & -14.2000 & -2.0000 \\
+371.0670 & 119.1758 & 14.8747 & 2.2253
+\end{array}\right]
+\end{aligned}
+$$
+(3)if $\bar{K}_{2}=\left[\begin{array}{llll}1 & 1 & 1 & 1 \\ 0 & 0 & 1 & 0\end{array}\right]\left(F, \overline{k_{2}}\right)$ is observable
+$$
+\begin{aligned}
+A T_{2}-T_{2} F=B \overline{K_{2}} \Rightarrow T_{2}=&\left[\begin{array}{cccc}
+-0.0046 & -0.0071 & 0.0024 & -0.0081 \\
+-0.0399 & 0.0147 & -0.0443 & 0.0306 \\
+0.2036 & 0.0607 & 0.3440 & 0.0245 \\
+0.0048 & -0.0037 & 0.2473 & 0.2007
+\end{array}\right] \\
+K_{2} &=\bar{K}_{2} T_{2}^{-1}=\left[\begin{array}{cccc}
+-252.9824 & -55.2145 & -0.0893 & -3.2509 \\
+185.5527 & 59.8815 & 7.4593 & 2.5853
+\end{array}\right]
+\end{aligned}
+$$
+\end{document}
