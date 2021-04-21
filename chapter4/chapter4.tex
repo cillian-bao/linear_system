@@ -1,0 +1,1091 @@
+\documentclass{article}
+% 这里是导言区
+%\usepackage{indentfirst}%缩进控制
+\usepackage{listings}%插入代码
+%\usepackage{mcode}
+%ctex能够保证能够渲染英文
+\usepackage{ctex}
+\usepackage{textcomp}
+\usepackage{graphicx}%插入图像
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{geometry}%设置页边距
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage[level]{datetime} 
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+% \renewcommand\thesection{\roman{subsection}}
+%\newdateformat{ukdate}{\ordinaldate{\THEDAY} \monthname[\THEMONTH]
+
+\geometry{a4paper,scale=0.75}
+
+
+\lstset{
+tabsize=4, %tab 空格数
+frame=shadowbox, %把代码用带有阴影的框圈起来
+rulesepcolor=\color{red!20!green!20!blue!20}, %代码块边框为淡青色
+keywordstyle=\color{blue!90}\bfseries, %代码关键字的颜色为蓝色, 粗体
+showstringspaces=false, %不显示代码字符串中间的空格标记
+stringstyle=\ttfamily, %代码字符串的特殊格式
+keepspaces=true, %
+breakindent=22pt, %
+numbers=left, %左侧显示行号
+stepnumber=1, %
+numberstyle=\tiny, %行号字体用小号
+basicstyle=\footnotesize, %
+showspaces=false, %
+flexiblecolumns=true, %
+breaklines=true, %对过长的代码自动换行
+breakautoindent=true, %
+breakindent=4em, %
+aboveskip=1em, %代码块边框
+}
+
+\title{Chapter4}
+\author{31202008881        \quad \quad \quad
+          Bao Ze an}
+
+\begin{document}
+\setlength{\parindent}{2em}
+\maketitle
+
+\section*{4.1}
+The system is a LTI system,so the solution can be obtained by:$\mathcal{L}^{-1}(SI-A)^{-1}$
+\[(SI-A)^{-1}=
+\left[
+\begin{array}{cc}
+S &-1\\
+1 & S\\
+\end{array}
+\right]^{-1}
+=
+\left[
+\begin{array}{cc}
+\frac{s}{s^2+1} & \frac{1}{s^2+1}\\
+\frac{-1}{s^2+1} & \frac{s}{s^2+1}\\
+\end{array}
+\right]
+\]
+\[\mathcal{L}^{-1}(SI-A)^{-1}=
+\left[
+\begin{array}{cc}
+cost & sint\\
+-sint & cost\\
+\end{array}
+\right]
+\]
+so the solution is:
+\[
+x(t)=
+\left[
+\begin{array}{cc}
+cost & sint\\
+-sint & cost\\
+\end{array}
+\right]
+x(0)  
+\]
+
+\section*{4.2}
+The first method: $G(s)=C(SI-A)^{-1}B+D$
+\[G(s)=
+\left[
+\begin{array}{cc}
+2 & 3
+\end{array}
+\right]
+\left[
+\begin{array}{cc}
+\frac{s+2}{s^2+s2+2}& \frac{1}{s^2+2s+2} \\
+\frac{-2}{s^2+2s+2} & \frac{s}{s^2+2s+2}\\
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+1\\
+1\\
+\end{array}
+\right]
+=
+\frac{5s}{s^2+2s+2}
+\]
+so the unit-step response is:$y(s)=G(s)u(s)=\frac{5s}{s^2+2s+2}.\frac{1}{s}=\frac{5}{(s+1)^2+1}$
+\[y(t)=\mathcal{L}^{-1}(y(s))=5e^{-t}sint\]
+The second method:calculate the solution of $x(t)$,then we can simply get the response by $y(t)=Cx(t)+Du(t)$
+\[x(t)=e^{At}x(0)+\int_{0}^{t}e^{A(t-\tau)}Bu(\tau)d\tau\]
+because of zero initial state,so:
+\[y(t)=C\int_{0}^{t}e^{A(t-\tau)}Bu(\tau)d\tau\]
+from the first method:
+\[
+(SI-A)^{-1}
+\left[
+\begin{array}{cc}
+\frac{s+2}{s^2+s2+2}&\frac{1}{s^2+2s+2} \\
+\frac{-2}{s^2+2s+2} & \frac{s}{s^2+2s+2}\\
+\end{array}
+\right]
+\]
+\[e^{At}
+=
+\left[
+\begin{array}{cc}
+e^{-t}(cost+sint) & e^{-t}sint \\
+-2e^{-t}sint & e^{-t}(cost-sint)\\
+\end{array}
+\right]
+\]
+take a substitution,we can get:
+\[y(t)=\int_{0}^{t}5e^{-(t-\tau)}[cos(t-\tau)-sin(t-\tau)]d\tau=5e^{-t}sint\]
+
+\section*{4.3}
+Let $u(t)$ is piecewise constant,that is to say,the input changes values only at discrete-time instants.
+we get the discrete-time equation without the approximation:
+\[
+\begin{aligned}
+x[k+1]=A_dx[k]+B_du[k]\\
+y[k]=C_dx[k]+D_du[k]\\
+\end{aligned}    
+\]
+where $A_d=e^{AT},B_d=(\int_{0}^{T}e^{A\tau}d\tau)B,C_d=C,D_d=D$
+when $T=1$:
+\[
+A_d=e^{A}=
+\left[
+\begin{array}{cc}
+e^{-1}(cos1+sin1) & e^{-1}sin1 \\
+-2e^{-1}sin1 & e^{-1}(cos1-sin1)\\
+\end{array}
+\right]
+\]
+%不要老是用calculate表示计算这个英文,要学会使用compute这个单词
+Because A is nonsingular, so we can compute the
+\[
+B_d=A^{-1}(A_d-I)B=
+\left[
+\begin{array}{c}
+1.0491\\
+-0.1821
+\end{array}
+\right]    
+\]
+\[
+C_d=C=
+\left[
+\begin{array}{cc}
+2 &3\\
+\end{array}
+\right] 
+\]
+thus the discrete-time equation:
+\[
+x[k+1]=
+\left[
+\begin{array}{cc}
+e^{-1}(cos1+sin1) & e^{-1}sin1 \\
+-2e^{-1}sin1 & e^{-1}(cos1-sin1)\\
+\end{array}
+\right]x[k]+
+\left[
+\begin{array}{c}
+1.0491\\
+-0.1821
+\end{array}
+\right]u[k]
+\]
+\[
+y[k]=
+\left[
+\begin{array}{cc}
+2 &3\\
+\end{array}
+\right]x[k]
+\]
+in the same way,for $T=\pi$:
+\[
+x[k+1]=
+\left[
+\begin{array}{cc}
+-0.0432 & 0 \\
+0 & -0.0432\\
+\end{array}
+\right]x[k]+
+\left[
+\begin{array}{c}
+1.5648\\
+-1.0432
+\end{array}
+\right]u[k]
+\]
+\[
+y[k]=
+\left[
+\begin{array}{cc}
+2 &3\\
+\end{array}
+\right]x[k]
+\]
+
+\section*{4.4}
+%求标准型的方法不只是有求传递函数，三阶有的时候(SI-A)逆很难求，
+%这个时候就要想起等价变换去求
+For companion form,we can compute the tansformation matrix:
+\[Q=
+\left[
+\begin{array}{ccc}
+b & Ab & A^2b
+\end{array}
+\right]
+=
+\left[
+\begin{array}{ccc}
+1 & -2 & 4\\
+0 & 2 & -4\\
+1 & -2 & 0
+\end{array}
+\right]
+\]
+\[
+\dot{\overline{x}}=Q^{-1}AQ\overline{x}+Q^{-1}bu
+\]
+\[y=CQ\overline{x}\]
+substitue with $Q,A,B,C$,we can get:
+\[
+\dot{\overline{x}}=
+\left[
+\begin{array}{ccc}
+0 & 0 & -4\\
+1 & 0 & -6\\
+0& 1 & -4
+\end{array}
+\right]\overline{x}+
+\left[
+\begin{array}{c}
+1\\
+0\\
+0\\
+\end{array}
+\right]
+\]
+\[y=
+\left[
+\begin{array}{ccc}
+1 & -4 & 8
+\end{array}
+\right]\overline{x}
+\]
+For modal form:
+The characteristic polynomial of $A$,
+\[det(SI-A)=(s+2)(s^2+2s+2)\]
+The eigenvalues of $A$ are:-2,-1+j,-1-j,
+their corresponding eigenvectors are $q_1,q_2,q_3$
+\[
+q_1=    
+\left[
+\begin{array}{c}
+0.7071\\
+0\\
+-0.7071
+\end{array}
+\right]
+\quad
+q_2=    
+\left[
+\begin{array}{c}
+0\\
+0.5774j\\
+-0.5774-0.5774j
+\end{array}
+\right]
+\quad
+q_3=    
+\left[
+\begin{array}{c}
+0\\
+-0.5774j\\
+-0.5774+0.5774j
+\end{array}
+\right]
+\]
+so,the transformation matrix is:
+\[
+Q=
+\left[
+\begin{array}{ccc}
+q_1 & Re(q_2) &Im(q_2)
+\end{array}
+\right]=
+\left[
+\begin{array}{ccc}
+0.7071 & 0 &0\\
+0 &0 &0.5774\\
+-0.7071 &-0.5774 & -0.5774 
+\end{array}
+\right]    
+\]
+we can get the modal form by:
+\[
+\dot{\overline{x}}=Q^{-1}AQ\overline{x}+Q^{-1}bu
+\]
+\[y=CQ\overline{x}\]
+thus:
+\[
+\dot{\overline{x}}=
+\left[
+\begin{array}{ccc}
+-2 & 0 & 0\\
+0 & -1 & 1\\
+0& -1 & -1
+\end{array}
+\right]\overline{x}+
+\left[
+\begin{array}{c}
+-3.4638\\
+0\\
+1.4138\\
+\end{array}
+\right]
+\]
+\[y=
+\left[
+\begin{array}{ccc}
+0 & -0.5774 & 0.7071
+\end{array}
+\right]\overline{x}
+\]
+\section*{4.5}
+For unit step input ,we can get $|y|_{max}=0.55,|x_{1}|_{max}=0.5,|x_{2}|_{max}=1.05,|x_{3}|_{max}=0.52$. Define $\bar{x}_{1}=x_{1},\bar{x}_{2}=0.5x_{2},\bar{x}_{3}=x_{3}$, so
+$$
+P=
+\begin{bmatrix}
+1&0&0\\
+0&0.5&0\\
+0&0&1
+\end{bmatrix}
+$$$$
+P^{-1}=
+\begin{bmatrix}
+1&0&0\\
+0&2&0\\
+0&0&1
+\end{bmatrix}
+$$
+$$
+\begin{aligned}
+\dot{\bar{\pmb{x}}}&=PAP^{-1}\bar{\pmb{x}}+Pbu\\
+&=\begin{bmatrix}
+-2&0 &0\\
+0.5&0&0.5\\
+0&-4&-2
+\end{bmatrix}\bar{\pmb{x}}+\begin{bmatrix}
+1\\0\\1
+\end{bmatrix}u\\
+y&=cP^{-1}\bar{\pmb{x}}=\begin{bmatrix}
+1&-2&0\\
+\end{bmatrix}\bar{\pmb{x}}
+\end{aligned}
+$$
+The largest permissible a is $\frac{10}{0.55}=18.2$
+\section*{4.6}
+$$
+\begin{array}{l}
+\dot{\bar{\pmb{x}}}=Q^{-1}\left[\begin{array}{cc}
+\lambda & 0 \\
+0 & \bar{\lambda}
+\end{array}\right] Q \bar{\pmb{x}}+Q^{-1}\left[\begin{array}{c}
+b_{1} \\
+b_{2}
+\end{array}\right] u \\
+=\frac{1}{(\lambda-\bar{\lambda}) b_{1} \bar{b}_{1}}\left[\begin{array}{cc}
+\bar{b}_{1} & -b_{1} \\
+\lambda \bar{b}_{1} & -\bar{\lambda} b_{1}
+\end{array}\right]\left[\begin{array}{cc}
+\lambda & 0 \\
+0 & \bar{\lambda}
+\end{array}\right]\left[\begin{array}{cc}
+-\bar{\lambda} b_{1} & b_{1} \\
+-\lambda \bar{b}_{1} & \bar{b}_{1}
+\end{array}\right] \bar{\pmb{x}}+\frac{1}{(\lambda-\bar{\lambda}) b_{1} \bar{b}_{1}}\left[\begin{array}{cc}
+\bar{b}_{1} & -b_{1} \\
+\lambda \bar{b}_{1} & -\bar{\lambda} b_{1}
+\end{array}\right]\left[\begin{array}{c}
+b_{1} \\
+b_{2}
+\end{array}\right] u \\
+=\frac{1}{(\lambda-\bar{\lambda}) b_{1} \bar{b}_{1}}\left[\begin{array}{cc}
+\bar{b}_{1} \lambda & -b_{1} \bar{\lambda} \\
+\lambda^{2} \bar{b}_{1} & -\bar{\lambda}^{2} b_{1}
+\end{array}\right]\left[\begin{array}{cc}
+-\bar{\lambda} b_{1} & b_{1} \\
+-\lambda \bar{b}_{1} & \bar{b}_{1}
+\end{array}\right] \bar{\pmb{x}}+\frac{1}{(\lambda-\bar{\lambda}) b_{1} \bar{b}_{1}}\left[\begin{array}{c}
+0 \\
+(\lambda-\bar{\lambda}) b_{1} \bar{b}_{1}
+\end{array}\right] u \\
+=\left[\begin{array}{cc}
+0 & 1 \\
+-\lambda \bar{\lambda} & \lambda+\bar{\lambda}
+\end{array}\right] \bar{\pmb{x}}+\left[\begin{array}{c}
+0 \\
+1
+\end{array}\right] u=\bar{A} \bar{\pmb{x}}+\bar{B} u \\
+y=\left[\begin{array}{cc}
+c_{1} & \bar{c}_{1}
+\end{array}\right] Q \bar{\pmb{x}}=\left[\begin{array}{cc}
+c_{1} & \bar{c}_{1}
+\end{array}\right]\left[\begin{array}{cc}
+-\bar{\lambda} b_{1} & b_{1} \\
+-\lambda \bar{b}_{1} & \bar{b}_{1}
+\end{array}\right] \bar{\pmb{x}}=\left[\begin{array}{cc}
+-\bar{\lambda} b_{1} c_{1}-\lambda \bar{b}_{1} \bar{c}_{1} & c_{1} b_{1}+\bar{c}_{1} \bar{b}_{1}
+\end{array}\right] \bar{\pmb{x}}=\bar{C}_{1} \bar{\pmb{x}}
+\end{array}
+$$
+\section*{4.7}
+Change the order of the state variables from $\begin{bmatrix}
+\dot{x_{1}} &
+\dot{x_{2}} &
+\dot{x_{3}}&
+\dot{x_{4}} &
+\dot{x_{5}} &
+\dot{x_{6}}\end{bmatrix}^{'}$ to $\begin{bmatrix}\dot{x_{1}} &
+\dot{x_{4}} &
+\dot{x_{2}} &
+\dot{x_{5}}&
+\dot{x_{3}} &
+\dot{x_{6}}\end{bmatrix}^{'}$ we can get
+$$
+\begin{aligned}
+\dot{\bar{\pmb{x}}}&
+=\begin{bmatrix}
+\dot{x_{1}} \\
+\dot{x_{4}} \\
+\dot{x_{2}} \\
+\dot{x_{5}}\\
+\dot{x_{3}} \\
+\dot{x_{6}}
+\end{bmatrix}=\begin{bmatrix}
+\lambda && 1  & & \\
+& \bar{\lambda} & & 1 & & \\
+& & \lambda & & 1 & \\
+& & & \bar{\lambda} & & 1 \\
+& & & & \lambda & \\
+& & & & & \bar{\lambda}
+\end{bmatrix}
+\begin{bmatrix}
+x_{1} \\
+x_{4} \\
+x_{2} \\
+x_{5} \\
+x_{3} \\
+x_{6}
+\end{bmatrix}+\begin{bmatrix}
+b_{1} \\
+\bar{b}_{1} \\
+b_{2} \\
+\bar{b}_{2} \\
+b_{3} \\
+\bar{b}_{3}
+\end{bmatrix}=\begin{bmatrix}
+\bar{A} & I_{2} & 0 \\
+0 & \bar{A} & I_{2} \\
+0 & 0 & \bar{A}
+\end{bmatrix}\bar{\pmb{x}}+\begin{bmatrix}
+\bar{B}_{1} \\
+\bar{B}_{2} \\
+\bar{B}_{3}
+\end{bmatrix} u\\
+y&=\left[\begin{array}{llllll}
+c_{1} & \bar{c}_{1} & c_{2} & \bar{c}_{2} & c_{3} & \bar{c}_{3}
+\end{array}\right] \bar{\pmb{x}}=\left[\begin{array}{lll}
+\bar{C}_{1} & \bar{C}_{2} & \bar{C}_{3}
+\end{array}\right] \bar{\pmb{x}}\end{aligned}
+$$
+\section*{4.8}
+The eigenvalues of the first equation are $2,2,1$, and eigenvalues of the second equation are $2,2,-1$. So they are not equivalent.
+$$
+\begin{aligned}
+&\hat{G}_{1}(s)=C_{1}(s I-A_{1})^{-1} B_{1}=\left[\begin{array}{lll}
+1 & -1 & 0
+\end{array}\right]\left[\begin{array}{ccc}
+s-2 & -1 & -2 \\
+0 & s-2 & -2 \\
+0 & 0 & s-1
+\end{array}\right]^{-1}\left[\begin{array}{l}
+1 \\
+1 \\
+0
+\end{array}\right]\\
+&=\frac{\left[\begin{array}{ccc}
+1 & -1 & 0
+\end{array}\right]}{(s-2)^{2}(s-1)}\left[\begin{array}{ccc}
+(s-2)(s-1) & (s-1) & 2(s-1) \\
+0 & (s-2)(s-1) & 2(s-2) \\
+0 & 0 & (s-2)^{2}
+\end{array}\right]\left[\begin{array}{l}
+1 \\
+1 \\
+0
+\end{array}\right]\\
+&=\frac{1}{(s-2)^{2}}\\
+&\hat{G}_{2}(s)=C_{2}(s I-A_{2})^{-1} B_{2}=\left[\begin{array}{lll}
+1 & -1 & 0
+\end{array}\right]\left[\begin{array}{ccc}
+s-2 & -1 & -1 \\
+0 & s-2 & -1 \\
+0 & 0 & s+1
+\end{array}\right]^{-1}\left[\begin{array}{l}
+1 \\
+1 \\
+0
+\end{array}\right]\\
+&=\frac{\left[\begin{array}{ccc}
+1 & -1 & 0
+\end{array}\right]}{(s-2)^{2}(s+1)}\left[\begin{array}{ccc}
+(s-2)(s+1) & (s+1) & (s-1) \\
+0 & (s-2)(s+1) & (s-2) \\
+0 & 0 & (s-2)^{2}
+\end{array}\right]\left[\begin{array}{l}
+1 \\
+1 \\
+0
+\end{array}\right]\\
+&=\frac{1}{(s-2)^{2}}
+\end{aligned}
+$$
+$\hat{G}_{1}(s)=\hat{G}_{2}(s)$, so they are zero-state equivalent.
+\section*{4.9}
+Let us define
+\[Z:=\begin{bmatrix}Z_{1}&Z_{2}&\cdots&Z_{r}\end{bmatrix}:=C(sI-A)^{-1}\]
+where $Z_{i}$ is $q\times q$ and $Z$ is $q\times rq$. Then the transfer matrix of (4.34) equals
+\[C(sI-A)^{-1}B=N_{1}Z_{1}+N_{2}Z_{2}+\cdots +N_{r}Z_{r}\] 
+\[Z=C(sI-A)^{-1}\quad \Rightarrow \quad ZA=sZ-C\]
+Then
+$$
+\begin{aligned}
+sZ-I_{q}&=-\alpha_{1}Z_{1}-\alpha_{2}Z_{2}-\cdots--\alpha_{r}Z_{r}\\
+Z_{1}&=sZ_{2} \quad \Rightarrow \quad Z_{2}=\frac{1}{s}Z_{1}\\
+Z_{2}&=sZ_{3} \quad \Rightarrow \quad Z_{3}=\frac{1}{s^{2}}Z_{1}\\
+&\hspace{1.6cm} \vdots\\
+Z_{r-1}&=sZ_{r} \quad \Rightarrow \quad Z_{r}=\frac{1}{s^{r-1}}Z_{1}
+\end{aligned}
+$$
+Then
+$$
+\begin{aligned}
+sZ_{1}-I_{q}&=(-\alpha_{1}-\frac{1}{s}\alpha_{2}-\cdots -\frac{1}{s^{r-1}}\alpha_{r})Z_{1}\\
+&\hspace{1.5cm} \Downarrow\\
+Z_{1}=\frac{s^{r-1}}{d(s)}&I_{q} \quad Z_{2}=\frac{s^{r-2}}{d(s)}I_{q} \quad
+Z_{r}=\frac{1}{d(s)}I_{q} \\
+&\hspace{1.5cm} \Downarrow\\
+C(sI-A)^{-1}B&=N_{1}Z_{1}+N_{2}Z_{2}+\cdots +N_{r}Z_{r}\\
+&=\frac{1}{d(s)}
+\begin{bmatrix}N_{1}s^{r-1}&N_{2}s^{r-2}&\cdots&N_{r}\end{bmatrix}\\
+&=\hat{G}_{sp}(s)
+\end{aligned} 
+$$
+So this is a realization of $\hat{G}_{sp}(s)$.
+\section*{4.10}
+In this case,$r=4,q=1$, then
+$$
+\begin{aligned}
+I_{q}&=1\\
+N_{1}&=\begin{bmatrix}\beta_{11} &\beta_{12}\end{bmatrix}\\
+N_{2}&=\begin{bmatrix}\beta_{21} &\beta_{22}\end{bmatrix}\\
+N_{3}&=\begin{bmatrix}\beta_{31} &\beta_{32}\end{bmatrix}\\
+N_{4}&=\begin{bmatrix}\beta_{41} &\beta_{42}\end{bmatrix}\end{aligned}
+$$
+We can get the conclusion.
+\section*{4.11}
+$$
+\begin{aligned}
+\hat{G}(s)=\begin{bmatrix}
+\frac{2}{s+1} & \frac{2 s-3}{(s+1)(s+2)} \\
+\frac{s-2}{s+1} & \frac{s}{s+2}
+\end{bmatrix}
+=\begin{bmatrix}
+\frac{2}{s+1} & \frac{2 s-3}{(s+1)(s+2)} \\
+\frac{-3}{s+1} & \frac{-2}{s+2}
+\end{bmatrix}+\begin{bmatrix}
+0 & 0 \\
+1 & 1
+\end{bmatrix} \\
+=\frac{1}{s^{2}+3 s+2}\begin{bmatrix}
+s\begin{bmatrix}
+2 & 2 \\
+-3 & -2
+\end{bmatrix}+\begin{bmatrix}
+4 & -3 \\
+-6 & -2\end{bmatrix}
+\end{bmatrix}+\begin{bmatrix}
+0 & 0 \\
+1 & 1
+\end{bmatrix}
+\end{aligned}
+$$
+so the realization is
+$$
+\begin{array}{l}
+\dot{\pmb{x}}=\left[\begin{array}{cccc}
+-3 & 0 & -2 & 0 \\
+0 & -3 & 0 & -2 \\
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0
+\end{array}\right] \pmb{x}+\left[\begin{array}{cc}
+1 & 0 \\
+0 & 1 \\
+0 & 0 \\
+0 & 0
+\end{array}\right] \pmb{u}\\
+~\\
+\pmb{y}=\left[\begin{array}{cccc}
+2 & 2 & 4 & -3 \\
+-3 & -2 & -6 & -2
+\end{array}\right] \pmb{x}+\left[\begin{array}{cc}
+0 & 0 \\
+1 & 1
+\end{array}\right] \pmb{u}
+\end{array}
+$$
+\section*{4.12}
+$$
+\begin{aligned}
+&\hat{G}_{1}(s)=\frac{1}{s+1}\left[\begin{array}{c}
+2 \\
+s-2
+\end{array}\right]=\frac{1}{s+1}\left[\begin{array}{c}
+2 \\
+-3
+\end{array}\right]+\left[\begin{array}{l}
+0 \\
+1
+\end{array}\right]\\
+&\dot{\pmb{x}}_{1}=-\pmb{x}_{1}+u_{1}\\
+&\pmb{y}_{c_{1}}=\left[\begin{array}{c}
+2 \\
+-3
+\end{array}\right]\pmb{x}_{1}+\left[\begin{array}{l}
+0 \\
+1
+\end{array}\right] u_{1}\\
+&\hat{G}_{2}(s)=\frac{1}{(s+1)(s+2)}\left[\begin{array}{c}
+2 s-3 \\
+-2 s-2
+\end{array}\right]+\left[\begin{array}{l}
+0 \\
+1
+\end{array}\right]=\frac{1}{(s+1)(s+2)}\left[s\left[\begin{array}{c}
+2 \\
+-2
+\end{array}\right]+\left[\begin{array}{c}
+-3 \\
+-2
+\end{array}\right]\right]+\left[\begin{array}{l}
+0 \\
+1
+\end{array}\right]\\
+&\dot{\pmb{x}}_{2}=\left[\begin{array}{cc}
+-3 & -2 \\
+1 & 0
+\end{array}\right] \pmb{x}_{2}+\left[\begin{array}{l}
+1 \\
+0
+\end{array}\right] u_{2}\\
+&\pmb{y}_{c_{2}}=\left[\begin{array}{cc}
+2 & -3 \\
+-2 & -2
+\end{array}\right] \pmb{x}_{2}+\left[\begin{array}{l}
+0 \\
+1
+\end{array}\right] u_{2}
+\end{aligned}
+$$
+Then we can get
+$$
+\begin{array}{l}
+\dot{\pmb{x}}=\left[\begin{array}{ccc}
+-1 & 0 & 0 \\
+0 & -3 & -2 \\
+0 & 1 & 0
+\end{array}\right] \pmb{x}+\left[\begin{array}{cc}
+1 & 0 \\
+0 & 1 \\
+0 & 0
+\end{array}\right] \pmb{u} \\
+~\\
+\pmb{y}=\left[\begin{array}{ccc}
+2 & 2 & -3 \\
+-3 & -2 & -2
+\end{array}\right] \pmb{x}+\left[\begin{array}{cc}
+0 & 0 \\
+1 & 1
+\end{array}\right] \pmb{u}
+\end{array}
+$$
+The dimension of this realization is 3, and dimension in Problem 4.11 is 4.
+\section*{4.13}
+$$
+\begin{aligned}
+\hat{G}_{1}(s)&=\frac{1}{(s+1)(s+2)}[2 s+4 \quad 2 s-3]=\frac{1}{s^{2}+3 s+2}\left[s\left[\begin{array}{cc}
+2 & 2
+\end{array}\right]+\left[\begin{array}{cc}
+4 & -3
+\end{array}\right]\right] \\
+\dot{\pmb{x}}_{1}&=\left[\begin{array}{cc}
+-3 & 1 \\
+-2 & 0
+\end{array}\right] \pmb{x}_{1}+\left[\begin{array}{cc}
+2 & 2 \\
+4 & -3
+\end{array}\right] \pmb{u}_{1}\\
+y_{c_{1} }&=\left[\begin{array}{ll}1 & 0\end{array}\right] \pmb{x}_{1}+\left[\begin{array}{ll}0 & 0\end{array}\right] \pmb{u}_{1}\\
+\hat{G}_{2}(s)&=\frac{1}{(s+1)(s+2)}[-3(s+2)-2(s+1)]+\left[\begin{array}{ll}
+1 & 1
+\end{array}\right]\\
+&=\frac{1}{(s+1)(s+2)}\left[s\left[\begin{array}{ll}
+-3 & -2
+\end{array}\right]+\left[\begin{array}{ll}
+-6 & -2
+\end{array}\right]\right]+\left[\begin{array}{ll}
+1 & 1
+\end{array}\right]\\
+\dot{\pmb{x}}_{2}&=\left[\begin{array}{cc}
+-3 & 1 \\
+-2 & 0
+\end{array}\right] \pmb{x}_{2}+\left[\begin{array}{cc}
+-3 & -2 \\
+-6 & -2
+\end{array}\right] \pmb{u}_{2}\\
+y_{c_{2}}&=\left[\begin{array}{ll}1 & 0\end{array}\right] \pmb{x}_{2}+\left[\begin{array}{ll}1 & 1\end{array}\right] \pmb{u}_{2}
+\end{aligned}
+$$
+Then we can get
+$$
+\begin{array}{l}
+\dot{\pmb{x}}=\left[\begin{array}{cccc}
+-3 & 1 & 0 & 0 \\
+-2 & 0 & 0 & 0 \\
+0 & 0 & -3 & 1 \\
+0 & 0 & -2 & 0
+\end{array}\right] \pmb{x}+\left[\begin{array}{cc}
+2 & 2 \\
+4 & -3 \\
+-3 & -2 \\
+-6 & -2
+\end{array}\right] \pmb{u} \\
+~\\
+\pmb{y}=\left[\begin{array}{llll}
+1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0
+\end{array}\right] \pmb{x}+\left[\begin{array}{ll}
+0 & 0 \\
+1 & 1
+\end{array}\right] \pmb{u}
+\end{array}
+$$
+The dimension of this realization is 4, which equal to dimension in Problem 4.11 and one more then dimension in Problem 4.12.
+\section*{4.14}
+$$
+\begin{array}{l}
+\hat{G}(s)=\begin{bmatrix}\frac{-(12 s+6)}{3 s+34}& \frac{22 s+23}{3 s+34}\end{bmatrix}=\left[\begin{array}{ll}
+-4 & \frac{22}{3}
+\end{array}\right]+\frac{1}{s+\frac{34}{3}}\left[\begin{array}{ll}
+\frac{130}{3} & -\frac{679}{9}
+\end{array}\right] \\
+~\\
+\begin{array}{l}
+\dot{x}=-\frac{34}{3} x+\begin{bmatrix}\frac{130}{3} &-\frac{679}{9}\end{bmatrix} U \\
+~\\
+y=x+\begin{bmatrix}-4 & \frac{22}{3}\end{bmatrix} U
+\end{array}
+\end{array}
+$$
+\section*{4.15}
+$$\hat{g}(s)=c(sI-A)^{-1}b=\frac{cR_{0}bs^{n-1}+cR_{1}bs^{n-2}+...+cR_{n-2}bs+R_{n-1}}
+{\Delta s}$$
+The numerator of $\hat{g}(s)$ has degree m if and only if
+$cR_{n-m-1}b\neq 0$ and $ cR_{i}b=0 \quad for \quad i=1,2,...,n-m-2$.
+$$
+\begin{aligned}
+cR_{0}b&=cb=0\\
+cR_{1}b&=cAb+\alpha_{1}cb=0 \quad \Rightarrow cAb=0\\
+cR_{2}b&=cA^{2}b+\alpha_{2}cR_{1}b=0 \quad \Rightarrow cA^{2}b=0\\
+&\hspace{2cm}\vdots\\
+cR_{n-m-2}b&=cA^{n-m-2}b+cR_{n-m-3}b=0 \quad \Rightarrow cA^{n-m-2}b=0\\
+cR_{n-m-1}b&=cA^{n-m-1}b+cR_{n-m-2}b\neq 0 \quad \Rightarrow cA^{n-m-1}b\neq 0
+\end{aligned}
+$$
+Then $\hat{g}(s)$ has m zeros if and only if $cR_{n-m-1}b\neq 0$ and $ cR_{i}b=0\quad for \quad i=1,2,...,n-m-2$.
+\section*{4.16}
+(1)
+$$
+\begin{aligned}
+&\begin{array}{l}
+\qquad \begin{array}{l}
+\dot{x}_{1}=x_{2} \Rightarrow x_{1}(t)=\int_{0}^{t} x_{2}(t) d t+x_{1}(0) \\
+\dot{x}_{2}=t x_{2} \Rightarrow x_{2}(t)=x_{2}(0) e^{0.5 t^{2}}
+\end{array} \\
+~\\
+\text { We have } \\
+X(0)=\left[\begin{array}{l}
+1 \\
+0
+\end{array}\right] \Rightarrow X(t)=\left[\begin{array}{l}
+1 \\
+0
+\end{array}\right] \\
+ X(0)=\left[\begin{array}{l}
+0 \\
+1
+\end{array}\right] \Rightarrow X(t)=\left[\begin{array}{c}
+\int_{0}^{t} e^{0.5 \tau^{2} d \tau} \\
+e^{0.5 t^{2}}
+\end{array}\right]
+\end{array}\\
+&\text { Then the fundamental matrix and transition matrix are}\\
+&\begin{array}{l}
+X(t)=\left[\begin{array}{ll}
+1 & \int_{0}^{t} e^{0.5 \tau^{2} d \tau} \\
+0 & e^{0.5 t^{2}}
+\end{array}\right] \\
+\Phi\left(t, t_{0}\right)
+=\left[\begin{array}{ll}
+1 & \int_{0}^{t} e^{0.5 \tau^{2} d \tau} \\
+0 & e^{0.5 t^{2}}
+\end{array}\right]\left[\begin{array}{ll}
+1 & \int_{0}^{t_{0}} e^{0.5 \tau^{2} d \tau} \\
+0 & e^{0.5 t_{0}^{2}}
+\end{array}\right]^{-1}\\
+=\left[\begin{array}{ll}
+1 & \int_{0}^{t} e^{0.5 \tau^{2} d \tau} \\
+0 & e^{0.5 t^{2}}
+\end{array}\right]\left[\begin{array}{ll}
+1 & -e^{-0.5t_{0}^{2}}\int_{0}^{t_{0}} e^{0.5 \tau^{2} d \tau} \\
+0 & e^{-0.5 t_{0}^{2}}
+\end{array}\right]
+=\left[\begin{array}{ll}
+1 & e^{-0.5 t_{0}^{2} d \tau} \int_{t_{0}}^{t} e^{0.5 \tau^{2} d \tau} \\
+0 & e^{0.5\left(t^{2}-t_{0}^{2}\right)}
+\end{array}\right]
+\end{array}
+\end{aligned}
+$$
+(2)
+$$
+\begin{aligned}
+&\begin{array}{l}
+\dot{x}_{1}=-x_{1}+e^{2 t} x_{2}(t)=-x_{1}+e^{t} x_{2}(0) \Rightarrow
+x_{1}(t)=0.5 x_{2}(0)\left(e^{t}-e^{-t}\right)+x_{1}(0) e^{-t} \\
+\dot{x}_{2}=-x_{2} \Rightarrow x_{2}(t)=x_{2}(0) e^{-t}
+\end{array}\\
+&\text{Then}\\
+&X(0)=\left[\begin{array}{l}
+1 \\
+0
+\end{array}\right] \Rightarrow X(t)=\left[\begin{array}{c}
+e^{-t} \\
+0
+\end{array}\right]\\
+& X(0)=\left[\begin{array}{l}
+0 \\
+1
+\end{array}\right] \Rightarrow X(t)=\left[\begin{array}{c}
+0.5\left(e^{t}-e^{-t}\right) \\
+e^{-t}
+\end{array}\right]\\
+&\text { Then the fundamental matrix and transition matrix are}\\
+&\begin{array}{l}
+X(t)=\left[\begin{array}{cc}
+e^{-t} & 0.5\left(e^{t}-e^{-t}\right) \\
+0 & e^{-t}
+\end{array}\right] \\
+\Phi\left(t, t_{0}\right)=\left[\begin{array}{cc}
+e^{-t} & 0.5\left(e^{t}-e^{-t}\right) \\
+0 & e^{-t}
+\end{array}\right]\left[\begin{array}{cc}
+e^{-t_{0}} & 0.5\left(e^{t_{0}}-e^{-t_{0}}\right) \\
+0 & e^{-t_{0}}
+\end{array}\right]^{-1} \\
+=\left[\begin{array}{cc}
+e^{t_{0}-t} & 0.5 e^{-t}\left(e^{t_{0}}-e^{-3 t_{0}}\right)+0.5\left(e^{t}-e^{-t}\right) e^{t_{0}} \\
+0 & e^{t_{0}-t}
+\end{array}\right]
+\end{array}
+\end{aligned}
+$$
+\section*{4.17}
+$$
+\frac{\partial }{\partial t}X^{-1}(t)$$
+$$
+\frac{\mathrm{d} }{\mathrm{d} t}(X(t)X^{-1}(t))=\dot {X}(t)X^{-1}(t)+X(t)\frac{\mathrm{d} }{\mathrm{d} t}X^{-1}(t)=0\\$$
+$$\Downarrow\\$$
+$$
+\frac{\mathrm{d} }{\mathrm{d} t}X^{-1}(t)=-X^{-1}(t)\dot {X}(t)X^{-1}(t)=-X^{-1}(t)A(t) X(t)X^{-1}(t)=-X^{-1}(t)A(t)$$
+Then we have
+$$\frac{\partial }{\partial t}\Phi(t_{0},t)=-X(t_{0})X^{-1}(t)A(t)=-\Phi(t_{0},t)A(t)$$
+\section*{4.18}
+$$
+\frac{\partial }{\partial t}\Phi(t,t_{0})=
+\begin{bmatrix}
+\frac{\partial }{\partial t}\phi_{11}&\frac{\partial }{\partial t}\phi_{12}\\
+\frac{\partial }{\partial t}\phi_{21}&\frac{\partial }{\partial t}\phi_{22}
+\end{bmatrix}=
+\begin{bmatrix}
+a_{11}&a_{12}\\
+a_{21}&a_{22}
+\end{bmatrix}
+\begin{bmatrix}
+\phi_{11}&\phi_{12}\\
+\phi_{21}&\phi_{22}
+\end{bmatrix}
+$$
+Then
+$$
+\begin{aligned}
+\frac{\partial}{\partial t}(\operatorname{det} \Phi)&=\frac{\partial}{\partial t}\left(\phi_{11} \phi_{22}-\phi_{21} \phi_{12}\right)\\
+&=\frac{\partial}{\partial t}\phi_{11} \phi_{22}-\frac{\partial}{\partial t}\phi_{21} \phi_{12}+\phi_{11} \frac{\partial}{\partial t}\phi_{22}-\phi_{21} \frac{\partial}{\partial t}\phi_{12}\\
+&=\left(a_{11} \phi_{11}+a_{12} \phi_{21}\right) \phi_{22}-\left(a_{11} \phi_{12}+a_{12} \phi_{22}\right) \phi_{21}+\phi_{11}\left(a_{21} \phi_{12}+a_{22} \phi_{22}\right)-\phi_{12}\left(a_{21} \phi_{11}+a_{22} \phi_{21}\right)\\
+&=\left(a_{11}+a_{22}\right)\left(\phi_{11} \phi_{22}-\phi_{21} \phi_{12}\right)\\
+&=\left(a_{11}+a_{22}\right) \operatorname{det} \Phi
+\end{aligned}
+$$
+Then
+$\operatorname{det} \Phi\left(t, t_{0}\right)=c e^{\int_{t_{0}}^{t}\left(a_{11}(\tau)+a_{22}(\tau)\right) d \tau}$ and $ \Phi\left(t_{0}, t_{0}\right)=I$, so we can get $c=1 ,\operatorname{det} \Phi\left(t, t_{0}\right)= e^{\int_{t_{0}}^{t}\left(a_{11}(\tau)+a_{22}(\tau)\right) d \tau}$
+\section*{4.19}
+$$
+\Phi(t_{0},t_{0})=\begin{bmatrix}
+\phi_{11}(t_{0},t_{0})&\phi_{12}(t_{0},t_{0})\\
+\phi_{21}(t_{0},t_{0})&\phi_{22}(t_{0},t_{0})
+\end{bmatrix}=I
+$$
+Then $\phi_{21}(t_{0},t_{0})=0,\phi_{22}(t_{0},t_{0})=I$.
+$$
+\frac{\partial }{\partial t}\Phi(t,t_{0})=
+\begin{bmatrix}
+\frac{\partial }{\partial t}\phi_{11}(t,t_{0})&\frac{\partial }{\partial t}\phi_{12}(t,t_{0})\\
+\frac{\partial }{\partial t}\phi_{21}(t,t_{0})&\frac{\partial }{\partial t}\phi_{22}(t,t_{0})
+\end{bmatrix}=
+\begin{bmatrix}
+A_{11}(t)&A_{12}(t)\\
+0&A_{22}(t)
+\end{bmatrix}
+\begin{bmatrix}
+\phi_{11}(t,t_{0})&\phi_{12}(t,t_{0})\\
+\phi_{21}(t,t_{0})&\phi_{22}(t,t_{0})
+\end{bmatrix}
+$$
+Then
+$$
+\begin{aligned}
+\frac{\partial }{\partial t}\phi_{11}(t,t_{0})&=A_{11}(t)\phi_{11}(t,t_{0})+A_{12}(t)\phi_{21}(t,t_{0})\\
+\frac{\partial }{\partial t}\phi_{21}(t,t_{0})&=A_{22}(t)\phi_{21}(t,t_{0})\\
+\frac{\partial }{\partial t}\phi_{22}(t,t_{0})&=A_{22}(t)\phi_{22}(t,t_{0})
+\end{aligned}
+$$
+The equation $\frac{\partial }{\partial t}\phi_{22}(t,t_{0})=A_{22}(t)\phi_{22}(t,t_{0})$ with $\phi_{22}(t_{0},t_{0})=I$ has the unique solution $\phi_{22}(t,t_{0})$.
+The equation $\frac{\partial }{\partial t}\phi_{21}(t,t_{0})=A_{22}(t)\phi_{21}(t,t_{0})$ with $\phi_{21}(t_{0},t_{0})=0$ has the unique solution $\phi_{21}(t,t_{0})\equiv 0$.
+So $\frac{\partial }{\partial t}\phi_{11}(t,t_{0})=A_{11}(t)\phi_{11}(t,t_{0})+
+A_{12}(t)\phi_{21}(t,t_{0})=A_{11}(t)\phi_{11}(t,t_{0})$
+\section*{4.20}
+$$
+\begin{array}{l}
+\dot{x}_{1}=-\sin t x_{1} \Rightarrow x_{1}(t)=x_{1}(0) e^{\cos t} \\
+\dot{x}_{2}=-\cos t x_{2} \Rightarrow x_{2}(t)=x_{2}(0) e^{-\sin t}
+\end{array}
+$$
+then we have
+$$
+\begin{aligned}
+X(0)&=\left[\begin{array}{l}1 \\ 0\end{array}\right] \Rightarrow X(t)=\left[\begin{array}{c}e^{\cos t} \\ 0\end{array}\right] \\
+X(0)&=\left[\begin{array}{l}0 \\ 1\end{array}\right] \Rightarrow X(t)=\left[\begin{array}{c}0 \\ e^{-\sin t}\end{array}\right]
+\end{aligned}
+$$
+Then the fundamental matrix is
+\[X(t)=\left[\begin{array}{cc}e^{\cos t} & 0 \\ 0 & e^{-\sin t}\end{array}\right] \]
+So the state transition matrix is
+\[\Phi\left(t, t_{0}\right)=\left[\begin{array}{cc}e^{\cos t} & 0 \\ 0 & e^{-\sin t}\end{array}\right]\left[\begin{array}{cc}e^{-\cos t_{0}} & 0 \\ 0 & e^{\sin t_{0}}\end{array}\right]=\left[\begin{array}{cc}e^{\cos t-\cos t_{0}} & 0 \\ 0 & e^{-\sin t+\sin t_{0}}\end{array}\right]\]
+\section*{4.21}
+Because
+$\dot{X}(t)=Ae^{At}Ce^{Bt}+e^{At}Ce^{Bt}B=AX+XB$
+and
+$X(0)=e^{A\dot0}Ce^{B\dot0}=C$
+,so $X(t)=e^{At}Ce^{Bt}$ is the solution.
+\section*{4.22}
+We can get the solution of $\dot{A}(t)=A_{1}A(t)+A(t)(-A_{1})$ is $A(t)=e^{A_{1}t}A(0)e^{-A_{1}t}$ from the conclusion of Problem 4.20.\\
+$$
+\begin{aligned}
+det(\lambda I-A(t))&=det(e^{A_{1}t}\lambda Ie^{-A_{1}t}-A(t))\\
+&=det(e^{A_{1}t}(\lambda I-A(0))e^{-A_{1}t})\\
+&=det e^{A_{1}t} det e^{-A_{1}t} det(\lambda I-A(0))\\
+&=det(\lambda I-A(0))
+\end{aligned}
+$$
+So the eigenvalues of $A(t)$ are incdependent of $t$.
+\section*{4.23}
+Define $T=2\pi$, then
+\[X(t)=\left[\begin{array}{cc}e^{\cos t} & 0 \\ 0 & e^{-\sin t}\end{array}\right],
+X(t+T)=\left[\begin{array}{cc}e^{\cos (t+2\pi)} & 0 \\ 0 & e^{-\sin (t+2\pi)}=X(t)\end{array}\right]
+\]
+$$X(t+T)=X(t)e^{\bar{A}t}\Rightarrow \bar{A}=0$$
+Then
+\[P(t)=e^{\bar{A}t}X^{-1}(t)=\left[\begin{array}{cc}e^{-\cos t} & 0 \\ 0 & e^{\sin t}\end{array}\right]\]
+Let $\bar{\pmb{x}}=P(t)\pmb{x}$, then the state equation is
+$\dot{\bar{\pmb{x}}}=\bar{A}\pmb{x}=0$.
+\section*{4.24}
+$$X(t)=e^{At}\quad \Rightarrow X^{-1}(t)=e^{-At}$$
+Let $P(t)=e^{\bar{A}t}X^{-1}(t)=X^{-1}(t)=e^{-At}$ and $\bar{\pmb{x}}=P(t)\pmb{x}$, then we can get
+$$\bar{A}(t)=0 \quad \quad \bar{B}(t)=e^{-At}B \quad \quad \bar{C}(t)=Ce^{At}$$
+\section*{4.25}
+time-varying realization:
+$$g(t-\tau)=(t-\tau)^{2}e^{\lambda(t-\tau)}=
+\begin{bmatrix}
+t^{2}e^{\lambda t}&-2te^{\lambda t}&e^{\lambda t}
+\end{bmatrix}\begin{bmatrix}
+e^{-\lambda \tau}\\ \tau e^{-\lambda \tau} \\ \tau^{2}e^{-\lambda \tau}
+\end{bmatrix}$$
+Thus a time-varying realization is
+$$
+\begin{aligned}
+\dot{\pmb{x}}&=\begin{bmatrix}
+0&0&0\\0&0&0\\0&0&0
+\end{bmatrix}\pmb{x}+
+\begin{bmatrix}
+e^{-\lambda t}\\ t e^{-\lambda t} \\ t^{2}e^{-\lambda t}
+\end{bmatrix}u\\
+y(t)&=\begin{bmatrix}
+t^{2}e^{\lambda t}& -2t e^{\lambda t} &e^{\lambda t}
+\end{bmatrix}\pmb{x}
+\end{aligned}
+$$
+time-invariant realization:
+The Laplace transform of the impluse response is
+$$\hat{g}(s)=\frac{2}{(s-\lambda)^{2}}=\frac{2}{s^{3}-3\lambda s^{2}+3\lambda^{2}s+\lambda^{3}}$$
+Then we can get
+$$
+\begin{aligned}
+\dot{\pmb{x}}&=\begin{bmatrix}
+3\lambda & -3\lambda^{2}&\lambda^{3}\\1&0&0\\0&1&0
+\end{bmatrix}\pmb{x}+
+\begin{bmatrix}
+1\\ 0 \\0
+\end{bmatrix}u\\
+y(t)&=\begin{bmatrix}
+0& 0 &2
+\end{bmatrix}\pmb{x}
+\end{aligned}
+$$
+\section*{4.26}
+$$g(t,\tau)=sint e^{-t} e^{\tau}cos \tau$$
+Thus a time-varying realization is
+$$
+\begin{aligned}
+\dot{x}&=0 x+e^{t}cost u\\
+y&=sint e^{-t}u
+\end{aligned}
+$$
+Because $g(t,\tau)$ can not be expended as $g(t-\tau)$ , it is not possible to find a time-invariant state equation realization.
+\end{document}

@@ -1,0 +1,414 @@
+\documentclass{article}
+% 这里是导言区
+%\usepackage{indentfirst}%缩进控制
+\usepackage{listings}%插入代码
+%\usepackage{mcode}
+%ctex能够保证能够渲染英文
+\usepackage{ctex}
+\usepackage{textcomp}
+\usepackage{graphicx}%插入图像
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{geometry}%设置页边距
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage[level]{datetime} 
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+% \renewcommand\thesection{\roman{subsection}}
+%\newdateformat{ukdate}{\ordinaldate{\THEDAY} \monthname[\THEMONTH]
+
+\geometry{a4paper,scale=0.75}
+
+
+\lstset{
+tabsize=4, %tab 空格数
+frame=shadowbox, %把代码用带有阴影的框圈起来
+rulesepcolor=\color{red!20!green!20!blue!20}, %代码块边框为淡青色
+keywordstyle=\color{blue!90}\bfseries, %代码关键字的颜色为蓝色, 粗体
+showstringspaces=false, %不显示代码字符串中间的空格标记
+stringstyle=\ttfamily, %代码字符串的特殊格式
+keepspaces=true, %
+breakindent=22pt, %
+numbers=left, %左侧显示行号
+stepnumber=1, %
+numberstyle=\tiny, %行号字体用小号
+basicstyle=\footnotesize, %
+showspaces=false, %
+flexiblecolumns=true, %
+breaklines=true, %对过长的代码自动换行
+breakautoindent=true, %
+breakindent=4em, %
+aboveskip=1em, %代码块边框
+}
+
+\title{Chapter5}
+\author{31202008881        \quad \quad \quad
+          Bao Ze an}
+
+\begin{document}
+\setlength{\parindent}{2em}
+\maketitle
+
+\section*{5.1}
+The transfer function of the system is \\
+\begin{center}
+    \begin{eqnarray*}\begin{split}
+    g(s)=\frac{s}{s^2+1}
+    \end{split}\end{eqnarray*}
+\end{center}
+
+Let $u(t)=\sin(t)$,then the Laplace transform of $u(t)$ is $u(s)=\frac{1}{s^2+1}$,and the output will be \\
+\begin{center}
+    $y(s)=\frac{s}{(s^2+1)^2}$
+\end{center}
+
+Through inverse Laplace transform,we have $y(t)=0.5t\sin(t)$,and it is not bounded.So the system is not BIBO stable.\\
+
+\section*{5.2}
+$g(s)=\int_0^\infty g(t)e^{-st} dt$.And let $s=\sigma +j\omega$,then we have:\\
+\begin{center}
+    \begin{eqnarray*}\begin{split}
+    \left|e^{-st}\right|&=\left|e^{-\sigma t}\right|\left|e^{-j\omega t}\right|\\
+    &=\left|e^{-\sigma t}\right|\\
+    &\leq1
+    \end{split}\end{eqnarray*}
+\end{center}
+
+So if the system is BIBO stable,then we have $\int_0^\infty \left|g(t)\right| dt < \infty$,thus we have for $Re>0$\\
+\begin{center}
+    $\left|g(s)\right|\leq \int_0^\infty \left|g(t)\right|\left|e^{-st}\right| dt\leq \int_0^\infty \left|g(t)\right| dt \leq \infty$.Thus the necessarily can be proved.
+\end{center}
+
+\section*{5.3}
+For $g(t)=1 /(t+1)$:\\
+\begin{center}
+\begin{eqnarray*}\begin{split}
+\int_0^\infty \left|g(t)\right| dt &=\int_0^\infty\left|1 /(t+1)\right| dt\\
+&=\left.ln(t+1)\right|^\infty_0\\
+&=\infty
+\end{split}\end{eqnarray*}
+\end{center}
+
+So $g(t)$ is not absolutely integrable,the system is not BIBO stable.\\
+
+For $g(t)=t e^{-t}$:\\
+By taking Laplace transform,$g(s)=\frac{1}{(s+1)^2}$,and all the roots have negative real parts,so the system is BIBO stable.\\
+
+\section*{5.4}
+
+By taking Laplace transform,we have\\
+\begin{center}
+    For $t\geq 2$,$g(t)=e^{-t+2}$\\
+    For $t<2$,$g(t)=0$
+\end{center}
+
+Then\\
+\begin{center}
+    \begin{eqnarray*}\begin{split}
+    \int_0\infty \left|g(t)\right| dt&=\int_2\infty \left|e^{-t+2}\right| dt\\
+    &=\left.-e^{-t+2}\right|_2^\infty\\
+    &=1
+    \end{split}\end{eqnarray*}
+\end{center}
+So $g(t)$ is absolutely integrable,and the system is BIBO stable.\\
+
+\section*{5.5}
+
+If $r(t)=\delta (t)$,then we have $g(t)=a\delta(t-1)-a^2\delta(t-2)+a^3\delta(t-3)+\cdots $.And\\
+\begin{center}
+    \begin{eqnarray*}\begin{split}
+    \int_0^\infty \left|g(t)\right| dt&=\int_0^\infty \left|a\delta(t-1)-a^2\delta(t-2)+a^3\delta(t-3)+\cdots\right| dt\\
+    &=|a|+|a|^2+|a|^3+\cdots\\
+    &=\left\{\begin{array}{l}\frac{|a|}{1-|a|},|a|<1\\
+    \infty,|a|\geq 1\end{array}\right.
+    \end{split}\end{eqnarray*}
+\end{center}
+
+So the system is BIBO stable if $|a|<1$.\\
+
+And if $a=1$,let $r(t)=\left\{\begin{array}{ll} 1 & 2n<t<2n+1,n=0,1,2,\cdots\\
+-1 & 2n+1<t<2n+2,n=0,1,2,\cdots\end{array}\right.$.Obviously $r_m=1<\infty$,so the input is bounded.\\
+
+Then the output will be $y(t)=i\times (-1)^{i+1},i<t<i+1,i=0,1,2,\cdots$,and the output is not bounded.So the system is not BIBO stable.\\
+
+\section*{5.6}
+
+From theorem 5.2,we have\\
+
+For $u(t)=3$,$y(t)=3\times \hat{g}(0)=-6$\\
+
+For $u(t)=\sin(2t)$,$y(t)=\left|\hat{g}(j2)\right|\sin(2t+\varphi (\hat{g}(j2)))=1.26\sin(t+1.25)$\\
+
+\section*{5.7}
+
+The transfer function is\\
+\begin{center}
+    \begin{eqnarray*}\begin{split}
+    g(s)&=\left[\begin{array}{ll} -2 & 3\end{array}\right]\left[\begin{array}{ll}-1 & 10\\0 & 1\end{array}\right]^{-1}\left[\begin{array}{l} -2\\0\end{array}\right]\\
+    &=\frac{4}{s+1}
+    \end{split}\end{eqnarray*}
+\end{center}
+
+The root of the transfer matrix has negative real part,so the system is BIBO stable.\\
+
+\section*{5.8}
+
+By taking z-transform,we have\\
+\begin{center}
+    $g(z)=\frac{0.8z}{(z-0.8)^2}$
+\end{center}
+
+Then the poles lie in the unit circle,so the system is BIBO stable.\\
+
+\section*{5.9}
+
+$\lambda I-A=\left[\begin{array}{ll}\lambda+1 & \lambda-10\\0 & \lambda -1\end{array}\right]$,so the eigenvalues are -1 and 1.Since there is one eigenvalue 1 that has positive real part,the system is neither marginally stable nor asymptotically stable.\\
+
+\section*{5.10}
+
+$\lambda I-A=\left[\begin{array}{lll}\lambda+1 & 0 & -1\\0 & \lambda & 0\\0 & 0 &\lambda\end{array}\right]$,and by the determinant of it we can get that the eigenvalues of A are 0,0,-1.Thus the system is not asymptotically stable.Then for eigenvalue 0,let $\lambda=0$,then $(\lambda I-A)x=0$ will be\\
+\begin{center}
+    $\left[\begin{array}{lll}1 & 0 & -1\\0 & 0 & 0\\0 & 0 & 0\end{array}\right]x=0$
+\end{center}
+
+The coefficient matrix has rank 1,so there are 2 independent solutions.So matrix A can be transformed as $\left[\begin{array}{lll}-1 & 0 & 0\\0 & 0 & 0 \\0 & 0 & 0\end{array}\right]$.And the minimal polynomial is $\lambda(\lambda+1)$,so 0 is the single root of the minimal polynomial.Thus the system is marginally stable.\\
+
+\section*{5.11}
+
+$\lambda I-A=\left[\begin{array}{lll}\lambda +1 & 0 & -1\\0 & 0 & \lambda-1\\0 & 0 & \lambda\end{array}\right]$,so the characteristic polynomial is $\lambda^2(\lambda+1)$,the eigenvalues are 0,0,-1.Thus the system is not asymptotically stable.For eigenvalue 0,$(\lambda I-A)x=0$ will be \\
+\begin{center}
+    $\left[\begin{array}{lll}1 & 0 & -1\\0 & 0 & -1\\0 & 0 & 0\end{array}\right]x=0$
+\end{center}
+
+The coefficient matrix has rank 2,so there is only 1 independent solution.The solution will be $\left[\begin{array}{lll}0 & 1 & 0\end{array}\right]'$,and from this there exists a generated solution $\left[\begin{array}{lll} 1 & 0 & 1\end{array}\right]'$.These two vectors consists of the eigenvectors of eigenvalue 0.And from the calculation we can get that A can be transform as $\left[\begin{array}{lll}-1 & 0 & 0\\0 & 0 & 1\\0 & 0 & 0\end{array}\right]$.So the minimal polynomial will be $\lambda^2(\lambda+1)$,and since 0 is not single root of the minimal polynomial,the system is not marginally stable.\\
+
+\section*{5.12}
+The eigenvalues of A are 0.9,1,1.So the system is not asymptotically stable.Then for eigenvalue 1,$I-A$ has rank 1,so there are two independent solutions for $(I-A)x=0$.So A can be transformed into\\
+\begin{center}
+    $\left[\begin{array}{lll}0.9 & 0 & 0\\0 & 1 & 0\\ 0 & 0 & 1\end{array}\right]$
+\end{center}
+
+And the minimal polynomial will be $(\lambda-1)(\lambda-0.9)$,so 1 is the single root of the minimal polynomial.So the system is marginally stable.\\
+
+\section*{5.13}
+
+The characteristic polynomial is $(\lambda-1)^2(\lambda-0.9)$.So the system is not asymptotically stable.As for eigenvalue 1,$I-A$ will be\\
+\begin{center}
+    $\left[\begin{array}{lll}0.1 & 0 -1\\0 & 0 & -1 \\0 & 0 & 0\end{array}\right]$
+\end{center}
+
+The coefficient matrix has rank 2.So there is only one independent solution for $(I-A)x=0$.Thus A can be transformed into\\
+\begin{center}
+    $\left[\begin{array}{lll} 0.9 & 0 & 0\\0 & 1 & 1\\0 & 0 & 1\end{array}\right]$
+\end{center}
+
+From the Jordan form,we can get that the minimal polynomial of A is $(\lambda-1)^2(\lambda-0.9)$.So 1 is not the single root of the minimal polynomial.The system is not marginally stable.\\
+
+\section*{5.14}
+
+As for the Lyapunov equation $A'M+MA=-N$,we can choose N to be identity matrix.Then the equation will be\\
+\begin{center}
+    $\left[\begin{array}{ll}0 & -0.5\\1 & -1\end{array}\right]\left[\begin{array}{ll}m_{11} & m_{12}\\m_{21} & m_{22}\end{array}\right]+\left[\begin{array}{ll}m_{11} & m_{12}\\m_{21} & m_{22}\end{array}\right]\left[\begin{array}{ll}0 & 1\\-0.5 & -1\end{array}\right]=\left[\begin{array}{ll}-1 & 0\\0 & -1\end{array}\right]$
+\end{center}
+
+And by solving the equation,we can get $M=\left[\begin{array}{ll} 1.75 & 1\\1 & 1.5\end{array}\right]$.Since $1.75>0$,$1.75\times 1.5-1>0$,M is of positive definite.So all eigenvalues of A have negative real parts.\\
+
+\section*{5.15}
+
+For the Lyapunov equation $M-A'MA=N$,we choose N to be identity matrix.Then we have\\
+\begin{center}
+    $\left[\begin{array}{ll}m_{11} & m_{12}\\m_{21} & m_{22}\end{array}\right]-\left[\begin{array}{ll}0 & -0.5\\1 & -1\end{array}\right]\left[\begin{array}{ll}m_{11} & m_{12}\\m_{21} & m_{22}\end{array}\right]\left[\begin{array}{ll}0 & 1\\-0.5 & -1\end{array}\right]=\left[\begin{array}{ll}1 & 0\\0 & 1\end{array}\right]$
+\end{center}
+
+By solving the equation,we can get that $M=\left[\begin{array}{ll}2.2 & 1.6\\1.6 & 4.8\end{array}\right]$.The matrix is of positive definite,so all eigenvalues of the A have magnitudes less than 1.\\
+
+\section*{5.16}
+
+Let $\mathbf{A}=\operatorname{diag}\left(\lambda_{1}, \lambda_{2}, \lambda_{3}\right)$,then the Lyapunov equation will be \\
+\begin{center}
+    $-\left[\begin{array}{lll}a_1^2 & a_1a_2 & a_1a_3\\a_1a_2 & a_2^2 & a_2a_3\\a_1a_3 & a_2a_3 & a_3^2\end{array}\right]=-N$
+\end{center}
+
+Let $N=\bar{N}'\bar{N}$,then we have $\bar{N}=\left[\begin{array}{lll} a_1 & a_2 & a_3\end{array}\right]$.Then construct the following matrix:\\
+\begin{center}
+    $\left[\begin{array}{l}\bar{N}\\ \bar{N}A \\ \bar{N}A^2\end{array}\right]=\left[\begin{array}{lll} a_1 & a_2 & a_3\\ \lambda_1a_1 & \lambda_2a_2 & \lambda_3a_3\\ \lambda^2_1a_1 & \lambda^2_2a_2 & \lambda^2_3a_3\end{array}\right]\doteq \alpha$.
+\end{center}
+
+And $\det (\alpha)=a_1a_2a_3(\lambda_3-\lambda_1)(\lambda_3-\lambda_2)(\lambda_2-\lambda_1)$.Since $a_i$ are all non-zero,and $\lambda_i$ are all distinct,$\det \alpha \neq 0$.So $\alpha$ is of full rank and from the corollary M is of positive definite.\\
+
+\section*{5.17}
+
+Let $H_1=\left[\begin{array}{cc}
+0 & 1 \\
+-2 & 3
+\end{array}\right]$,$H_2=\left[\begin{array}{cc}
+2 & 1 \\
+1.9 & 1
+\end{array}\right]$.\\
+
+For matrix $H_1$,the eigenvalues are $1,2$.Let $x=\left[\begin{array}{ll}4 & 1\end{array}\right]'$,then $x'Ax=-1<0$,so the matrix is not positive definite.\\
+
+For matrix $H_2$,let $x=\left[\begin{array}{ll} 0.5805 & -0.8142\end{array}\right]$.And $x'Ax=-0.0338<0$.The matrix is not positive definite.But all its leading principal minors are 2 and 0.1.They are both larger than 0.\\
+
+So we cannot judge the positive definiteness of the matrix by eigenvalues or leading principal minors if matrix is not symmetric.\\
+
+Under this condition,we can construct matrix $\hat{H}=\frac{1}{2}(H'+H)$.That is,for matrix $H_1$,$H_1^{\prime}=\left[\begin{array}{ll} 0 & -0.5\\-0.5 & 3\end{array}\right]$.It is not positive definite because the leading principal minors are 0,-0.25.Similarly,$H_2^{\prime}=\left[\begin{array}{ll} 2 & 1.45\\1.45 & 1\end{array}\right]$.It is not positive definite since the leading principal minors are 2,-0.1025.\\
+
+\section*{5.18}
+
+The equation can be transformed as:\\
+\begin{center}
+    $(A'+\mu I')M+M(A+\mu I')=-N$
+\end{center}
+
+Since the equation has a unique symmetric solution M and M is positive definite for any given positive definite symmetric matrix N,$(A+\mu I)$ has eigenvalues with negative real parts.Let the eigenvalues of A be $\lambda_i$,then the eigenvalues of $A+\mu I$ can be $\lambda+\mu$.Then we have $Re(\lambda)<-\mu$.\\
+
+\section*{5.19}
+
+The equation can be transformed as:\\
+\begin{center}
+    $M-(\frac{1}{\rho}A')M(\frac{1}{\rho}A)=N$
+\end{center}
+
+If $N>0,M>0$,then we can get that all the eigenvalues of $\frac{1}{\rho}A$ have magnitudes less than 1.Let $\lambda_i$ be the eigenvalues of A,then we have $\left|\frac{1}{\rho}\lambda_i\right|<1$,that is,$\left|\lambda_i\right|<\rho$.\\
+
+\section*{5.20}
+$g(t, \tau)=e^{-2|t|-|\tau|}:$\\
+
+By integration,we have:\\
+\begin{center}
+    $\int_{t_0}^t |e^{-2|t|-|\tau|}| d\tau=e^{-2|t|}\int_{t_0}^t e^{-|\tau|} d\tau\doteq \alpha$
+\end{center}
+When $t_0\leq t <0$,we have:\\
+\begin{center}
+    \begin{eqnarray*}\begin{split}
+    e^{-2|t|}\int_{t_0}^t e^{-|\tau|} d\tau&=e^{2t}\int_{t_0}^t e^{\tau} d\tau\\
+    &=e^{2t}(e^t-e^{t_0})\\
+    &<\infty
+    \end{split}\end{eqnarray*}
+\end{center}
+
+When $t_0\leq t,t>0$,we have:\\
+\begin{center}
+    \begin{eqnarray*}\begin{split}
+    \alpha&=e^{-2t}(\int_{t_0}^0 e^{\tau} d\tau+\int_0^t e^{-\tau} d\tau)\\
+    &=e^{-2t}[(1-e^{t_0})-(e^{-t}-1)]\\
+    &=e^{-2t}(-e^{-t}-e^{t_0}+2)\\
+    &<\infty(t_0<0)
+    \end{split}\end{eqnarray*}
+\end{center}
+\begin{center}
+    \begin{eqnarray*}\begin{split}
+    \alpha&=e^{-2t}\int_{t_0}^t e^{-\tau} d\tau\\
+    &=e^{-2t}(e^{-t_0}-e^{-t})\\
+    &<\infty(t_0>0)
+    \end{split}\end{eqnarray*}
+\end{center}
+
+So the system is BIBO stable.\\
+
+$g(t, \tau)=\sin t\left(e^{-(t-\tau)}\right) \cos \tau :$\\
+
+With integration,we have:\\
+\begin{center}
+    \begin{eqnarray*}\begin{split}
+    \int_{t_0}^{\infty} |g(t-\tau)| d\tau &\leq \int_{t_0}^{t} e^{-(t-\tau)} d\tau\\
+    &=e^{-t}\int_{t_0}^t e^{\tau} d\tau\\
+    &=e^{-t}(e^{t}-e^{t_0})\\
+    &=1-e^{-(t-t_0)}\\
+    &<\infty
+    \end{split}\end{eqnarray*}
+\end{center}
+
+So the system is BIBO stable.\\
+
+\section*{5.21}
+
+For the scalar equation,we have:\\
+\begin{center}
+    $\phi (t,t_0)=e^{\int_{t_0}^t e^{2t} dt}=e^{t^2-t_0^2}$
+\end{center}
+
+Thus $g(t,\tau)=e^{-\tau^2}$,and with integration,we have:\\
+\begin{center}
+    \begin{eqnarray*}\begin{split}
+    \int_{t_0}^t|g(t,\tau)| d\tau&=\int_{t_0}^t e^{-\tau^2} d\tau\\
+    &<\infty
+    \end{split}\end{eqnarray*}
+\end{center}
+
+Since $e^{-\tau^2}<e^{-\tau}<\infty$ when $\tau$ approaches $\infty$,the system is BIBO stable.\\
+
+And $|\phi (t,\tau)|=e^{t^{2}-t_0^2}$ approaches $\infty$ when t approaches $\infty$,the system is not marginally stable nor asymptotically stable.\\
+
+\section*{5.22}
+With the transform formula,we have:\\
+\begin{center}
+    \begin{eqnarray*}\begin{split}
+    \bar{A}&=[P(t)A(t)+\dot{P}(t)]P^{-1}(t)\\
+    &=(2te^{-t^2}-2te^{-t^2})e^{t^2}\\
+    &=0
+    \end{split}\end{eqnarray*}
+\end{center}
+
+Thus the system can be transformed into\\
+$$
+\dot{\bar{x}}=0 \cdot \bar{x}+e^{-t^{2}} u \quad y=\bar{x}
+$$
+
+Then the transfer matrix is $\phi=C$,let $C=1$,then we have:\\
+\begin{center}
+    $g(t,\tau)=e^{-\tau^2}$
+\end{center}
+
+The impulse response remain unchanged corresponding to the last problem,so the system is BIBO stable.\\
+
+And the transfer matrix is a constant number,so the system is marginally stable,but it will not approaches 0 when $t\rightarrow \infty$,so the system is not asymptotically stable.\\
+
+And since $P^{-1}(t)=e^{\tau^2}$,and it doesn't approach 0 when t approaches $\infty$,so the transformation is not a Lyapunov transformation.
+
+\section*{5.23}
+
+From the equation,we have:\\
+\begin{center}
+    \begin{eqnarray*}\begin{split}
+    \dot{x}_1(t)&=-x_1(t)\\
+    \dot{x}_2(t)&=-e^{-3t}x_1(t)
+    \end{split}\end{eqnarray*}
+\end{center}
+
+Then we have:\\
+\begin{center}
+    \begin{eqnarray*}\begin{split}
+    x_1(t)&=e^{-t}x_1(0)\\
+    x_2(t)&=\frac{1}{4}e^{-4t}x_1(0)+x_2(0)-\frac{1}{4}x_1(0)
+    \end{split}\end{eqnarray*}
+\end{center}
+
+Thus the fundamental matrix can be obtained as $\left[\begin{array}{ll} e^{-t} & 0\\ \frac{1}{4}e^{-4t}-\frac{1}{4} & 1\end{array}\right]$.And the state transfer matrix is:\\
+\begin{center}
+    $\phi=\left[\begin{array}{ll} e^{-t+t_0} & 0 \\ \frac{1}{4}e^{-4t+t_0}-\frac{1}{4}e^{-3t_0} & 1\end{array}\right]$
+\end{center}
+
+For the sum of the matrix rows,$0\leq e^{-t+t_0} \leq 1$,$\frac{3}{4}\leq 1+\frac{1}{4}e^{-4t+t_0}-\frac{1}{4}e^{-3t_0}\leq 1$.So $||\phi||_{\infty} \leq 1<\infty$.Thus the matrix is marginally stable.However,since not every entry of the matrix approaches zero as t approaches $\infty$,the system is not asymptotically stable.
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+

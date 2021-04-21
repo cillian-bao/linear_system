@@ -1,0 +1,771 @@
+\documentclass{article}
+% 这里是导言区
+%\usepackage{indentfirst}%缩进控制
+\usepackage{listings}%插入代码
+%\usepackage{mcode}
+%ctex能够保证能够渲染英文
+\usepackage{ctex}
+\usepackage{textcomp}
+\usepackage{graphicx}%插入图像
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{geometry}%设置页边距
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage[level]{datetime} 
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+% \renewcommand\thesection{\roman{subsection}}
+%\newdateformat{ukdate}{\ordinaldate{\THEDAY} \monthname[\THEMONTH]
+
+\geometry{a4paper,scale=0.75}
+
+
+\lstset{
+tabsize=4, %tab 空格数
+frame=shadowbox, %把代码用带有阴影的框圈起来
+rulesepcolor=\color{red!20!green!20!blue!20}, %代码块边框为淡青色
+keywordstyle=\color{blue!90}\bfseries, %代码关键字的颜色为蓝色, 粗体
+showstringspaces=false, %不显示代码字符串中间的空格标记
+stringstyle=\ttfamily, %代码字符串的特殊格式
+keepspaces=true, %
+breakindent=22pt, %
+numbers=left, %左侧显示行号
+stepnumber=1, %
+numberstyle=\tiny, %行号字体用小号
+basicstyle=\footnotesize, %
+showspaces=false, %
+flexiblecolumns=true, %
+breaklines=true, %对过长的代码自动换行
+breakautoindent=true, %
+breakindent=4em, %
+aboveskip=1em, %代码块边框
+}
+
+\title{Chapter9}
+\author{31202008881        \quad \quad \quad
+          Bao Ze an}
+
+\begin{document}
+\setlength{\parindent}{2em}
+\maketitle
+
+\section*{9.1}
+for $D(s)=s^2-1$,$N(s)=s-2$,because $D(s)$ and $N(s)$ are coprime.The solution is exist in
+\[A(s)D(s)+B(s)N(s)=s^2+2s+2\]
+from the example 9.1,we have for any polynomial $Q(s)$
+\[
+\begin{split}
+A(s)=\frac{1}{3}(s^2+2s+2)+Q(s)(-s+2)\\
+B(s)=\frac{-1}{3}(s+2)(s^2+2s+2)+Q(s)(s^2-1)
+\end{split}
+\]
+is a solution
+we can't find a solution with $\rm{deg} B(s) \leq \rm{deg} A(s)$ in the equation.\\
+for any $Q(s)=q_0$ of degree 0,we have $\rm{deg} B(s) >\rm{deg} A(s)$.\\
+for any $Q(s)=q_0+q_1s$ of degree 1,we have $\rm{deg} B(s)>\rm{deg} A(s)$.\\for any
+$Q(s)=q_0+q_1s+q_2s^2$ of degree 3,we also have $\rm{deg} B(s)>\rm{deg} A(s)$.\\
+proceeding forward,we can 
+conclude that there exist no solution with $\rm{deg} B(s) \leq \rm{deg} A(s)$ in the equation.
+
+\section*{9.2}
+for $F(s)=(s+2)(s+1+j1)(s+1-j1)=s^3+4s^2+6s+4$,$N(s)=s-1$,$D(s)=s^2-4$
+$N(s)$ and $D(s)$ are coprime.
+\[
+\begin{split}
+D_0=-4,D_1=0,D_2=1\\
+N_0=-1,N_1=1,N_2=0\\
+\end{split}    
+\]
+Suppose 
+\[
+    \begin{split}
+    A(s)=A_0+A_1s \\
+    B(s)=B_0+B_1s
+    \end{split}
+\]
+\[
+   \left[ 
+       \begin{array}{cccc}
+        A_0 & B_0 & A_1 & B_1
+    \end{array}
+   \right]
+   \left[ 
+       \begin{array}{cccc}
+        -4 & 0 & 1 & 0\\
+        -1 & 1 & 0 & 0\\
+        0 & -4 & 0 & 1\\
+        0 & -1 & 1 & 0
+    \end{array}
+   \right]=\left[ 
+       \begin{array}{cccc}
+        4 & 6 & 4 & 1
+    \end{array}
+   \right]
+\]
+$\Rightarrow \left[ 
+    \begin{array}{cccc}
+    A_0 & B_0 & A_1 & B_1
+    \end{array}
+\right]=\left[
+    \begin{array}{cccc} 
+    -6 & 20 &1 & 10
+    \end{array}
+\right]
+$\\
+The compensator equation is $C(s)=\frac{B(s)}{A(s)}=\frac{10s+20}{s-6}$\\
+To track any step reference input,$\hat{g}_0(0)=1$,so $p=\frac{F_0}{B_0N_0}=\frac{4}{20 \times -1 }=-0.2$.
+
+\section*{9.3}
+for the compensator computed in the problem 9.2,if the transfer function changes to $\overline{\hat{g}}(s)=\frac{s-0.9}{s^-4.1}$
+\[
+    \begin{split}
+    \hat{g}_0(s)=&\frac{pB(s)N(s)}{A(s)D(s)+B(s)N(s)}\\    
+          =&\frac{-0.2(20+10s)(s-0.9)}{(s-6)(s^2-4.1)+(10s+20)(s-0.9)}
+\end{split}
+\]
+\[ 
+    \hat{g}_0(0)=\frac{3.6}{6.6}=0.55
+\]
+so the overall system can't track asymptotically any step reference input.
+\begin{enumerate}
+    \item The compensator of degree 3 \\
+    First,we introduce a internal model $\frac{1}{\Phi(s)}=\frac{1}{s}$,Then $B(s)/A(s)$ can be solved form:
+    \[A(s)D(s)\Phi(s)+B(s)N(s)=F(s)\]
+    Because $\overline{D}(s)=D(s)\Phi(s)$ has degree 3,we may select $A(s)$ and $B(s)$ to have degree 2.Then $F(s)$ has degree 5.\\
+    $F(s)=(s+2)(s+1+j1)(s+1-j1)(s+3)(s+3)=s^5+10s^4+39s^3+76s^2+78s+36$
+    \[ 
+        \begin{split}
+            &\overline{D}(s)=D(s)\Phi(s)=(s^2-4.1)s=0-4.1s+0 \dot s^2+1 \dot s^3\\
+            &N(s)=s-0.9=-0.9+1 \dot s+0 \dot s^2+0 \dot s^3    
+        \end{split}
+    \]
+    \[ 
+    \left[ 
+        \begin{array}{cccccc}
+            A_0 & B_0 & A_1 & B_1 & A_2 & B_2
+        \end{array}
+    \right]
+    \left[ 
+        \begin{array}{cccccc}
+            0 & -4.1 & 0 & 1 & 0 & 0\\
+            -0.9 & 1 & 0 & 0 & 0& 0\\
+            0 & 0 & -4.1 & 0 & 1 & 0\\
+            0 & -0.9 & 1 & 0 & 0 & 0\\
+            0 & 0 &0 & -4.1 & 0 & 1\\
+            0 & 0 & -0.9 & 1 & 0 & 0
+        \end{array}
+    \right]=\left[ 
+        \begin{array}{cccccc}
+            36 & 78 & 76 & 39 & 10 &1
+        \end{array}
+    \right]    
+    \]
+    $\Rightarrow     \left[ 
+        \begin{array}{cccccc}
+            A_0 & B_0 & A_1 & B_1 & A_2 & B_2
+        \end{array}
+    \right]=    \left[ 
+        \begin{array}{cccccc}
+            -78.5 & -40 & 10 & 226.4 & 1 & 121.6
+        \end{array}
+    \right]$
+    The compensator is :
+    \[ 
+        C(s)=\frac{B(s)}{A(s)\Phi(s)}=\frac{121.6s^2+226.4s-40}{(s^2+10s-78.5)s}    
+    \]
+    \item The compensator of degree 2\\
+     through using the free parameter, we may able to include an internal model in the compensator
+    selecting the $F(s)$ have degree 4.\\
+    $F(s)=(s^3+4s^2+6s+4)(s+3)=s^4+7s^3+18s^2+22s+12$
+    \[ 
+        \begin{split}
+            &\overline{D}(s)=D(s)\Phi(s)=(s^2-4.1)=-4.1+0 \dot s+1 \dot s^2\\
+            &N(s)=s-0.9=-0.9+1 \dot s+0 \dot s^2    
+        \end{split}
+    \]
+    \[ 
+        \left[ 
+            \begin{array}{cccccc}
+                A_0 & B_0 & A_1 & B_1 & A_2 & B_2
+            \end{array}
+        \right]
+        \left[ 
+            \begin{array}{ccccc}
+                -4.1 & 0 & 1 & 0 & 0\\
+                -0.9 & 1 & 0 & 0 & 0\\
+                0 & -4.1 & 0 & 1 & 0\\
+                0 & -0.9 & 1 & 0 & 0\\
+                0 & 0 & -4.1 & 0 & 1\\
+                0 & 0 & -0.9 & 1 & 0
+            \end{array}
+        \right]=\left[ 
+            \begin{array}{ccccc}
+                12 & 22 & 18 & 7 &1
+            \end{array}
+        \right]    
+        \] 
+    in order for proper compensator,$C(s)=\frac{B_0+B_1s+B_2s^2}{A_0+A_1s+A_2s^2}$,to have $1/s$ as a factor,we require $A_0=0$.
+    $\Rightarrow     \left[ 
+        \begin{array}{cccccc}
+            A_0 & B_0 & A_1 & B_1 & A_2 & B_2
+        \end{array}
+    \right]=    \left[ 
+        \begin{array}{cccccc}
+            0 & -13.3 & -18.5 & 45.1 & 1 & 25.5
+        \end{array}
+    \right]$
+    thus the compensator is:
+    \[C(s)=\frac{B(s)}{A(s)}=\frac{25.5s^2+45.1s-13.3}{s^2-18.5s}\]
+\end{enumerate}
+
+\section*{9.4}
+\[ 
+\hat{g}(s)=\frac{(s-1)}{s(s-2)}    
+\]
+There is no need to introduce a feedforward gain to achieve tracking of any step reference input.
+Because $D(s)=s(s-2)$,for $r(s)=\frac{a}{s}=\frac{N_r(s)}{D_r(s)}$
+the unstable roots of $D_r(s)=s$ is canceled by $D(s)=s(s-2)$,so it has achieved robustly tracking any step reference input.
+
+\section*{9.5}
+yes,the design is robust.
+
+\section*{9.6}
+for $\hat{g}(s)=\frac{1}{s-1}$,$w(t)=asin(2t+\theta)$\\
+in order to achieve the design,the polynomial A(s) must contain the disturbancce model $(s^2+4)$ and the step input $s$.\\
+consider $A(s)D(s)+B(s)N(s)=F(s)$,for this equation,we have deg $D(s)=n=1$,thus if $m=n-1=0$, then the solution is unique and we have no freedom in assigning $A(s)$.
+if m=2,then we have two free parameters that can be used to assign A(s)\\
+Let 
+\[     
+\begin{split}
+&A(s)=\tilde{A_0}s(s^2+4)\\
+&B(s)=B_0+B_1s+B_2s^2+B_3s^3
+\end{split}
+\]
+Define $\overline{D}(s)=D(s)(s^2+4)s=(s^2-s)(s^2+4)=0-4s+4s^2-s^3+s^4$\\
+for $\tilde{A}_0\overline{D}(s)+B(s)N(s)=F(s)$
+\[ 
+    \left[ 
+        \begin{array}{ccccc}
+            \tilde{A}_0 & B_0 & B_1 & B_2 & B_3
+        \end{array}
+    \right]
+    \left[ 
+        \begin{array}{ccccc}
+            \overline{D}_0 & \overline{D}_1 & \overline{D}_2 & \overline{D}_3 &\overline{D}_4\\
+            N_0 & N_1 & 0 & 0 & 0\\
+            0 & N_0 & N_1 & 0 & 0\\
+            0 & 0 & N_0 & N_1 &0\\
+            0 & 0 & 0 & N_0 & N_1
+        \end{array}
+    \right]=\left[ 
+        \begin{array}{ccccc}
+            F_0 & F_1 & F_2 & F_3 & F_4
+        \end{array}
+    \right]    
+    \] 
+$F(s)=(s+1+j2)(s+1-j2)(s+2+j1)(s+2-j1)=(s^2+2s+5)(s^2+4s+5)=s^4+6s^3+18s^2+30s+25$\\
+\[ 
+    \left[ 
+        \begin{array}{ccccc}
+            \tilde{A}_0 & B_0 & B_1 & B_2 & B_3
+        \end{array}
+    \right]
+    \left[ 
+        \begin{array}{ccccc}
+            0 & -4 & 4 & -1 & 1\\
+            1 & 0 & 0 & 0 & 0\\
+            0 & 1 & 0 & 0 & 0\\
+            0 & 0 & 1 & 0 & 0\\
+            0 & 0 & 0 & 1 & 0\\
+        \end{array}
+    \right]=\left[ 
+        \begin{array}{ccccc}
+            25 & 30 & 18 & 6 &1
+        \end{array}
+    \right]    
+    \] 
+    $\Rightarrow     \left[ 
+        \begin{array}{ccccc}
+            \tilde{A}_0 & B_0 & B_1 & B_2 & B_3
+        \end{array}
+    \right]=    \left[ 
+        \begin{array}{ccccc}
+           1 & 25 & 34 & 14 & 7
+        \end{array}
+    \right]$
+    thus the compensator is:
+    \[C(s)=\frac{B(s)}{A(s)}=\frac{7s^3+14s^2+34s+25}{s(s^2+4)}\]
+
+\section*{9.7}
+the output can track robustly any step reference input.
+Because 
+\[ 
+\hat{e}(s)=\frac{A(s)D(s)\Phi(s)}{F(s)}\frac{N_r(s)}{D_r(s)}    
+\]
+because the unstable roots of $D_r(s)=s$ are canceled by $D(s)=s(s-2)$,so we conclude $e(t)\rightarrow 0 \,\rm{as} \, t\rightarrow \infty$
+But ,the system can't reject any step disturbancce.
+\[
+\hat{y}_w(s)=\frac{N(s)A(s)\Phi(s)}{F(s)}\frac{N_w(s)}{D_w(s)}    
+\]
+the $D_w(s)=s$ can't be canceled.
+
+\section*{9.8}
+\[ 
+    \hat{g}_{yr}(s)=\frac{1/s}{1+1/s}=\frac{1}{s+1}
+    \]
+so the transfer function from r to y is BIBO stable,but the system is not totally stable.
+the transfer function from $n_1$ to $n_2$ is:
+\[
+\hat{g}_{n_2n_1}(s)=\frac{1/(s-2)}{1+1/s}=\frac{s}{(s+1)(s-2)}    
+\]
+is not BIBO stable.
+
+\section*{9.9}
+\begin{enumerate}
+    \item  the every possible closed-loop transfer function
+        \[
+            \begin{split}
+            &g_{n_2r}=C(s)(1+C(s)\hat{g}(s))^{-1}\\
+            &g_{n_3r}=C(s)\hat{g}(s)(1+C(s)\hat{g}(s))^{-1}\\
+            & g_{n_3n_2}=\hat{g}(s)(1+C(s)\hat{g}(s))^{-1}\\
+            & g_{rn_2}=-\hat{g}(s)(1+C(s)\hat{g}(s))^{-1}\\
+            &g_{rn_3}=-(1+C(s)\hat{g}(s))^{-1}\\
+           \end{split}
+            \]
+        so the closed-loop transfer function of every possible input-output pair contains the factor $(1+C(s)\hat{g}(s))^{-1}$.
+    \item $(1+C(s)\hat{g}(s))^{-1}$ is proper $\Leftrightarrow$ $|(1+C(\infty)\hat{g}(\infty))^{-1}|<\infty$ $\Leftrightarrow$ $(1+C(\infty)\hat{g}(\infty)) \neq 0$
+    \item if $C(\infty)\hat{g}(\infty) \neq -1$,then every possible input-output pair transfer function is a product of two proper fucntion.Then every closed-loop transfer function is proper and well posed.
+\end{enumerate}
+
+\section*{9.10}
+from the corollary 9.4,we can find\\
+$\frac{s-1}{(s+1)^2}$ and $\frac{(s-1)(b_0s+b_1)}{(s+2)^2(s^2+2s+2)}$ is implementable,the others are not implementable.
+
+\section*{9.11}
+For $\hat{g}(s)=\frac{(s-1)}{s(s-2)}$ and $\hat{g}_0(s)=\frac{-2(s-1)}{s^2+2s+2}$\\
+open loop configurations:\\
+\[C(s)=\frac{\hat{g}_0(s)}{\hat{g}(s)}=\frac{\frac{-2(s-1)}{s^2+2s+2}}{\frac{(s-1)}{s(s-2)}}=\frac{-2s(s-2)}{s^2+2s+2}\]
+because it involves unstable pole-zero cancellations of $(s-1)$,so it is not totally stable,the implementations can't be used in practice.\\
+
+unity-feedback configurations:
+The general form of a unity-feedback configurations is:$\hat{g}_0(s)=\frac{c(s)g(s)}{1+c(s)g(s)}$\\
+we can compute the compensator as:
+\[C(s)=\frac{\hat{g}_0(s)}{\hat{g}(s)[1-\hat{g}_0(s)]}=\frac{-2(s-2)}{s+4}\]
+it also involves unstable pole-zero cancellations of $(s-1)$,so it is not totally stable,it can't be used in practice.
+
+\section*{9.12}
+First we compute:
+\[\frac{\hat{g}_0(s)}{N(s)}=\frac{-2(s-1)}{(s^2+2s+2)(s-1)}=\frac{-2}{(s^2+2s+2)}=\frac{\overline{E}(s)}{\overline{F}(s)}\]
+Because the degree of $\overline{F}(s)$ is 2,we introduce $F(s)=s+3$,so that the degree of $\overline{F}(s)\hat{F}(s)=(s^2+2s+2)(s+3)$ is 3=2n-1\\
+thus we have
+\[\hat{g}_0(s)=\frac{\overline{E}(s)N(s)\hat{F}(s)}{\overline{F}(s)\hat{F}(s)}=\frac{L(s)N(s)}{A(s)D(s)+M(s)N(s)}\]
+\[L(s)=\overline{E}(s)\hat{F}(s)=-2\]
+and $A(s)$ and $M(s)$ can be solved from 
+\[A(s)D(s)+M(s)N(s)=\overline{F}(s)\hat{F}(s)=(s^2+2s+2)(s+3)=s^3+5s^2+8s+6\]
+\[D(s)=s(s-2)=s^2-2s=0-2s+1.s^2\]
+\[N(s)=s-1=-1+1.s+0.s^2\]
+\[
+\left[
+    \begin{array}{cccc}
+        A_0 & M_0 & A_1 & M_1
+    \end{array}
+\right]   
+\left[ 
+        \begin{array}{cccc}
+            0 & -2 & 1 & 0\\
+            -1 & 1 & 0 & 0\\
+            0 & 0 & -2 & 1\\
+            0 & -1 & 1 & 0\\
+        \end{array}
+\right]=\left[ 
+    \begin{array}{cccc}
+        6 & 8 & 5 & 1
+    \end{array}
+\right] 
+\]
+$\Rightarrow 
+\left[
+    \begin{array}{cccc}
+    A_0 & M_0 & A_1 & M_1
+    \end{array}
+\right]=
+\left[
+    \begin{array}{cccc}
+        -21 & -6 & 1 & 28
+    \end{array}
+\right]
+$\\
+thus we have $A(s)=s-21$ and $M(s)=28s-6$
+then the compensators are:
+\[C_1(s)=\frac{L(s)}{A(s)}=\frac{-2(s+3)}{s-21}\]
+\[C_2(s)=\frac{M(s)}{A(s)}=\frac{28s-6}{s-21}\]
+we can see the $A(s)$ is not a Hurwitz polynomial
+we can't implement the two compensators as show in Fig 9.4(a),because the $A(s)$ is not a
+Hurwitz polynomial,the output of $C_1(s)$ will grow without bound and the overall system is not totally stable.
+
+Implementing the two compensators in Fig(9.4)d:
+\[
+\hat{u}(s)=A^{-1}(s)
+\left[
+    \begin{array}{cc}
+    L(s)& -M(s)
+    \end{array}
+\right]
+\left[
+    \begin{array}{c}
+        r(s)\\
+        y(s)
+    \end{array}
+\right]=
+(
+\left[
+    \begin{array}{cc}
+        -2 & 28
+    \end{array}
+\right]+
+\frac{1}{s-21}\left[
+    \begin{array}{cc}
+        -48 & 582
+    \end{array}
+\right]
+)(\left[
+    \begin{array}{c}
+        \hat{r}(s)\\
+        \hat{y}(s)
+    \end{array}
+\right])
+\]
+Its state-space realization is 
+\[
+\dot{x}=-21x+\left[
+    \begin{array}{cc}
+        -48 & 582
+    \end{array}
+\right]\left[
+    \begin{array}{c}
+        r\\
+        y
+    \end{array}
+\right]
+\]
+\[ 
+y=x+\left[
+    \begin{array}{cc}
+        -2 & 28
+    \end{array}
+\right]
+\left[
+    \begin{array}{c}
+        r\\
+        y
+    \end{array}
+\right]
+\]
+
+\section*{9.13}
+According to the final value theorem,
+$r(t)=at$ $\Rightarrow$ $\hat{r}(s)=\frac{a}{s^2}$
+\[
+\hat{y}(s)=\hat{g}_0(s)\hat{r}(s)=\hat{g}_0(s)\frac{a}{s^2}=
+\frac{k_1}{s}+\frac{k_2}{s^2}+(fraction\; of\; the\; poles\; of\; \hat{g}_0(s))
+\]
+solve the coefficients,according to the residue method:
+\[
+\begin{split}
+k_2=\hat{g}_0(s).\frac{a}{s^2}.s^2 \Bigg|_{s=0}=\hat{g}_0(0).a\\
+k_1=\frac{d}{ds}[\hat{g}_0(s).a] \Bigg|_{s=0}=g^{'}_0(0).a\\  
+\end{split}  
+\]
+
+if $\hat{g}_0(s)$ is BIBO stable, then every pole lies inside the left half plane will approaches 0 as $t\rightarrow \infty$
+thus we have 
+\[y_{ss}(t)=\lim_{t \rightarrow \infty}y(t)=\mathcal{L}^{-1}[\frac{k_1}{s}+\frac{k_2}{s^2}]=g_0(0)'.a+\hat{g}_0(0).at\]
+Thus if the output is to track asymptotically the ramp reference input we require $\hat{g}_0(0)=1$ and $\hat{g}^{'}_0(0)=0$
+
+\section*{9.14}
+necessity:
+\[\hat{g}_0(0)=1 \Rightarrow \hat{g}_0(0)=\frac{b_0}{a_0}=1 \Rightarrow b_0=a_0\]
+\[
+\begin{split}    
+&\hat{g}^{'}(0)=0 \\
+&\hat{g}^{'}_0(s)=\frac{(b_1+2b_2s+\cdots+mb_ms^{m-1})(a_0+a_1s+\cdots+a_ns^n)-(b_0+b_1s+\cdots+b_ms^m)(a_1+2a_2s+\cdots+na_ns^{n-1})}{(a_0+a_1s+\cdots+a_ns^n)^2}
+\end{split}
+\]
+
+\[
+\begin{split}
+&\hat{g}^{'}_0(0)=\frac{b_1a_0-b_0a_1}{a_0^2}=0 \Rightarrow\\
+&b_1a_0=b_0a_1
+\end{split}
+\]
+because $a_0=b_0$,$a_1=b_1$\\
+sufficiency: if $a_0=b_0$ and $a_1=b_1$,$\hat{g}_0(0)=\frac{b_0}{a_0}=1$
+\[\hat{g}^{'}_0(0)=\frac{b_1a_0-b_0a_1}{a_0^2}=0\]
+
+\section*{9.15}
+(1) according to the corollary 9.4
+all roots of $s^2+2s+a$ have negative real parts,so we need:
+\[
+\left\{
+\begin{split}
+s_1+s_2=-2 \leq 0\\
+s_1s_2=a >0
+\end{split}
+\right.    
+\]
+all zeros of $N(s)=(s+3)(s-2)$ with zero or positive real parts are retained in $(b_1s+b_0)$\\
+\[2b_1+b_0=0 \Rightarrow b_0=-2b_1 \]
+
+(2)
+\[
+\hat{g}_0(0)=\frac{-2b_0}{2 \times 2}=1    
+\]
+so $b_0=-2$\\
+from problem 9.13,we can get:
+\[
+    \hat{g}^{'}_0(s)=\frac{[b_1s+b_0+(s-2)b_1][(s+2)(s^2+2s+2)]-[(s-2)(b_1s+b_0)][(s^2+2s+2)+(s+2)(2s+2)]}{[(s+2)(s^2+2s+2)]^2}
+\]
+\[
+    \hat{g}^{'}_0(0)=\frac{16b_0-8b_1}{4}=0
+\]
+$2b_0=b_1$ so $b_1=-4$\\
+
+\section*{9.16}
+\[
+\hat{G}(s)=\left[
+    \begin{array}{c}
+        \frac{s+1}{s(s+1)}\\
+        \frac{1}{s^2-1}
+    \end{array}
+\right]=
+\left[
+    \begin{array}{c}
+    (s+1)^2\\
+    s
+    \end{array}
+\right]
+\left[
+    s(s^2-1)^{-1}
+\right]
+\]
+\[
+\begin{split}
+&D(s)=s(s^2-1)=s^3-s=0-1.s+0.s^2+1.s^3\\
+&N(s)=
+\left[
+\begin{array}{c}
+s^2+2s+1\\
+s
+\end{array}
+\right]=\left[
+    \begin{array}{c}
+        1\\
+        0
+    \end{array}
+\right]+
+\left[
+    \begin{array}{c}
+        2\\
+        1
+    \end{array}
+\right]s+
+\left[
+    \begin{array}{c}
+        1\\
+        0
+    \end{array}
+\right]s^2+
+\left[
+    \begin{array}{c}
+        0\\
+        0
+    \end{array}
+\right]s^3
+\end{split}
+\]
+\[
+S_m=
+    \left[ 
+        \begin{array}{cccccc}
+            0 & -1 & 0 & 1 & 0 & 0\\
+            1 & 2 & 1 & 0 & 0& 0\\
+            0 & 1 & 0 & 0 & 0 & 0\\
+            0 & 0 & -1 & 0 & 1 & 0\\
+            0 & 1 &2 & 1 & 0 & 0\\
+            0 & 0 & 1 & 0 & 0 & 0\\
+            0 & 0 & 0 & -1 & 0 & 1\\
+            0 & 0 & 1 & 2& 1 & 0 \\
+            0 & 0 & 0 & 1 & 0 & 0
+        \end{array}
+    \right]    
+\]
+here we need linearly indepedent rows from top to bottom of $S_m$,there we will apply QR decomposition to the transpose of $S_m$.
+we see that there are two linearly indepedent $N_1$-rows and one linearly indepedent $N_2$ row.The degree of $G(s)$ is 3 and we have found 
+three linearly indepedent N-rows.Therefore there is no need to search further and we have $v_1=2$ and $v_2=1$.Thus the row index is $v=2$.we select 
+$m_1=m_2=m=v-1=1$ thus for any column-reduced F(s) of column degrees $m+\mu=4$,we can find a proper compensator
+\[F(s)=(s+2)(s+1+j1)(s+1-j1)(s+3)=s^4+7s^3+18s^2+22s+12\]
+\[
+\left[
+    \begin{array}{cccc}
+        A_0 & B_0 & A_1 & B_1
+    \end{array}
+\right]\tilde{S}_1=
+\left[
+    \begin{array}{cccc}
+        A_0 & B_0 & A_1 & B_1
+    \end{array}
+\right] 
+\left[ 
+        \begin{array}{ccccc}
+            0 & -1 & 0 & 1 & 0 \\
+            1 & 2 & 1 & 0 & 0\\
+            0 & 1 & 0 & 0 & 0\\
+            0 & 0 & -1 & 0 & 1\\
+            0 & 1 &2 & 1 & 0 \\
+            0 & 0 & 1 & 0 & 0 \\
+        \end{array}
+\right]=\left[ 
+    \begin{array}{ccccc}
+        12 & 22 & 18 & 7 & 1
+    \end{array}
+\right] 
+\]
+we knew $\tilde{S}_1$ is full column rank,when seraching the row index,we knew that the last of $\tilde{S}_1$ is a linearly depedent row.
+we delete the row, and  assign the second column of $B_1$ as 0
+using matlab, we have 
+\[
+\left[
+    \begin{array}{cccc}
+        A_0 & B_0 & A_1 & B_1
+    \end{array}
+\right]=
+\left[
+    \begin{array}{cccccc}
+        3.5 & 12 & -2 &1 &3.5 &0
+    \end{array}
+\right]    
+\]
+so we can get $A(s)=s+3.5$ and $B(s)=\left[
+    \begin{array}{cc}
+        3.5s+12 & -2
+    \end{array}
+\right]
+$\\
+\[
+    \hat{G}(s)=N(s)F^{-1}(s)B(s)=
+    \left[
+        \begin{array}{c}
+            s^2+2s+1\\
+            s
+        \end{array}
+    \right] 
+    (s^4+7s^3+18s^2+22s+12)^{-1}
+    \left[
+        \begin{array}{cc}
+            3.5s+12 & -2
+        \end{array}
+    \right]
+\]
+\[
+    \hat{G}(0)=
+    \left[
+        \begin{array}{c}
+            1\\
+            0
+        \end{array}
+    \right] 
+   \frac{1}{12}
+    \left[
+        \begin{array}{cc}
+            12 & -2
+        \end{array}
+    \right]
+=\left[
+    \begin{array}{cc}
+        1 & -\frac{1}{6}\\
+        0 & 0
+    \end{array}
+\right]
+\]
+so the system can't track asymptotically any step reference input.
+
+\section*{9.17}
+This problem can be seen as s dual problem as problem 9.16
+\[
+\begin{split}
+    &\hat{G}(s)=[s(s^2-1)]^{-1}
+    \left[
+        \begin{array}{cc}
+            (s+1)^2 & s
+        \end{array}
+    \right]\\
+& \overline{D}(s)=s(s^2-1)=s^3-s=0 -1.s+0.s^2+1.s^3\\
+& \overline{N}(s)=  \left[
+    \begin{array}{cc}
+        (s+1)^2 & s
+    \end{array}
+\right]=\left[
+    \begin{array}{cc}
+        1 & 0
+    \end{array}
+\right]
+\left[
+    \begin{array}{cc}
+        2 & 1
+    \end{array}
+\right]s+
+\left[
+    \begin{array}{cc}
+        1 & 0
+    \end{array}
+\right]s^2+
+\left[
+    \begin{array}{cc}
+        0 & 0
+    \end{array}
+\right]s^3
+\end{split}    
+\]
+\[
+\tilde{S}_1.\left[
+    \begin{array}{c}
+        \overline{B}_0\\
+        \overline{A}_0\\
+        \overline{B}_1\\
+        \overline{A}_1
+    \end{array}
+\right]=\left[
+    \begin{array}{cccccc}
+        \begin{array}{ccccc}
+            0 & 1 & 0 & 0 & 0 & 0\\
+            -1 & 2 & 1 & 0 & 1 & 0\\
+            0 & 1 & 0 & -1 & 2 & 1\\
+            1 & 0 & 0 & 0 & 1 & 0\\
+            0 & 0 & 0 & 1 & 0 & 0\\
+        \end{array}
+    \end{array}
+\right]
+\left[
+    \begin{array}{c}
+        \overline{B}_0\\
+        \overline{A}_0\\
+        \overline{B}_1\\
+        \overline{A}_1
+    \end{array}
+\right]=
+\left[
+    \begin{array}{c}
+        12\\
+        22\\
+        18\\
+        7\\
+        1
+    \end{array}
+\right]
+\]
+\end{document}
