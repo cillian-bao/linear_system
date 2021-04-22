@@ -741,13 +741,11 @@ This problem can be seen as s dual problem as problem 9.16
     \end{array}
 \right]=\left[
     \begin{array}{cccccc}
-        \begin{array}{ccccc}
             0 & 1 & 0 & 0 & 0 & 0\\
             -1 & 2 & 1 & 0 & 1 & 0\\
             0 & 1 & 0 & -1 & 2 & 1\\
             1 & 0 & 0 & 0 & 1 & 0\\
             0 & 0 & 0 & 1 & 0 & 0\\
-        \end{array}
     \end{array}
 \right]
 \left[
@@ -768,4 +766,128 @@ This problem can be seen as s dual problem as problem 9.16
     \end{array}
 \right]
 \]
+as the procedure in problem 9.16,we can get
+\[
+C(s)=\overline{B}(s)\overline{A}^{-1}(s)=
+\left[
+    \begin{array}{c}
+        3.5s+12\\
+        2
+    \end{array}
+\right](s+3.5)^{-1}
+\]
+\[\hat{G}_0(s)=I-\overline{A}(s)\overline{F}^{-1}(s)\overline{D}(s)=1-(s+3.5)(s^4+7s^3+18s^2+22s+12)^{-1}(s^3-s)\]
+Because $\hat{G}_0(0)=1$,so we can find a feedforward gain so that the overall system will track asymptotically any step reference input.
+
+\section*{9.18}
+\[\hat{G}(s)=
+\left[
+\begin{array}{cc}
+    \frac{s-2}{s^2-1} & \frac{1}{s-1}\\
+    \frac{1}{s} & \frac{1}{s-1}
+\end{array}
+\right]=
+\left[
+    \begin{array}{cc}
+        s(s-2) & 1\\
+        s^2-1 & 2
+    \end{array}
+\right]\left[
+    \begin{array}{cc}
+        s(s^2-1) & 0\\
+        0 & s-1
+    \end{array}
+\right]^{-1}
+=N(s)D^{-1}(s)
+\]
+It is easily to find N(s) and D(s) are right coprime.
+\[
+\begin{split}
+D(s)& =\left[
+    \begin{array}{cc}
+        s^3-s & 0\\
+        0 & s-1
+    \end{array}
+\right]=
+\left[
+    \begin{array}{cc}
+        0 & 0\\
+        0 & -1
+    \end{array}
+\right]+
+\left[
+    \begin{array}{cc}
+        -1 & 0\\
+        0 & 1
+    \end{array}
+\right]s+
+\left[
+    \begin{array}{cc}
+        0 & 0\\
+        0 & 0
+    \end{array}
+\right]s^2+
+\left[
+    \begin{array}{cc}
+        1 & 0\\
+        0 & 0
+    \end{array}
+\right]
+\\
+& =D_0+D_1s+D_2s^2+D_3s^3
+\end{split}
+\]
+
+\[
+\begin{split}
+N(s)& =\left[
+    \begin{array}{cc}
+        s^2-2s & 1\\
+        s^2-1 & 2
+    \end{array}
+\right]=
+\left[
+    \begin{array}{cc}
+        0 & 1\\
+        -1 & 2
+    \end{array}
+\right]+
+\left[
+    \begin{array}{cc}
+        -2 & 0\\
+        0 & 0
+    \end{array}
+\right]s+
+\left[
+    \begin{array}{cc}
+        1 & 0\\
+        0 & 0
+    \end{array}
+\right]s^2+
+\left[
+    \begin{array}{cc}
+        0 & 0\\
+        0 & 0
+    \end{array}
+\right]
+\\
+& =N_0+N_1s+N_2s^2+N_3s^3
+\end{split}
+\]
+\[
+S_m=
+    \left[ 
+        \begin{array}{cccccc}
+            D_0 & D_1 & D_2 & D_3 & 0 & 0\\
+            N_0 & N_1 & N_2 & N_3 & 0& 0\\
+            0 & D_0 & D_1 & D_2 & D_3 & 0\\
+            0 & N_0 & N_1 & N_2 & N_3 & 0\\
+            0 & 0 & D_0 & D_1 & D_2 & D_3\\
+            0 & 0 & N_0 & N_1 & N_2 & N_3 \\
+        \end{array}
+    \right]    
+\]
+we apply QR decomposition to the transpose of $S_m$,we see that there are two linearly indepedent $N_1$-rows and two linearly indepedent $N_2$-rows
+The degree of $G(s)$ is 4,there is no need to search further and we have $v_1=2$ and $v_2=2$.we select $m_1=m_2=m=v-1=1$.\\
+so for $F(s)$ of column degrees $m+u_1=4$ and $m+u_2=2$.there exists a compensator
 \end{document}

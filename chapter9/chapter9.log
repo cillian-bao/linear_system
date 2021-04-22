@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.11.21)  21 APR 2021 21:35
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.11.21)  22 APR 2021 09:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -646,14 +646,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 652--659
 
  []
 
-[9] [10] (./chapter9.aux) ) 
+[9] [10] [11] (./chapter9.aux) ) 
 Here is how much of TeX's memory you used:
  11460 strings out of 479418
  257749 string characters out of 5888104
- 575131 words of memory out of 5000000
+ 577131 words of memory out of 5000000
  28753 multiletter control sequences out of 15000+600000
  540088 words of font info for 75 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  56i,21n,68p,999b,251s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on chapter9.pdf (10 pages).
+Output written on chapter9.pdf (11 pages).
