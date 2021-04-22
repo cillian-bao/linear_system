@@ -885,9 +885,179 @@ S_m=
             0 & 0 & D_0 & D_1 & D_2 & D_3\\
             0 & 0 & N_0 & N_1 & N_2 & N_3 \\
         \end{array}
-    \right]    
+    \right]     
 \]
 we apply QR decomposition to the transpose of $S_m$,we see that there are two linearly indepedent $N_1$-rows and two linearly indepedent $N_2$-rows
 The degree of $G(s)$ is 4,there is no need to search further and we have $v_1=2$ and $v_2=2$.we select $m_1=m_2=m=v-1=1$.\\
 so for $F(s)$ of column degrees $m+u_1=4$ and $m+u_2=2$.there exists a compensator
+choose
+\[
+\begin{split}F(s)&=
+\left[
+    \begin{array}{cc}
+        s^4+7s^3+18s^2+22s+12 & 0\\
+        0 & s^2+2s+2
+    \end{array}
+\right]=\left[
+    \begin{array}{cc}
+        12 & 0\\
+        0 & 2\\
+    \end{array}
+\right]+\left[
+    \begin{array}{cc}
+        22 & 0\\
+        0 & 2
+    \end{array}
+\right]s+\left[
+    \begin{array}{cc}
+        18 & 0\\
+        0 & 1
+    \end{array}
+\right]s^2 \\
+& +\left[
+    \begin{array}{cc}
+        7 & 0\\
+        0 & 0
+    \end{array}
+\right]s^3+\left[
+    \begin{array}{cc}
+        1 & 0\\
+        0 & 0
+    \end{array}
+\right]s^4
+\end{split}
+\]
+\[
+    \left[ 
+        \begin{array}{cccc}
+            A_0 & B_0 & A_1 & B_1
+        \end{array}
+    \right]
+    \left[ 
+        \begin{array}{ccccc}
+            D_0 & D_1 & D_2 & D_3 &0\\
+            N_0 & N_1 & N_2 & N_3 & 0\\
+            0 & D_0 & D_1 & D_2 & D_3\\
+            0 & N_0 & N_1 & N_2 & N_3\\
+        \end{array}
+    \right]=\left[ 
+        \begin{array}{ccccc}
+            F_0 & F_1 & F_2 & F_3 & F_4
+        \end{array}
+    \right]    
+\]
+using matlab,we can get 
+\[
+    \left[ 
+        \begin{array}{cccc}
+            A_0 & B_0 & A_1 & B_1
+        \end{array}
+    \right]=\left[
+        \begin{array}{cccccccc}
+            -46.7 & -53.7 & -29.7 & -12 & 1 & 0 & -30.3 & 42\\
+            -2.5 & -2 & 0 & 0 & 0 & 1 & 0 & 2.5
+        \end{array}
+    \right]
+\]
+Because $B_0$ is singular,so we need to choose a different $F(s)$.\\
+we select 
+\[
+    F(s)=
+    \left[
+        \begin{array}{cc}
+            s^4+7s^3+18s^2+22s+12 & 0\\
+            1 & s^2+2s+2
+        \end{array}
+    \right]    
+\]
+then we can get 
+\[
+    \left[ 
+        \begin{array}{cccc}
+            A_0 & B_0 & A_1 & B_1
+        \end{array}
+    \right]=\left[
+        \begin{array}{cccccccc}
+            -4.7 & -53.7 & -29.7 & -12 & 1 & 0 & -30.3 & 42\\
+            -3.3 & -4.3 & -0.30 & -1 & 0 & 1 & -0.7 & 4
+        \end{array}
+    \right]
+\]
+thus the compensator:
+\[
+A(s)=\left[ 
+    \begin{array}{cc}
+        s-4.7 & -53.7\\
+        -3.3 & s-4.3
+    \end{array}
+\right]    
+\]
+\[ 
+    B(s)=\left[ 
+        \begin{array}{cc}
+            -30.3s-29.7 & 4.2s-12\\
+            -0.7s-0.3 & 4s-1
+        \end{array}
+    \right]   
+\]
+The feedforward gain to achieve tracking is:
+\[ 
+P=B^{-1}(0)F(0)N^{-1}(0)=
+\left[ 
+    \begin{array}{cc}
+        -29.7 & -12\\
+        -0.3 & -1
+    \end{array}
+\right]^{-1}
+\left[ 
+    \begin{array}{cc}
+        12 & 0\\
+        1 & 2
+    \end{array}
+\right]
+\left[ 
+    \begin{array}{cc}
+        0 & 1\\
+        -1 & 2
+    \end{array}
+\right]^{-1}
+=\left[ 
+\begin{array}{cc}
+    0.92 & 0\\
+    -4.28 & 1
+\end{array}
+\right]
+\]
+
+\section*{9.19}
+\[\hat{G}(s)=
+\left[
+\begin{array}{cc}
+    \frac{s-2}{s^2-1} & \frac{1}{s-1}\\
+    \frac{1}{s} & \frac{1}{s-1}
+\end{array}
+\right]
+\]
+\[\hat{G}_0(s)=
+\left[
+\begin{array}{cc}
+    \frac{4(s^2-4s+1)}{(s^2+2s+2)(s+2)} & 0\\
+    0 & \frac{4(s^2-4s+1)}{(s^2+2s+2)(s+2)} 
+\end{array}
+\right]
+\]
+\[\hat{G}^{-1}(s)=
+\left[
+\begin{array}{cc}
+  s(s^2-1) & 0 \\
+    0 & s-1
+\end{array}
+\right]\left[ 
+    \begin{array}{cc}
+    s(s-2) & 1\\
+    s^2-1 & 2
+    \end{array}
+\right]^{-1}
+\]
+\[\hat{T}(s)=\hat{G}^{-1}(s)\hat{G}_0(s)\]
 \end{document}
