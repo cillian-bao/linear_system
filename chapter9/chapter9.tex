@@ -1046,7 +1046,10 @@ P=B^{-1}(0)F(0)N^{-1}(0)=
 \end{array}
 \right]
 \]
-\[\hat{G}^{-1}(s)=
+\[\hat{T}(s)=\hat{G}^{-1}(s)\hat{G}_0(s)\]
+\[
+    \begin{split}    
+\hat{G}^{-1}(s)&=
 \left[
 \begin{array}{cc}
   s(s^2-1) & 0 \\
@@ -1057,7 +1060,156 @@ P=B^{-1}(0)F(0)N^{-1}(0)=
     s(s-2) & 1\\
     s^2-1 & 2
     \end{array}
-\right]^{-1}
+\right]^{-1}=\left[ 
+    \begin{array}{cc}
+        s(s^2-1) & 0\\
+        0 & s-1
+    \end{array}
+\right]
+\left[ 
+    \begin{array}{cc}
+        \frac{2}{s^2-4s+1} & \frac{-1}{s^2-4s+1}\\
+        \frac{1-s^2}{s^2-4s+1} & \frac{s(s-2)}{s^2-4s+1}
+    \end{array}
+\right] \\
+&=\left[ 
+    \begin{array}{cc}
+        \frac{2s(s^2-1)}{s^2-4s+1} & \frac{-s(s^2-1)}{s^2-4s+1}\\
+        \frac{(1-s^2)(s-1)}{s^2-4s+1} & \frac{s(s-1)(s-2)}{s^-4s+1}
+    \end{array}
+\right]
+\end{split}
 \]
-\[\hat{T}(s)=\hat{G}^{-1}(s)\hat{G}_0(s)\]
+\[ 
+\begin{split}
+\hat{T}(s)
+& =\left[ 
+    \begin{array}{cc}
+        \frac{2s(s^2-1)}{s^2-4s+1} & \frac{-s(s^2-1)}{s^2-4s+1}\\
+        \frac{(1-s^2)(s-1)}{s^2-4s+1} & \frac{s(s-1)(s-2)}{s^2-4s+1}
+    \end{array}
+\right]
+\left[ 
+    \begin{array}{cc}
+        \frac{4(s^2-4s+1)}{(s^2+2s+2)(s+2)} & 0\\
+        0 & \frac{4(s^2-4s+1)}{(s^2+2s+2)(s+2)}
+    \end{array}
+\right] \\
+&=\left[ 
+    \begin{array}{cc}
+        \frac{2s(s^2-1)}{(s^2+2s+2)(s+2)} & \frac{-4s(s^2-1)}{(s^2+2s+2)(s+2)}\\
+        \frac{4(1-s^2)(s-1)}{(s^2+2s+2)(s+2)} & \frac{4s(s-1)(s-2)}{(s^2+2s+2)(s+2)}
+    \end{array}
+\right]
+\end{split}
+\]
+\[ 
+T(\infty)=\left[ 
+    \begin{array}{cc}
+        2 & -4\\
+        -4 & 4
+    \end{array}
+\right] 
+\]
+is proper and BIBO stable,so it is implementbale. 
+\[ 
+\begin{split}
+N^{-1}(s)\hat{G}_0(s)
+& =\left[ 
+    \begin{array}{cc}
+        \frac{2}{s^2-4s+1} & \frac{-1}{s^2-4s+1}\\
+        \frac{1-s^2}{s^2-4s+1} & \frac{s(s-2)}{s^2-4s+1}
+    \end{array}
+\right]
+\left[ 
+    \begin{array}{cc}
+        \frac{4(s^2-4s+1)}{(s^2+2s+2)(s+2)} & 0\\
+        0 & \frac{4(s^2-4s+1)}{(s^2+2s+2)(s+2)}
+    \end{array}
+\right]\\
+& =\left[ 
+    \begin{array}{cc}
+        \frac{8}{(s^2+2s+2)(s+2)} & \frac{-4}{(s^2+2s+2)(s+2)}\\
+        \frac{4(1-s^2)}{(s^2+2s+2)(s+2)} & \frac{4s(s-2)}{(s^2+2s+2)(s+2)}
+    \end{array}
+\right]\\
+& =\left[ 
+    \begin{array}{cc}
+        (s^2+2s+2)(s+2) & 0\\
+        0 & (s^2+2s+2)(s+2)
+    \end{array}
+\right]^{-1}\left[ 
+    \begin{array}{cc}
+        8 & -4 \\
+        4(1-s^2) & 4s(s-2)
+    \end{array}
+\right]=\overline{F}^{-1}(s)\overline{E}(s)
+\end{split}
+\]
+the degree of $N^{-1}(s)\hat{G}_0(s)$ can easily be computed as 6.The determinant of $\overline{F}(s)$ is 6.Thus the pair $\overline{F}(s)$ and $\overline{E}(s)$ are left coprime.
+The row index of $\hat{G}(s)$ was computed as $v=2$\\
+Let us select $\hat{F}(s)=\rm{diag}(s+3,1)$ \\
+Then we have:
+\[
+ \hat{F}(s)\overline{F}(s)=
+ \left[ 
+     \begin{array}{cc}
+     (s^2+2s+2)(s+2)(s+3) & 0\\
+     0 & (s^2+2s+2)(s+2)
+     \end{array}
+ \right]   
+\]
+it is row-column reduced with column degrees $\{\mu_1=3,\mu_2=1\} \}$ and with row degrees $\{m_1=1,m_2=2\}$
+\[ 
+    \begin{split}
+    L(s)=\hat{F}(s)\overline{E}(s)&=
+    \left[ 
+        \begin{array}{cc}
+            s+3  & 0\\
+            0 & 1
+        \end{array}
+    \right]\left[ 
+        \begin{array}{cc}
+        8 & -4\\
+        4(1-s^2) & 4s(s-2)
+        \end{array}
+    \right]\\
+   & =\left[ 
+        \begin{array}{cc}
+            8(s+3) & -4(s+3)\\
+            4(1-s^2) & 4s(s-2)
+        \end{array}
+    \right]
+    \end{split}
+\]
+and solve $A(s)$ and $M(s)$ from:
+\[A(s)D(s)+M(s)N(s)=\hat{F}(s)\overline{F}(s)\]
+Note that the next two N rows are known to be linearly depedent,therefore ,they are deleted and consequently $M_2$ must be 
+assigned to 0,so the solution is 
+\[
+\left[
+    \begin{array}{cccccccccccc}
+        -\frac{14}{3} & -\frac{161}{3} & -\frac{89}{3} & -12 & 1 & 0 & -\frac{-91}{3} & 42 & 0 & 0 & 0 & 0  \\
+        -7.5 & -4 & 0 & 0& 0 & 5 & 0 & 7.5 & 0  & 1 & 0 & 0
+    \end{array}
+\right]    
+\]
+thus we have
+\[
+A(s)=\left[ 
+    \begin{array}{cc}
+        s-\frac{14}{3} & -\frac{161}{3}\\
+        -7.5 & s^2+5s-4
+    \end{array}
+\right]    
+\]
+\[ 
+    M(s)=\left[ 
+        \begin{array}{cc}
+            -\frac{91}{3}s-\frac{89}{3} & 42s-12\\
+            0 & 7.5s
+        \end{array}
+    \right]   
+\]
+
 \end{document}
