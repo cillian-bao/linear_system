@@ -1212,4 +1212,122 @@ A(s)=\left[
     \right]   
 \]
 
+\section*{9.20}
+\[
+G(s)=\left[ 
+    \begin{array}{cc}
+        1 & s\\
+        1 & 1
+    \end{array}
+\right] \left[ 
+    \begin{array}{cc}
+        1 & s^2+1\\
+        s & 0
+    \end{array}
+\right]^{-1}=
+\left[ 
+    \begin{array}{cc}
+        s & 1\\
+        1 & 1
+    \end{array}
+\right]\left[ 
+    \begin{array}{cc}
+        s^2+1 & 1\\
+        0 & s
+    \end{array}
+\right]^{-1}
+\]
+we use the latter from
+\[\hat{G}(s)=
+    \left[ 
+        \begin{array}{cc}
+            s & 1\\
+            1 & 1  
+        \end{array}
+    \right]\left[ 
+        \begin{array}{cc}
+            s^2+1 & 1\\
+            0 & s
+        \end{array}
+    \right]^{-1}=N(s)D^{-1}(s)
+\]
+This is right coprime.D(s) is column reduced with $\mu_1=2$,$\mu_2=1$.
+\[
+N(s)=\left[ 
+    \begin{array}{cc}
+        s & 1\\
+        1 & 1
+    \end{array}
+\right]=N_2(s)    
+\]
+with $N_1(s)=I$
+\[
+N^{-1}_2(s)=\frac{1}{s-1}\left[ 
+    \begin{array}{cc}
+        1 & -1\\
+        -1 & s
+    \end{array}
+\right]    
+\]
+\[
+    N_{2d}=
+    \left[ 
+        \begin{array}{cc}
+            s-1 & 0\\
+            0 & s-1
+        \end{array}
+    \right]
+    ,
+    \overline{N}_2(s)=N_2^{-1}(s)N_{2d}(s)=
+    \left[ 
+        \begin{array}{cc}
+            1 & -1\\
+            -1 & s
+        \end{array}
+    \right]   
+\]
+\[
+\begin{split}
+\hat{T}(s)
+& =D(s)\overline{N}_2(s)\sum^{-1}(s)\\
+& =\left[
+    \begin{array}{cc}
+        s^2+1 & 1\\
+        0 & s
+    \end{array}
+\right]\left[ 
+    \begin{array}{cc}
+        1 & -1\\
+        -1 & s
+    \end{array}
+\right]
+\left[
+    \begin{array}{cc}
+        \Delta_1 & 0\\
+        1 & \Delta_2
+    \end{array}
+\right]^{-1}\\
+& =\left[
+    \begin{array}{cc}
+        s^2 & -s^2+s-1\\
+        -s & s^2
+    \end{array}
+\right]\left[
+    \begin{array}{cc}
+        \Delta_1 & 0\\
+        0 & \Delta_2
+    \end{array}
+\right]^{-1}
+\end{split}
+\]
+We select $\Delta_1=\Delta_2=\Delta=s^2+2s+2$,then $\hat{T}(s)$ is proper and
+\[
+\hat{G}_0(s)=\hat{G}(s)\hat{T}(s)=
+\left[
+    \begin{array}{cc}
+        \frac{s-1}{s^2+2s+2} & 0\\
+        0 & \frac{s-1}{s^2+2s+2}
+    \end{array}
+\right]    
+\]
 \end{document}
